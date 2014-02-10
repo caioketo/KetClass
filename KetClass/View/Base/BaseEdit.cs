@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace KetClass.View
+namespace KetClass.View.Base
 {
-    public class BaseEdit<T> where T : BaseEntity
+    public class BaseEdit<T> : Form where T : BaseEntity
     {
         public IController<T> controller { get; set; }
         public T model { get; set; }

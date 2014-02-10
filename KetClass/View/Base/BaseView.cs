@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace KetClass.View
+namespace KetClass.View.Base
 {
-    public class BaseView<T> where T : BaseEntity, new()
+    public class BaseView<T> where T : BaseEntity, new() 
     {
         public BaseEdit<T> edit { get; set; }
         public DataGridView grid { get; set; }
