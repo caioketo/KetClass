@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using KetClass.Model;
 
 namespace KetClass.Data
 {
@@ -14,5 +15,7 @@ namespace KetClass.Data
         {
             Database.SetInitializer<KCContext>(new DropCreateDatabaseIfModelChanges<KCContext>());
         }
+
+        public DbSet<AlunoModel> Alunos { get; set; }
     }
 }

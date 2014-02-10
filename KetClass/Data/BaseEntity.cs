@@ -15,6 +15,10 @@ namespace KetClass.Data
         [Key]
         public int Id { get; set; }
 
+        public DateTime? DataExclusao { get; set; }
+        public DateTime DataCriacao { get; set; }
+        public DateTime DataAlteracao { get; set; }
+
         public override bool Equals(object obj)
         {
             return Equals(obj as BaseEntity);
