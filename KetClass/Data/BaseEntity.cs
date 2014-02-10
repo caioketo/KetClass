@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace KetClass.Data
 {
-    public abstract partial class BaseEntity
+    public abstract partial class BaseEntity 
     {
         /// <summary>
         /// Gets or sets the entity identifier
@@ -18,6 +18,10 @@ namespace KetClass.Data
         public DateTime? DataExclusao { get; set; }
         public DateTime DataCriacao { get; set; }
         public DateTime DataAlteracao { get; set; }
+
+        public BaseEntity()
+        {
+        }
 
         public override bool Equals(object obj)
         {
