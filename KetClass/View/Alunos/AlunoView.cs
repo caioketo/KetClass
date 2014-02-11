@@ -1,4 +1,5 @@
-﻿using KetClass.Model;
+﻿using KetClass.Controller;
+using KetClass.Model;
 using KetClass.View.Base;
 using System;
 using System.Collections.Generic;
@@ -12,13 +13,39 @@ using System.Windows.Forms;
 
 namespace KetClass.View.Alunos
 {
-    public partial class AlunoView : BaseView<AlunoModel>
+    public partial class AlunoView : Form
     {
+        private BaseView<AlunoModel> baseView = new BaseView<AlunoModel>();
+        private AlunoController controller = new AlunoController();
+        private AlunoEdit edit = new AlunoEdit();
+
         public AlunoView()
         {
-            this.grid = 
+            baseView.edit = edit.baseEdit;
+            baseView.controller = this.controller;
+            baseView.grid = dgvAlunos;
             InitializeComponent();
-            Index();
+            baseView.Index();
+        }
+
+        private void btnInserir_Click(object sender, EventArgs e)
+        {
+            baseView.Create();
+            edit.ShowDialog();
+            baseView.Index();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            baseView.Detail();
+            edit.ShowDialog();
+            baseView.Index();
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            baseView.Delete();
+            baseView.Index();
         }
     }
 }

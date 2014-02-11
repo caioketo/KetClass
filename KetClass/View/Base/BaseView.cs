@@ -1,7 +1,9 @@
 ﻿using KetClass.Data;
 using KetClass.Model;
+using KetClass.View.Alunos;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,8 +28,6 @@ namespace KetClass.View.Base
             model = controller.Details(model.Id);
             edit.model = model;
             edit.estado = Estado.Editando;
-            edit.Show();
-            Index();
         }
 
         public void Create()
@@ -35,8 +35,6 @@ namespace KetClass.View.Base
             T model = new T();
             edit.model = model;
             edit.estado = Estado.Criando;
-            edit.Show();
-            Index();
         }
 
         public void Delete()

@@ -9,21 +9,13 @@ using System.Windows.Forms;
 
 namespace KetClass.View.Base
 {
-    public class BaseEdit<T> : Form where T : BaseEntity
+    public class BaseEdit<T> where T : BaseEntity
     {
         public IController<T> controller { get; set; }
         public T model { get; set; }
         public Estado estado { get; set; }
 
-        public void Show()
-        {
-        }
-
-        public void Close()
-        {
-        }
-
-        public void Salvar()
+        public bool Salvar()
         {
             var erros = new List<ValidationResult>();
             if (!Validator.TryValidateObject(model, new ValidationContext(model, null, null), erros, true))
@@ -32,7 +24,7 @@ namespace KetClass.View.Base
                 {
                     MessageBox.Show(erro.ErrorMessage);
                 }
-                return;
+                return false;
             }
             if (estado == Estado.Criando)
             {
@@ -42,7 +34,8 @@ namespace KetClass.View.Base
             {
                 controller.Edit(model);
             }
-            Close();
+
+            return true;
         }
         
     }
