@@ -81,6 +81,7 @@
     </Compile>
     <Compile Include="View\Base\BaseEdit.cs" />
     <Compile Include="View\Base\BaseView.cs" />
+    <Compile Include="View\Base\IEdit.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

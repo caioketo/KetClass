@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,7 +14,7 @@ namespace KetClass.View.Base
     {
         public IController<T> controller { get; set; }
         public T model { get; set; }
-        public Estado estado { get; set; }
+        public Estado estado { get; set; }  
 
         public bool Salvar()
         {
@@ -37,6 +38,5 @@ namespace KetClass.View.Base
 
             return true;
         }
-        
     }
 }

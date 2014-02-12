@@ -12,5 +12,12 @@ namespace KetClass.Model
         public PessoaModel Aluno { get; set; }
         public PessoaModel Pai { get; set; }
         public PessoaModel Mae { get; set; }
+
+        public AlunoModel()
+        {
+            this.Aluno = new PessoaModel();
+            this.Pai = new PessoaModel();
+            this.Mae = new PessoaModel();
+        }
     }
 }
