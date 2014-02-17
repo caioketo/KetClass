@@ -56,11 +56,11 @@
     <Compile Include="Data\Enum.cs" />
     <Compile Include="Data\IController.cs" />
     <Compile Include="Data\KCContext.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Principal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Principal.Designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\AlunoModel.cs" />
     <Compile Include="Model\PessoaModel.cs" />
@@ -82,8 +82,8 @@
     <Compile Include="View\Base\BaseEdit.cs" />
     <Compile Include="View\Base\BaseView.cs" />
     <Compile Include="View\Base\IEdit.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
