@@ -57,5 +57,11 @@ namespace KetClass.Controller
                 return false;
             }
         }
+
+
+        public List<AlunoModel> Filter(string text)
+        {
+            return context.Alunos.Where(a => !a.DataExclusao.HasValue && a.Aluno.Nome.Contains(text)).ToList();
+        }
     }
 }

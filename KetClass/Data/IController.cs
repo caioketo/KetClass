@@ -13,5 +13,6 @@ namespace KetClass.Data
         T Create(T model);
         void Edit(T model);
         bool Delete(int id);
+        List<T> Filter(string text);
     }
 }

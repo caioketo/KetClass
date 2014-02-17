@@ -20,6 +20,27 @@ namespace KetClass.View.Base
         public void Index()
         {
             grid.DataSource = controller.Index();
+            //if (lista.Count > 0)
+            //{
+                //grid.DataSource = lista;
+            //}
+            //else
+            //{
+                //grid.DataSource = new List<T>();
+            //}
+        }
+
+        public void Filter(string text)
+        {
+            List<T> lista = controller.Filter(text);
+            if (lista.Count > 0)
+            {
+                grid.DataSource = lista;
+            }
+            else
+            {
+                grid.DataSource = new List<T>();
+            }
         }
 
         public void Detail()

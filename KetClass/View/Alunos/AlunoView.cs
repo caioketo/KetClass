@@ -21,10 +21,11 @@ namespace KetClass.View.Alunos
 
         public AlunoView()
         {
+            InitializeComponent();
             baseView.edit = edit.baseEdit;
             baseView.controller = this.controller;
+            edit.baseEdit.controller = baseView.controller;
             baseView.grid = dgvAlunos;
-            InitializeComponent();
             baseView.Index();
         }
 
@@ -46,6 +47,11 @@ namespace KetClass.View.Alunos
         {
             baseView.Delete();
             baseView.Index();
+        }
+
+        private void tbxPesquisa_TextChanged(object sender, EventArgs e)
+        {
+            baseView.Filter(tbxPesquisa.Text);
         }
     }
 }
