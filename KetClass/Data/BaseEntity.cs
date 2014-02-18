@@ -21,6 +21,8 @@ namespace KetClass.Data
 
         public BaseEntity()
         {
+            DataAlteracao = DateTime.Now;
+            DataCriacao = DateTime.Now;
         }
 
         public override bool Equals(object obj)

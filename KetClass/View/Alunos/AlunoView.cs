@@ -15,17 +15,14 @@ namespace KetClass.View.Alunos
 {
     public partial class AlunoView : Form
     {
-        private BaseView<AlunoModel> baseView = new BaseView<AlunoModel>();
+        private BaseView<AlunoModel> baseView;
         private AlunoController controller = new AlunoController();
         private AlunoEdit edit = new AlunoEdit();
 
         public AlunoView()
         {
             InitializeComponent();
-            baseView.edit = edit.baseEdit;
-            baseView.controller = this.controller;
-            edit.baseEdit.controller = baseView.controller;
-            baseView.grid = dgvAlunos;
+            baseView = new BaseView<AlunoModel>(controller, dgvAlunos, edit.baseEdit);
             baseView.Index();
         }
 

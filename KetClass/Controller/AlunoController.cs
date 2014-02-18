@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace KetClass.Controller
 {
@@ -62,6 +63,56 @@ namespace KetClass.Controller
         public List<AlunoModel> Filter(string text)
         {
             return context.Alunos.Where(a => !a.DataExclusao.HasValue && a.Aluno.Nome.Contains(text)).ToList();
+        }
+
+
+        public List<System.Windows.Forms.DataGridViewColumn> Columns()
+        {
+            List<System.Windows.Forms.DataGridViewColumn> columns = new List<System.Windows.Forms.DataGridViewColumn>();
+            columns.Add(new System.Windows.Forms.DataGridViewColumn(new DataGridViewTextBoxCell())
+            {
+                HeaderText = "Código",
+                DataPropertyName = "Id",
+                Name = "IdC",
+                DefaultCellStyle = new DataGridViewCellStyle()
+            });
+            columns.Add(new System.Windows.Forms.DataGridViewColumn(new DataGridViewTextBoxCell())
+            {
+                HeaderText = "Aluno",
+                DataPropertyName = "AlunoNome",
+                Name = "AlunoC",
+                DefaultCellStyle = new DataGridViewCellStyle()
+            });
+            columns.Add(new System.Windows.Forms.DataGridViewColumn(new DataGridViewTextBoxCell())
+            {
+                HeaderText = "Pai",
+                DataPropertyName = "PaiNome",
+                Name = "PaiC",
+                DefaultCellStyle = new DataGridViewCellStyle()
+            });
+            columns.Add(new System.Windows.Forms.DataGridViewColumn(new DataGridViewTextBoxCell())
+            {
+                HeaderText = "Mãe",
+                DataPropertyName = "MaeNome",
+                Name = "MaeC",
+                DefaultCellStyle = new DataGridViewCellStyle()
+            });
+            columns.Add(new System.Windows.Forms.DataGridViewColumn(new DataGridViewTextBoxCell())
+            {
+                HeaderText = "Cadastrado Em",
+                DataPropertyName = "DataCriacao",
+                Name = "DataCriacaoC",
+                DefaultCellStyle = new DataGridViewCellStyle()
+            });
+            columns.Add(new System.Windows.Forms.DataGridViewColumn(new DataGridViewTextBoxCell())
+            {
+                HeaderText = "Alterado Em",
+                DataPropertyName = "DataAlteracao",
+                Name = "DataAlteracaoC",
+                DefaultCellStyle = new DataGridViewCellStyle()
+            });
+
+            return columns;
         }
     }
 }

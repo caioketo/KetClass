@@ -52,10 +52,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\AlunoController.cs" />
+    <Compile Include="Controller\PessoaController.cs" />
     <Compile Include="Data\BaseEntity.cs" />
     <Compile Include="Data\Enum.cs" />
     <Compile Include="Data\IController.cs" />
     <Compile Include="Data\KCContext.cs" />
+    <Compile Include="Model\CidadeModel.cs" />
+    <Compile Include="Model\UFModel.cs" />
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +85,12 @@
     <Compile Include="View\Base\BaseEdit.cs" />
     <Compile Include="View\Base\BaseView.cs" />
     <Compile Include="View\Base\IEdit.cs" />
+    <Compile Include="View\Shared\UCPessoaedit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Shared\UCPessoaedit.Designer.cs">
+      <DependentUpon>UCPessoaedit.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
@@ -99,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Alunos\AlunoView.resx">
       <DependentUpon>AlunoView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Shared\UCPessoaedit.resx">
+      <DependentUpon>UCPessoaedit.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

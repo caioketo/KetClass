@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace KetClass.Data
 {
@@ -14,5 +15,6 @@ namespace KetClass.Data
         void Edit(T model);
         bool Delete(int id);
         List<T> Filter(string text);
+        List<DataGridViewColumn> Columns();
     }
 }

@@ -29,7 +29,7 @@ namespace KetClass.View.Base
             }
             if (estado == Estado.Criando)
             {
-                controller.Create(model);
+                model = controller.Create(model);
             }
             else if (estado == Estado.Editando)
             {

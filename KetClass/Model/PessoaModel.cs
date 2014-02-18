@@ -15,8 +15,10 @@ namespace KetClass.Model
         public string Nome { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "O campo Telefone é obrigatório")]
         public string Telefone { get; set; }
+        public DateTime DataNascimento { get; set; }
+        public string RG { get; set; }        
         //[DocumentoAtribute(ErrorMessage = "O CPF {0} é inválido.")]
-        //public string Documento { get; set; }
+        public string CPF { get; set; }
 
         public override string ToString()
         {

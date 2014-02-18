@@ -9,9 +9,45 @@ namespace KetClass.Model
 {
     public class AlunoModel : BaseEntity
     {
+        public string Codigo { get; set; }
+        public string Sexo { get; set; }
         public PessoaModel Aluno { get; set; }
         public PessoaModel Pai { get; set; }
         public PessoaModel Mae { get; set; }
+        public string AlunoNome
+        {
+            get
+            {
+                if (Aluno == null)
+                {
+                    return "";
+                }
+                return Aluno.Nome;
+            }
+        }
+        public string PaiNome
+        {
+            get
+            {
+                if (Pai == null)
+                {
+                    return "";
+                }
+                return Pai.Nome;
+            }
+        }
+        public string MaeNome
+        {
+            get
+            {
+                if (Mae == null)
+                {
+                    return "";
+                }
+                return Mae.Nome;
+            }
+        }
+
 
         public AlunoModel()
         {

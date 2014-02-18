@@ -13,10 +13,13 @@ namespace KetClass.Data
     {
         public static string CreateConnectionString()
         {
-            return "Server=127.0.0.1\\SQLEXPRESS;Database=ketclass;User Id=sa;Password=vd7887;";
+            return "Server=.\\SQLEXPRESS;Database=ketclass;User Id=sa;Password=vd7887;";
         }
         private string connectionString;
-        public KCContext() : base() { }
+        public KCContext() : base(CreateConnectionString()) 
+        {
+            connectionString = CreateConnectionString();
+        }
         public KCContext(string nameOrConnectionString)
             : base(nameOrConnectionString) 
         {
@@ -25,7 +28,7 @@ namespace KetClass.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            Database.SetInitializer<KCContext>(new DropCreateDatabaseIfModelChanges<KCContext>());
+            Database.SetInitializer<KCContext>(new DropCreateDatabaseAlways<KCContext>());
             Database.DefaultConnectionFactory = new SqlConnectionFactory("System.Data.SqlServer");
             base.OnModelCreating(modelBuilder);
         }
@@ -44,5 +47,6 @@ namespace KetClass.Data
         }
 
         public DbSet<AlunoModel> Alunos { get; set; }
+        public DbSet<PessoaModel> Pessoas { get; set; }
     }
 }
