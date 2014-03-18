@@ -1,0 +1,44 @@
+Código
+Nome
+Sexo
+Dt. Nasc.
+Nacionalidade
+Local
+Cor
+CPF
+RG
+CN
+---Familia---
+Pai_Nome
+CPF
+RG
+Nacionalidade
+Telefone
+Dt. Nasc.
+Convenio
+Mae_Nome
+CPF
+RG
+Nacionalidade
+Telefone
+Dt. Nasc.
+Convenio
+Responsavel
+---Endereço---
+Rua
+Numero
+Complemento
+Bairro
+Cidade
+Estado
+CEP
+Telefone
+---Requerimento---
+Unidade
+Periodo
+Curso
+Serie
+Turma
+Numero
+Dt. Matricula
+Ativo
