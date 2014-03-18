@@ -11,9 +11,13 @@ namespace KetClass.Model
     {
         public string Codigo { get; set; }
         public string Sexo { get; set; }
+        public string Cor { get; set; }
+        public string CN { get; set; }
         public PessoaModel Aluno { get; set; }
         public PessoaModel Pai { get; set; }
         public PessoaModel Mae { get; set; }
+        public PessoaModel Responsavel { get; set; }
+
         public string AlunoNome
         {
             get
