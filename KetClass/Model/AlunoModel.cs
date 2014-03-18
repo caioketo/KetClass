@@ -17,6 +17,7 @@ namespace KetClass.Model
         public PessoaModel Pai { get; set; }
         public PessoaModel Mae { get; set; }
         public PessoaModel Responsavel { get; set; }
+        public EnderecoModel Endereo { get; set; }
 
         public string AlunoNome
         {

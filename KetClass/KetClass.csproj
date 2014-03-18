@@ -58,6 +58,7 @@
     <Compile Include="Data\IController.cs" />
     <Compile Include="Data\KCContext.cs" />
     <Compile Include="Model\CidadeModel.cs" />
+    <Compile Include="Model\EnderecoModel.cs" />
     <Compile Include="Model\UFModel.cs" />
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
