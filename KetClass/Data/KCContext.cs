@@ -48,5 +48,6 @@ namespace KetClass.Data
 
         public DbSet<AlunoModel> Alunos { get; set; }
         public DbSet<PessoaModel> Pessoas { get; set; }
+        public DbSet<UnidadeModel> Unidades { get; set; }
     }
 }

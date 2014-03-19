@@ -13,9 +13,8 @@ namespace KetClass.View.Shared
 {
     public partial class UCPesquisa : UserControl
     {
-        public delegate BaseEntity PesquisaHandler(object sender, EventArgs e);
-        public event PesquisaHandler Pesquisar;
         public BaseEntity Objeto = null;
+        public ICRUD Crud;
 
         public UCPesquisa()
         {
@@ -24,28 +23,22 @@ namespace KetClass.View.Shared
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            Objeto = null;
-            tbxPesquisa.Clear();
-            tbxPesquisa.ReadOnly = false;
-            tbxPesquisa.BackColor = Color.White;
+            Clear();
         }
 
         private void tbxPesquisa_Leave(object sender, EventArgs e)
         {
-            if (Pesquisar != null)
+            BaseEntity retorno = Crud.Pesquisar(tbxPesquisa.Text);
+            if (retorno != null)
             {
-                BaseEntity retorno = null;
-                if ((retorno = Pesquisar(tbxPesquisa, e)) != null)
-                {
-                    Objeto = retorno;
-                    tbxPesquisa.ReadOnly = true;
-                    tbxPesquisa.BackColor = Color.LightGray;
-                    tbxPesquisa.Text = Objeto.ToString();
-                }
+                Objeto = retorno;
+                tbxPesquisa.ReadOnly = true;
+                tbxPesquisa.BackColor = Color.LightGray;
+                tbxPesquisa.Text = Objeto.ToString();
             }
         }
 
-        public void setObjeto(BaseEntity objeto)
+        public void SetObjeto(BaseEntity objeto)
         {
             if (objeto == null)
             {
@@ -55,6 +48,14 @@ namespace KetClass.View.Shared
             tbxPesquisa.ReadOnly = true;
             tbxPesquisa.BackColor = Color.LightGray;
             tbxPesquisa.Text = Objeto.ToString();
+        }
+
+        public void Clear()
+        {
+            Objeto = null;
+            tbxPesquisa.Clear();
+            tbxPesquisa.ReadOnly = false;
+            tbxPesquisa.BackColor = Color.White;
         }
     }
 }

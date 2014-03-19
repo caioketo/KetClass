@@ -1,6 +1,6 @@
-﻿namespace KetClass.View.Alunos
+﻿namespace KetClass.View.Unidades
 {
-    partial class AlunoView
+    partial class UnidadeView
     {
         /// <summary>
         /// Required designer variable.
@@ -33,20 +33,20 @@
             // 
             // crud
             // 
-            this.crud.Location = new System.Drawing.Point(0, 0);
+            this.crud.Location = new System.Drawing.Point(0, -1);
             this.crud.Name = "crud";
             this.crud.Size = new System.Drawing.Size(689, 445);
             this.crud.TabIndex = 0;
             // 
-            // AlunoView
+            // UnidadeView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(687, 448);
+            this.ClientSize = new System.Drawing.Size(689, 440);
             this.Controls.Add(this.crud);
-            this.Name = "AlunoView";
-            this.Text = "AlunoView";
-            this.Shown += new System.EventHandler(this.AlunoView_Shown);
+            this.Name = "UnidadeView";
+            this.Text = "UnidadeView";
+            this.Shown += new System.EventHandler(this.UnidadeView_Shown);
             this.ResumeLayout(false);
 
         }
@@ -54,8 +54,5 @@
         #endregion
 
         private Shared.UCCRUD crud;
-
-
-
     }
 }

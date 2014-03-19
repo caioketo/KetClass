@@ -1,5 +1,6 @@
 ﻿using KetClass.Model;
 using KetClass.View.Base;
+using KetClass.View.Unidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,6 +31,7 @@ namespace KetClass.View.Alunos
             ucAluno.Nome = "Aluno";
             ucMae.Nome = "Mãe";
             ucPai.Nome = "Pai";
+            pesUnidade.Crud = new UnidadeView();
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
@@ -107,10 +109,11 @@ namespace KetClass.View.Alunos
                     rbtFeminino.Checked = true;
                 }
                 tbxCodigo.Text = model.Codigo;
-                pesAno.setObjeto(model.Ano);
-                pesPeriodo.setObjeto(model.Periodo);
-                pesTurma.setObjeto(model.Turma);
-                pesUnidade.setObjeto(model.Unidade);
+                pesAno.SetObjeto(model.Ano);
+                pesPeriodo.SetObjeto(model.Periodo);
+                pesCurso.SetObjeto(model.Curso);
+                pesUnidade.SetObjeto(model.Unidade);
+                pesTurma.SetObjeto(model.Turma);
             }
         }
 
@@ -122,16 +125,6 @@ namespace KetClass.View.Alunos
         private void AlunoEdit_Shown(object sender, EventArgs e)
         {
             MapearTela();
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AlunoEdit_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

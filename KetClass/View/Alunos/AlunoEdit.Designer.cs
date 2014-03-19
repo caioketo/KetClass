@@ -35,8 +35,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbtFeminino = new System.Windows.Forms.RadioButton();
             this.rbtMasculino = new System.Windows.Forms.RadioButton();
-            this.tbxCor = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -51,7 +49,9 @@
             this.pesUnidade = new KetClass.View.Shared.UCPesquisa();
             this.pesPeriodo = new KetClass.View.Shared.UCPesquisa();
             this.pesAno = new KetClass.View.Shared.UCPesquisa();
+            this.pesCurso = new KetClass.View.Shared.UCPesquisa();
             this.pesTurma = new KetClass.View.Shared.UCPesquisa();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -124,22 +124,6 @@
             this.rbtMasculino.Text = "Masculino";
             this.rbtMasculino.UseVisualStyleBackColor = true;
             // 
-            // tbxCor
-            // 
-            this.tbxCor.Location = new System.Drawing.Point(358, 30);
-            this.tbxCor.Name = "tbxCor";
-            this.tbxCor.Size = new System.Drawing.Size(108, 20);
-            this.tbxCor.TabIndex = 9;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(355, 13);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(23, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Cor";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -161,7 +145,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(290, 376);
+            this.label5.Location = new System.Drawing.Point(437, 376);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(26, 13);
             this.label5.TabIndex = 14;
@@ -170,15 +154,15 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(438, 376);
+            this.label6.Location = new System.Drawing.Point(287, 376);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(37, 13);
+            this.label6.Size = new System.Drawing.Size(34, 13);
             this.label6.TabIndex = 16;
-            this.label6.Text = "Turma";
+            this.label6.Text = "Curso";
             // 
             // tbxNumero
             // 
-            this.tbxNumero.Location = new System.Drawing.Point(579, 393);
+            this.tbxNumero.Location = new System.Drawing.Point(16, 434);
             this.tbxNumero.Name = "tbxNumero";
             this.tbxNumero.Size = new System.Drawing.Size(84, 20);
             this.tbxNumero.TabIndex = 19;
@@ -186,7 +170,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(576, 376);
+            this.label7.Location = new System.Drawing.Point(13, 417);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 13);
             this.label7.TabIndex = 18;
@@ -195,7 +179,7 @@
             // dtpMatricula
             // 
             this.dtpMatricula.CustomFormat = "";
-            this.dtpMatricula.Location = new System.Drawing.Point(16, 433);
+            this.dtpMatricula.Location = new System.Drawing.Point(106, 434);
             this.dtpMatricula.Name = "dtpMatricula";
             this.dtpMatricula.Size = new System.Drawing.Size(217, 20);
             this.dtpMatricula.TabIndex = 21;
@@ -203,7 +187,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(13, 416);
+            this.label8.Location = new System.Drawing.Point(103, 417);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(78, 13);
             this.label8.TabIndex = 20;
@@ -249,17 +233,33 @@
             // 
             // pesAno
             // 
-            this.pesAno.Location = new System.Drawing.Point(291, 393);
+            this.pesAno.Location = new System.Drawing.Point(438, 393);
             this.pesAno.Name = "pesAno";
-            this.pesAno.Size = new System.Drawing.Size(141, 20);
+            this.pesAno.Size = new System.Drawing.Size(99, 20);
             this.pesAno.TabIndex = 24;
+            // 
+            // pesCurso
+            // 
+            this.pesCurso.Location = new System.Drawing.Point(290, 393);
+            this.pesCurso.Name = "pesCurso";
+            this.pesCurso.Size = new System.Drawing.Size(142, 20);
+            this.pesCurso.TabIndex = 25;
             // 
             // pesTurma
             // 
-            this.pesTurma.Location = new System.Drawing.Point(441, 393);
+            this.pesTurma.Location = new System.Drawing.Point(543, 393);
             this.pesTurma.Name = "pesTurma";
             this.pesTurma.Size = new System.Drawing.Size(132, 20);
-            this.pesTurma.TabIndex = 25;
+            this.pesTurma.TabIndex = 27;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(540, 376);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(37, 13);
+            this.label9.TabIndex = 26;
+            this.label9.Text = "Turma";
             // 
             // AlunoEdit
             // 
@@ -267,6 +267,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(695, 470);
             this.Controls.Add(this.pesTurma);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.pesCurso);
             this.Controls.Add(this.pesAno);
             this.Controls.Add(this.pesPeriodo);
             this.Controls.Add(this.pesUnidade);
@@ -278,8 +280,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.tbxCor);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tbxCodigo);
             this.Controls.Add(this.label1);
@@ -290,7 +290,6 @@
             this.Controls.Add(this.btnGravar);
             this.Name = "AlunoEdit";
             this.Text = "AlunoEdit";
-            this.Load += new System.EventHandler(this.AlunoEdit_Load);
             this.Shown += new System.EventHandler(this.AlunoEdit_Shown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -311,8 +310,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rbtFeminino;
         private System.Windows.Forms.RadioButton rbtMasculino;
-        private System.Windows.Forms.TextBox tbxCor;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -324,7 +321,9 @@
         private Shared.UCPesquisa pesUnidade;
         private Shared.UCPesquisa pesPeriodo;
         private Shared.UCPesquisa pesAno;
+        private Shared.UCPesquisa pesCurso;
         private Shared.UCPesquisa pesTurma;
+        private System.Windows.Forms.Label label9;
 
     }
 }

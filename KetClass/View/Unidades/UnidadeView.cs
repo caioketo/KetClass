@@ -12,23 +12,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace KetClass.View.Alunos
+namespace KetClass.View.Unidades
 {
-    public partial class AlunoView : Form, ICRUD
+    public partial class UnidadeView : Form, ICRUD
     {
-        private BaseView<AlunoModel> baseView;
-        private AlunoController controller = new AlunoController();
-        private AlunoEdit edit = new AlunoEdit();
+        private BaseView<UnidadeModel> baseView;
+        private UnidadeController controller = new UnidadeController();
+        private UnidadeEdit edit = new UnidadeEdit();
 
-        public AlunoView()
+        public UnidadeView()
         {
             InitializeComponent();
             crud.btnEditarClick += btnEditar_Click;
             crud.btnInserirClick += btnInserir_Click;
             crud.btnExcluirClick += btnExcluir_Click;
             crud.btnSelecionarClick += btnSelecionar_Click;
-            crud.tbxPesquisaChange += tbxPesquisa_TextChanged;
-            baseView = new BaseView<AlunoModel>(controller, crud.dgvCRUD, edit.baseEdit);
+            baseView = new BaseView<UnidadeModel>(controller, crud.dgvCRUD, edit.baseEdit);
             baseView.Index();
         }
 
@@ -70,7 +69,7 @@ namespace KetClass.View.Alunos
             this.Close();
         }
 
-        private void AlunoView_Shown(object sender, EventArgs e)
+        private void UnidadeView_Shown(object sender, EventArgs e)
         {
             if (!crud.tbxPesquisa.Text.Equals(""))
             {
