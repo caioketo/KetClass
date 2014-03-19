@@ -35,6 +35,11 @@ namespace KetClass.Data
             return obj != null && Equals(obj.Id, default(int));
         }
 
+        public override string ToString()
+        {
+            return "";
+        }
+
         private Type GetUnproxiedType()
         {
             return GetType();

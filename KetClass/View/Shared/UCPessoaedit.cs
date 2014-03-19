@@ -57,6 +57,8 @@ namespace KetClass.View.Shared
             model.Nome = tbxNome.Text;
             model.RG = tbxRG.Text;
             model.Telefone = tbxTelefone.Text;
+            model.LocalNascimento = tbxLocalNasc.Text;
+            model.Nacionalidade = cmbNacionalidade.Text;
         }
 
         public void MapearTela()
@@ -66,6 +68,8 @@ namespace KetClass.View.Shared
             tbxNome.Text = model.Nome;
             tbxRG.Text = model.RG;
             tbxTelefone.Text = model.Telefone;
+            tbxLocalNasc.Text = model.LocalNascimento;
+            cmbNacionalidade.SelectedItem = model.Nacionalidade.Substring(0, 1);
         }
 
         public void Fechar()

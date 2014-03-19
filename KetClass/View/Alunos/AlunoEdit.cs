@@ -68,6 +68,7 @@ namespace KetClass.View.Alunos
                 model.Sexo = "F";
             }
             model.Codigo = tbxCodigo.Text;
+            model.Turma = (TurmaModel)pesTurma.Objeto;
         }
 
         public void MapearTela()
@@ -106,6 +107,10 @@ namespace KetClass.View.Alunos
                     rbtFeminino.Checked = true;
                 }
                 tbxCodigo.Text = model.Codigo;
+                pesAno.setObjeto(model.Ano);
+                pesPeriodo.setObjeto(model.Periodo);
+                pesTurma.setObjeto(model.Turma);
+                pesUnidade.setObjeto(model.Unidade);
             }
         }
 
@@ -120,6 +125,11 @@ namespace KetClass.View.Alunos
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AlunoEdit_Load(object sender, EventArgs e)
         {
 
         }

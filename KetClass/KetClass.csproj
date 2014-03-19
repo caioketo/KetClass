@@ -57,9 +57,14 @@
     <Compile Include="Data\Enum.cs" />
     <Compile Include="Data\IController.cs" />
     <Compile Include="Data\KCContext.cs" />
+    <Compile Include="Model\AnoModel.cs" />
     <Compile Include="Model\CidadeModel.cs" />
+    <Compile Include="Model\CursoModel.cs" />
     <Compile Include="Model\EnderecoModel.cs" />
+    <Compile Include="Model\PeriodoModel.cs" />
+    <Compile Include="Model\TurmaModel.cs" />
     <Compile Include="Model\UFModel.cs" />
+    <Compile Include="Model\UnidadeModel.cs" />
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +91,12 @@
     <Compile Include="View\Base\BaseEdit.cs" />
     <Compile Include="View\Base\BaseView.cs" />
     <Compile Include="View\Base\IEdit.cs" />
+    <Compile Include="View\Shared\UCPesquisa.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Shared\UCPesquisa.Designer.cs">
+      <DependentUpon>UCPesquisa.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Shared\UCPessoaedit.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -109,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Alunos\AlunoView.resx">
       <DependentUpon>AlunoView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Shared\UCPesquisa.resx">
+      <DependentUpon>UCPesquisa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Shared\UCPessoaedit.resx">
       <DependentUpon>UCPessoaedit.cs</DependentUpon>

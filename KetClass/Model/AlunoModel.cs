@@ -18,6 +18,68 @@ namespace KetClass.Model
         public PessoaModel Mae { get; set; }
         public PessoaModel Responsavel { get; set; }
         public EnderecoModel Endereo { get; set; }
+        public TurmaModel Turma { get; set; }
+        public int Numero { get; set; }
+        public DateTime DataMatricula { get; set; }
+        public CursoModel Curso
+        {
+            get
+            {
+                if (Turma != null)
+                {
+                    return Turma.Curso;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        public AnoModel Ano
+        {
+            get
+            {
+                if (Turma != null)
+                {
+                    if (Turma.Curso != null)
+                    {
+                        return Turma.Curso.Ano;
+                    }
+                }
+                return null;
+            }
+        }
+
+        public PeriodoModel Periodo
+        {
+            get
+            {
+                if (Turma != null)
+                {
+                    if (Turma.Curso != null)
+                    {
+                        return Turma.Curso.Periodo;
+                    }
+                }
+                return null;
+            }
+        }
+
+        public UnidadeModel Unidade
+        {
+            get
+            {
+                if (Turma != null)
+                {
+                    if (Turma.Curso != null)
+                    {
+                        return Turma.Curso.Unidade;
+                    }
+                }
+                return null;
+            }
+        }
 
         public string AlunoNome
         {

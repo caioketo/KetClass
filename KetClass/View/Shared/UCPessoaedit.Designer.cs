@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.gbxGeral = new System.Windows.Forms.GroupBox();
+            this.tbxCPF = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tbxRG = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dtpNascimento = new System.Windows.Forms.DateTimePicker();
@@ -37,13 +39,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbxNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tbxCPF = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.tbxLocalNasc = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cmbNacionalidade = new System.Windows.Forms.ComboBox();
             this.gbxGeral.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbxGeral
             // 
+            this.gbxGeral.Controls.Add(this.cmbNacionalidade);
+            this.gbxGeral.Controls.Add(this.label5);
+            this.gbxGeral.Controls.Add(this.tbxLocalNasc);
+            this.gbxGeral.Controls.Add(this.label4);
             this.gbxGeral.Controls.Add(this.tbxCPF);
             this.gbxGeral.Controls.Add(this.label3);
             this.gbxGeral.Controls.Add(this.tbxRG);
@@ -56,9 +64,25 @@
             this.gbxGeral.Controls.Add(this.label1);
             this.gbxGeral.Location = new System.Drawing.Point(3, 3);
             this.gbxGeral.Name = "gbxGeral";
-            this.gbxGeral.Size = new System.Drawing.Size(634, 110);
+            this.gbxGeral.Size = new System.Drawing.Size(665, 110);
             this.gbxGeral.TabIndex = 3;
             this.gbxGeral.TabStop = false;
+            // 
+            // tbxCPF
+            // 
+            this.tbxCPF.Location = new System.Drawing.Point(457, 36);
+            this.tbxCPF.Name = "tbxCPF";
+            this.tbxCPF.Size = new System.Drawing.Size(202, 20);
+            this.tbxCPF.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(454, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(27, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "CPF";
             // 
             // tbxRG
             // 
@@ -95,7 +119,7 @@
             // 
             // tbxTelefone
             // 
-            this.tbxTelefone.Location = new System.Drawing.Point(244, 77);
+            this.tbxTelefone.Location = new System.Drawing.Point(536, 77);
             this.tbxTelefone.Name = "tbxTelefone";
             this.tbxTelefone.Size = new System.Drawing.Size(123, 20);
             this.tbxTelefone.TabIndex = 3;
@@ -103,7 +127,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(244, 60);
+            this.label2.Location = new System.Drawing.Point(536, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 2;
@@ -125,21 +149,41 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nome";
             // 
-            // tbxCPF
+            // tbxLocalNasc
             // 
-            this.tbxCPF.Location = new System.Drawing.Point(457, 36);
-            this.tbxCPF.Name = "tbxCPF";
-            this.tbxCPF.Size = new System.Drawing.Size(170, 20);
-            this.tbxCPF.TabIndex = 9;
+            this.tbxLocalNasc.Location = new System.Drawing.Point(244, 77);
+            this.tbxLocalNasc.Name = "tbxLocalNasc";
+            this.tbxLocalNasc.Size = new System.Drawing.Size(129, 20);
+            this.tbxLocalNasc.TabIndex = 11;
             // 
-            // label3
+            // label4
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(454, 20);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(27, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "CPF";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(241, 61);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(92, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Local Nascimento";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(377, 61);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(75, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Nacionalidade";
+            // 
+            // cmbNacionalidade
+            // 
+            this.cmbNacionalidade.FormattingEnabled = true;
+            this.cmbNacionalidade.Items.AddRange(new object[] {
+            "0 - Brasileiro",
+            "1 - Estrangeiro"});
+            this.cmbNacionalidade.Location = new System.Drawing.Point(380, 77);
+            this.cmbNacionalidade.Name = "cmbNacionalidade";
+            this.cmbNacionalidade.Size = new System.Drawing.Size(150, 21);
+            this.cmbNacionalidade.TabIndex = 13;
             // 
             // UCPessoaedit
             // 
@@ -147,7 +191,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gbxGeral);
             this.Name = "UCPessoaedit";
-            this.Size = new System.Drawing.Size(642, 119);
+            this.Size = new System.Drawing.Size(673, 119);
             this.gbxGeral.ResumeLayout(false);
             this.gbxGeral.PerformLayout();
             this.ResumeLayout(false);
@@ -167,5 +211,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbxNome;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tbxLocalNasc;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cmbNacionalidade;
+        private System.Windows.Forms.Label label5;
     }
 }
