@@ -44,6 +44,7 @@
             this.btnFechar.TabIndex = 3;
             this.btnFechar.Text = "Fechar";
             this.btnFechar.UseVisualStyleBackColor = true;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
             // btnGravar
             // 
@@ -53,6 +54,7 @@
             this.btnGravar.TabIndex = 2;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click_1);
             // 
             // tbxNumero
             // 

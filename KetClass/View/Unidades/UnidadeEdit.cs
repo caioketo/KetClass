@@ -29,16 +29,6 @@ namespace KetClass.View.Unidades
             }
         }
 
-        private void btnGravar_Click(object sender, EventArgs e)
-        {
-            Salvar();
-        }
-
-        private void btnFechar_Click(object sender, EventArgs e)
-        {
-            Fechar();
-        }
-
         public void Salvar()
         {
             Mapear();
@@ -71,6 +61,16 @@ namespace KetClass.View.Unidades
         private void AlunoEdit_Shown(object sender, EventArgs e)
         {
             MapearTela();
+        }
+
+        private void btnGravar_Click_1(object sender, EventArgs e)
+        {
+            Salvar();
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            Fechar();
         }
     }
 }

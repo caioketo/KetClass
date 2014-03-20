@@ -28,6 +28,10 @@ namespace KetClass.View.Shared
 
         private void tbxPesquisa_Leave(object sender, EventArgs e)
         {
+            if (Crud == null || Objeto != null)
+            {
+                return;
+            }
             BaseEntity retorno = Crud.Pesquisar(tbxPesquisa.Text);
             if (retorno != null)
             {
@@ -56,6 +60,7 @@ namespace KetClass.View.Shared
             tbxPesquisa.Clear();
             tbxPesquisa.ReadOnly = false;
             tbxPesquisa.BackColor = Color.White;
+            tbxPesquisa.Focus();
         }
     }
 }
