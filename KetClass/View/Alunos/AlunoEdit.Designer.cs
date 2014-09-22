@@ -35,10 +35,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbtFeminino = new System.Windows.Forms.RadioButton();
             this.rbtMasculino = new System.Windows.Forms.RadioButton();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.tbxNumero = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dtpMatricula = new System.Windows.Forms.DateTimePicker();
@@ -46,10 +42,6 @@
             this.ucMae = new KetClass.View.Shared.UCPessoaedit();
             this.ucPai = new KetClass.View.Shared.UCPessoaedit();
             this.ucAluno = new KetClass.View.Shared.UCPessoaedit();
-            this.pesUnidade = new KetClass.View.Shared.UCPesquisa();
-            this.pesPeriodo = new KetClass.View.Shared.UCPesquisa();
-            this.pesAno = new KetClass.View.Shared.UCPesquisa();
-            this.pesCurso = new KetClass.View.Shared.UCPesquisa();
             this.pesTurma = new KetClass.View.Shared.UCPesquisa();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -57,20 +49,20 @@
             // 
             // btnGravar
             // 
-            this.btnGravar.Location = new System.Drawing.Point(498, 435);
+            this.btnGravar.Location = new System.Drawing.Point(506, 391);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(75, 23);
-            this.btnGravar.TabIndex = 0;
+            this.btnGravar.TabIndex = 8;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.UseVisualStyleBackColor = true;
             this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(579, 435);
+            this.btnFechar.Location = new System.Drawing.Point(587, 391);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(75, 23);
-            this.btnFechar.TabIndex = 1;
+            this.btnFechar.TabIndex = 9;
             this.btnFechar.Text = "Fechar";
             this.btnFechar.UseVisualStyleBackColor = true;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
@@ -89,7 +81,7 @@
             this.tbxCodigo.Location = new System.Drawing.Point(16, 30);
             this.tbxCodigo.Name = "tbxCodigo";
             this.tbxCodigo.Size = new System.Drawing.Size(157, 20);
-            this.tbxCodigo.TabIndex = 6;
+            this.tbxCodigo.TabIndex = 0;
             // 
             // groupBox1
             // 
@@ -119,58 +111,22 @@
             this.rbtMasculino.Location = new System.Drawing.Point(7, 14);
             this.rbtMasculino.Name = "rbtMasculino";
             this.rbtMasculino.Size = new System.Drawing.Size(73, 17);
-            this.rbtMasculino.TabIndex = 0;
+            this.rbtMasculino.TabIndex = 1;
             this.rbtMasculino.TabStop = true;
             this.rbtMasculino.Text = "Masculino";
             this.rbtMasculino.UseVisualStyleBackColor = true;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 376);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 13);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Unidade";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(149, 376);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Período";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(437, 376);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(26, 13);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Ano";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(287, 376);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(34, 13);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "Curso";
-            // 
             // tbxNumero
             // 
-            this.tbxNumero.Location = new System.Drawing.Point(16, 434);
+            this.tbxNumero.Location = new System.Drawing.Point(154, 394);
             this.tbxNumero.Name = "tbxNumero";
             this.tbxNumero.Size = new System.Drawing.Size(84, 20);
-            this.tbxNumero.TabIndex = 19;
+            this.tbxNumero.TabIndex = 6;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 417);
+            this.label7.Location = new System.Drawing.Point(151, 377);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 13);
             this.label7.TabIndex = 18;
@@ -179,15 +135,15 @@
             // dtpMatricula
             // 
             this.dtpMatricula.CustomFormat = "";
-            this.dtpMatricula.Location = new System.Drawing.Point(106, 434);
+            this.dtpMatricula.Location = new System.Drawing.Point(244, 394);
             this.dtpMatricula.Name = "dtpMatricula";
             this.dtpMatricula.Size = new System.Drawing.Size(217, 20);
-            this.dtpMatricula.TabIndex = 21;
+            this.dtpMatricula.TabIndex = 7;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(103, 417);
+            this.label8.Location = new System.Drawing.Point(241, 377);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(78, 13);
             this.label8.TabIndex = 20;
@@ -217,45 +173,17 @@
             this.ucAluno.Size = new System.Drawing.Size(674, 114);
             this.ucAluno.TabIndex = 2;
             // 
-            // pesUnidade
-            // 
-            this.pesUnidade.Location = new System.Drawing.Point(16, 393);
-            this.pesUnidade.Name = "pesUnidade";
-            this.pesUnidade.Size = new System.Drawing.Size(127, 20);
-            this.pesUnidade.TabIndex = 22;
-            // 
-            // pesPeriodo
-            // 
-            this.pesPeriodo.Location = new System.Drawing.Point(150, 393);
-            this.pesPeriodo.Name = "pesPeriodo";
-            this.pesPeriodo.Size = new System.Drawing.Size(134, 20);
-            this.pesPeriodo.TabIndex = 23;
-            // 
-            // pesAno
-            // 
-            this.pesAno.Location = new System.Drawing.Point(438, 393);
-            this.pesAno.Name = "pesAno";
-            this.pesAno.Size = new System.Drawing.Size(99, 20);
-            this.pesAno.TabIndex = 24;
-            // 
-            // pesCurso
-            // 
-            this.pesCurso.Location = new System.Drawing.Point(290, 393);
-            this.pesCurso.Name = "pesCurso";
-            this.pesCurso.Size = new System.Drawing.Size(142, 20);
-            this.pesCurso.TabIndex = 25;
-            // 
             // pesTurma
             // 
-            this.pesTurma.Location = new System.Drawing.Point(543, 393);
+            this.pesTurma.Location = new System.Drawing.Point(16, 394);
             this.pesTurma.Name = "pesTurma";
             this.pesTurma.Size = new System.Drawing.Size(132, 20);
-            this.pesTurma.TabIndex = 27;
+            this.pesTurma.TabIndex = 5;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(540, 376);
+            this.label9.Location = new System.Drawing.Point(13, 377);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(37, 13);
             this.label9.TabIndex = 26;
@@ -265,21 +193,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(695, 470);
+            this.ClientSize = new System.Drawing.Size(689, 440);
             this.Controls.Add(this.pesTurma);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.pesCurso);
-            this.Controls.Add(this.pesAno);
-            this.Controls.Add(this.pesPeriodo);
-            this.Controls.Add(this.pesUnidade);
             this.Controls.Add(this.dtpMatricula);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.tbxNumero);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tbxCodigo);
             this.Controls.Add(this.label1);
@@ -310,18 +230,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rbtFeminino;
         private System.Windows.Forms.RadioButton rbtMasculino;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tbxNumero;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker dtpMatricula;
         private System.Windows.Forms.Label label8;
-        private Shared.UCPesquisa pesUnidade;
-        private Shared.UCPesquisa pesPeriodo;
-        private Shared.UCPesquisa pesAno;
-        private Shared.UCPesquisa pesCurso;
         private Shared.UCPesquisa pesTurma;
         private System.Windows.Forms.Label label9;
 

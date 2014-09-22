@@ -17,7 +17,7 @@ namespace KetClass.View.Unidades
     public partial class UnidadeView : Form, ICRUD
     {
         private BaseView<UnidadeModel> baseView;
-        private UnidadeController controller = new UnidadeController();
+        private Controller<UnidadeModel> controller = new Controller<UnidadeModel>();
         private UnidadeEdit edit = new UnidadeEdit();
 
         public UnidadeView()
@@ -27,7 +27,8 @@ namespace KetClass.View.Unidades
             crud.btnInserirClick += btnInserir_Click;
             crud.btnExcluirClick += btnExcluir_Click;
             crud.btnSelecionarClick += btnSelecionar_Click;
-            baseView = new BaseView<UnidadeModel>(controller, crud.dgvCRUD, edit.baseEdit);
+            controller.dbset = controller.context.Unidades;
+            baseView = new BaseView<UnidadeModel>(controller, crud.dgvCRUD, edit.baseEdit, "Unidade");
             baseView.Index();
         }
 
@@ -40,9 +41,13 @@ namespace KetClass.View.Unidades
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            DataGridViewCell cell = crud.dgvCRUD.CurrentCell;
+            int rowIndex = cell.RowIndex;
+            int columnIndex = cell.ColumnIndex;
             baseView.Detail();
             edit.ShowDialog();
             baseView.Index();
+            crud.dgvCRUD.CurrentCell = crud.dgvCRUD.Rows[rowIndex].Cells[columnIndex];
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -53,7 +58,7 @@ namespace KetClass.View.Unidades
 
         private void tbxPesquisa_TextChanged(object sender, EventArgs e)
         {
-            baseView.Filter(crud.tbxPesquisa.Text);
+            baseView.Filter(controller.Filter(u => u.Descricao.Contains(crud.tbxPesquisa.Text)).ToList());
         }
 
         public BaseEntity Pesquisar(string texto = "")

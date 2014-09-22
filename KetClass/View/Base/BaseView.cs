@@ -13,6 +13,7 @@ namespace KetClass.View.Base
 {
     public class BaseView<T> where T : BaseEntity, new() 
     {
+        public string Tabela;
         public BaseEdit<T> edit { get; set; }
         public DataGridView grid { get; set; }
         public IController<T> controller { get; set; }
@@ -21,18 +22,22 @@ namespace KetClass.View.Base
         {
             grid.AutoGenerateColumns = false;
             grid.Columns.Clear();
-            foreach (DataGridViewColumn col in controller.Columns())
+            foreach (DataGridViewColumn col in KCContext.Columns(Tabela))
             {
                 grid.Columns.Add(col);
             }
         }
 
-        public BaseView(IController<T> _controller, DataGridView _grid, BaseEdit<T> _edit)
+        public BaseView(IController<T> _controller, DataGridView _grid, BaseEdit<T> _edit, string _tabela)
         {
             this.controller = _controller;
             this.grid = _grid;
             this.edit = _edit;
-            this.edit.controller = this.controller;
+            this.Tabela = _tabela;
+            if (this.edit != null)
+            {
+                this.edit.controller = this.controller;
+            }
             Config();
         }
 
@@ -42,9 +47,9 @@ namespace KetClass.View.Base
             grid.DataSource = controller.Index();
         }
 
-        public void Filter(string text)
+        public void Filter(List<T> lista)
         {
-            List<T> lista = controller.Filter(text);
+            //List<T> lista = controller.Filter(text);
             if (lista.Count > 0)
             {
                 grid.DataSource = lista;

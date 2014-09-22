@@ -12,7 +12,7 @@ namespace KetClass.Controller
 {
     public class AlunoController : IController<AlunoModel>
     {
-        private KCContext context = new KCContext();
+        private KCContext context = KCContext.getInstance();
 
         public List<AlunoModel> Index()
         {

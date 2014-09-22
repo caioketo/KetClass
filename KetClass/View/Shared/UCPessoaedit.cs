@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using KetClass.View.Base;
 using KetClass.Model;
 using KetClass.Controller;
+using KetClass.Data;
 
 namespace KetClass.View.Shared
 {
@@ -17,6 +18,8 @@ namespace KetClass.View.Shared
     {
         public BaseEdit<PessoaModel> baseEdit = new BaseEdit<PessoaModel>();
         public PessoaController controller = new PessoaController();
+        public Controller<PessoaModel> cont = new Controller<PessoaModel>();
+        KCContext context = KCContext.getInstance();
         public string Nome 
         {
             get
@@ -40,7 +43,9 @@ namespace KetClass.View.Shared
         public UCPessoaedit()
         {
             InitializeComponent();
-            baseEdit.controller = controller;
+            cont.dbset = context.Pessoas;
+            baseEdit.model = null;
+            baseEdit.controller = cont;
         }
 
 
@@ -58,7 +63,7 @@ namespace KetClass.View.Shared
             model.RG = tbxRG.Text;
             model.Telefone = tbxTelefone.Text;
             model.LocalNascimento = tbxLocalNasc.Text;
-            model.Nacionalidade = cmbNacionalidade.Text;
+            model.Nacionalidade = cmbNacionalidade.Text.Substring(0, 1);
         }
 
         public void MapearTela()
@@ -69,7 +74,14 @@ namespace KetClass.View.Shared
             tbxRG.Text = model.RG;
             tbxTelefone.Text = model.Telefone;
             tbxLocalNasc.Text = model.LocalNascimento;
-            cmbNacionalidade.SelectedItem = model.Nacionalidade.Substring(0, 1);
+            try
+            {
+                cmbNacionalidade.SelectedIndex = Convert.ToInt32(model.Nacionalidade.Substring(0, 1));
+            }
+            catch (Exception ex)
+            {
+                cmbNacionalidade.SelectedIndex = 0;
+            }
         }
 
         public void Fechar()
@@ -84,6 +96,16 @@ namespace KetClass.View.Shared
             tbxNome.Clear();
             tbxRG.Clear();
             tbxTelefone.Clear();
+            tbxLocalNasc.Clear();
+        }
+
+        private void tbxNome_Leave(object sender, EventArgs e)
+        {
+            if (cont.Filter(p => p.Nome.Contains(tbxNome.Text)).ToList().Count == 1)
+            {
+                baseEdit.model = cont.Filter(p => p.Nome.Contains(tbxNome.Text)).FirstOrDefault();
+                MapearTela();
+            }
         }
     }
 }

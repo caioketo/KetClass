@@ -36,7 +36,7 @@ namespace KetClass.Model
             }
         }
 
-        public AnoModel Ano
+        public int Ano
         {
             get
             {
@@ -47,7 +47,7 @@ namespace KetClass.Model
                         return Turma.Curso.Ano;
                     }
                 }
-                return null;
+                return 0;
             }
         }
 

@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.gbxGeral = new System.Windows.Forms.GroupBox();
+            this.cmbNacionalidade = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tbxLocalNasc = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tbxCPF = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tbxRG = new System.Windows.Forms.TextBox();
@@ -39,10 +43,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbxNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tbxLocalNasc = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cmbNacionalidade = new System.Windows.Forms.ComboBox();
             this.gbxGeral.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,12 +68,48 @@
             this.gbxGeral.TabIndex = 3;
             this.gbxGeral.TabStop = false;
             // 
+            // cmbNacionalidade
+            // 
+            this.cmbNacionalidade.FormattingEnabled = true;
+            this.cmbNacionalidade.Items.AddRange(new object[] {
+            "0 - Brasileiro",
+            "1 - Estrangeiro"});
+            this.cmbNacionalidade.Location = new System.Drawing.Point(380, 77);
+            this.cmbNacionalidade.Name = "cmbNacionalidade";
+            this.cmbNacionalidade.Size = new System.Drawing.Size(150, 21);
+            this.cmbNacionalidade.TabIndex = 5;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(377, 61);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(75, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Nacionalidade";
+            // 
+            // tbxLocalNasc
+            // 
+            this.tbxLocalNasc.Location = new System.Drawing.Point(244, 77);
+            this.tbxLocalNasc.Name = "tbxLocalNasc";
+            this.tbxLocalNasc.Size = new System.Drawing.Size(129, 20);
+            this.tbxLocalNasc.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(241, 61);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(92, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Local Nascimento";
+            // 
             // tbxCPF
             // 
             this.tbxCPF.Location = new System.Drawing.Point(457, 36);
             this.tbxCPF.Name = "tbxCPF";
             this.tbxCPF.Size = new System.Drawing.Size(202, 20);
-            this.tbxCPF.TabIndex = 9;
+            this.tbxCPF.TabIndex = 2;
             // 
             // label3
             // 
@@ -89,7 +125,7 @@
             this.tbxRG.Location = new System.Drawing.Point(322, 36);
             this.tbxRG.Name = "tbxRG";
             this.tbxRG.Size = new System.Drawing.Size(129, 20);
-            this.tbxRG.TabIndex = 7;
+            this.tbxRG.TabIndex = 1;
             // 
             // label8
             // 
@@ -106,7 +142,7 @@
             this.dtpNascimento.Location = new System.Drawing.Point(10, 77);
             this.dtpNascimento.Name = "dtpNascimento";
             this.dtpNascimento.Size = new System.Drawing.Size(228, 20);
-            this.dtpNascimento.TabIndex = 5;
+            this.dtpNascimento.TabIndex = 3;
             // 
             // label7
             // 
@@ -122,7 +158,7 @@
             this.tbxTelefone.Location = new System.Drawing.Point(536, 77);
             this.tbxTelefone.Name = "tbxTelefone";
             this.tbxTelefone.Size = new System.Drawing.Size(123, 20);
-            this.tbxTelefone.TabIndex = 3;
+            this.tbxTelefone.TabIndex = 6;
             // 
             // label2
             // 
@@ -138,7 +174,8 @@
             this.tbxNome.Location = new System.Drawing.Point(10, 37);
             this.tbxNome.Name = "tbxNome";
             this.tbxNome.Size = new System.Drawing.Size(306, 20);
-            this.tbxNome.TabIndex = 1;
+            this.tbxNome.TabIndex = 0;
+            this.tbxNome.Leave += new System.EventHandler(this.tbxNome_Leave);
             // 
             // label1
             // 
@@ -148,42 +185,6 @@
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nome";
-            // 
-            // tbxLocalNasc
-            // 
-            this.tbxLocalNasc.Location = new System.Drawing.Point(244, 77);
-            this.tbxLocalNasc.Name = "tbxLocalNasc";
-            this.tbxLocalNasc.Size = new System.Drawing.Size(129, 20);
-            this.tbxLocalNasc.TabIndex = 11;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(241, 61);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Local Nascimento";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(377, 61);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 13);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Nacionalidade";
-            // 
-            // cmbNacionalidade
-            // 
-            this.cmbNacionalidade.FormattingEnabled = true;
-            this.cmbNacionalidade.Items.AddRange(new object[] {
-            "0 - Brasileiro",
-            "1 - Estrangeiro"});
-            this.cmbNacionalidade.Location = new System.Drawing.Point(380, 77);
-            this.cmbNacionalidade.Name = "cmbNacionalidade";
-            this.cmbNacionalidade.Size = new System.Drawing.Size(150, 21);
-            this.cmbNacionalidade.TabIndex = 13;
             // 
             // UCPessoaedit
             // 

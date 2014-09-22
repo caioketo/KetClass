@@ -8,9 +8,26 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KetClass</RootNamespace>
-    <AssemblyName>KetClass</AssemblyName>
+    <AssemblyName>ERA ERP</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>Z:\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,12 +48,28 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>7F44D670979F448E377A0D9E232F5E2E02A06736</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>KetClass_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
       <HintPath>packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -52,7 +85,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\AlunoController.cs" />
+    <Compile Include="Controller\Controller.cs" />
+    <Compile Include="Controller\DisciplinaController.cs" />
+    <Compile Include="Controller\LicaoController.cs" />
     <Compile Include="Controller\PessoaController.cs" />
+    <Compile Include="Controller\ProvaController.cs" />
+    <Compile Include="Controller\TurmaController.cs" />
     <Compile Include="Controller\UnidadeController.cs" />
     <Compile Include="Data\BaseEntity.cs" />
     <Compile Include="Data\Enum.cs" />
@@ -62,8 +100,14 @@
     <Compile Include="Model\AnoModel.cs" />
     <Compile Include="Model\CidadeModel.cs" />
     <Compile Include="Model\CursoModel.cs" />
+    <Compile Include="Model\DisciplinaModel.cs" />
     <Compile Include="Model\EnderecoModel.cs" />
+    <Compile Include="Model\LicaoJSON.cs" />
+    <Compile Include="Model\LicaoModel.cs" />
+    <Compile Include="Model\LoginModel.cs" />
+    <Compile Include="Model\NotaModel.cs" />
     <Compile Include="Model\PeriodoModel.cs" />
+    <Compile Include="Model\ProvaModel.cs" />
     <Compile Include="Model\TurmaModel.cs" />
     <Compile Include="Model\UFModel.cs" />
     <Compile Include="Model\UnidadeModel.cs" />
@@ -93,6 +137,72 @@
     <Compile Include="View\Base\BaseEdit.cs" />
     <Compile Include="View\Base\BaseView.cs" />
     <Compile Include="View\Base\IEdit.cs" />
+    <Compile Include="View\Cursos\CriarCurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Cursos\CriarCurso.Designer.cs">
+      <DependentUpon>CriarCurso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Cursos\CursoView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Cursos\CursoView.Designer.cs">
+      <DependentUpon>CursoView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Disciplinas\DisciplinaEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Disciplinas\DisciplinaEdit.Designer.cs">
+      <DependentUpon>DisciplinaEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Disciplinas\DisciplinaView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Disciplinas\DisciplinaView.Designer.cs">
+      <DependentUpon>DisciplinaView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Licao\CreateLicao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Licao\CreateLicao.Designer.cs">
+      <DependentUpon>CreateLicao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Licao\LicaoView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Licao\LicaoView.Designer.cs">
+      <DependentUpon>LicaoView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Notas\CadastroNotas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Notas\CadastroNotas.Designer.cs">
+      <DependentUpon>CadastroNotas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Periodo\PeriodoEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Periodo\PeriodoEdit.Designer.cs">
+      <DependentUpon>PeriodoEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Periodo\PeriodoView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Periodo\PeriodoView.Designer.cs">
+      <DependentUpon>PeriodoView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Provas\CriarProva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Provas\CriarProva.Designer.cs">
+      <DependentUpon>CriarProva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Provas\ProvaView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Provas\ProvaView.Designer.cs">
+      <DependentUpon>ProvaView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Shared\UCCRUD.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -110,6 +220,18 @@
     </Compile>
     <Compile Include="View\Shared\UCPessoaedit.Designer.cs">
       <DependentUpon>UCPessoaedit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Turmas\TurmaEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Turmas\TurmaEdit.Designer.cs">
+      <DependentUpon>TurmaEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Turmas\TurmaView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Turmas\TurmaView.Designer.cs">
+      <DependentUpon>TurmaView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Unidades\UnidadeEdit.cs">
       <SubType>Form</SubType>
@@ -141,6 +263,39 @@
     <EmbeddedResource Include="View\Alunos\AlunoView.resx">
       <DependentUpon>AlunoView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Cursos\CriarCurso.resx">
+      <DependentUpon>CriarCurso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Cursos\CursoView.resx">
+      <DependentUpon>CursoView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Disciplinas\DisciplinaEdit.resx">
+      <DependentUpon>DisciplinaEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Disciplinas\DisciplinaView.resx">
+      <DependentUpon>DisciplinaView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Licao\CreateLicao.resx">
+      <DependentUpon>CreateLicao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Licao\LicaoView.resx">
+      <DependentUpon>LicaoView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Notas\CadastroNotas.resx">
+      <DependentUpon>CadastroNotas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Periodo\PeriodoEdit.resx">
+      <DependentUpon>PeriodoEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Periodo\PeriodoView.resx">
+      <DependentUpon>PeriodoView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Provas\CriarProva.resx">
+      <DependentUpon>CriarProva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Provas\ProvaView.resx">
+      <DependentUpon>ProvaView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Shared\UCCRUD.resx">
       <DependentUpon>UCCRUD.cs</DependentUpon>
     </EmbeddedResource>
@@ -150,12 +305,19 @@
     <EmbeddedResource Include="View\Shared\UCPessoaedit.resx">
       <DependentUpon>UCPessoaedit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Turmas\TurmaEdit.resx">
+      <DependentUpon>TurmaEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Turmas\TurmaView.resx">
+      <DependentUpon>TurmaView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Unidades\UnidadeEdit.resx">
       <DependentUpon>UnidadeEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Unidades\UnidadeView.resx">
       <DependentUpon>UnidadeView.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="KetClass_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -171,6 +333,23 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

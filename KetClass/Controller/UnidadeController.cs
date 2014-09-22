@@ -12,7 +12,7 @@ namespace KetClass.Controller
 {
     public class UnidadeController : IController<UnidadeModel>
     {
-        private KCContext context = new KCContext();
+        private KCContext context = KCContext.getInstance();
 
         public List<UnidadeModel> Index()
         {

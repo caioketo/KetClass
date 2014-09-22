@@ -28,7 +28,7 @@ namespace KetClass.View.Shared
 
         private void tbxPesquisa_Leave(object sender, EventArgs e)
         {
-            if (Crud == null || Objeto != null)
+            if (Crud == null || Objeto != null || String.IsNullOrEmpty(tbxPesquisa.Text))
             {
                 return;
             }

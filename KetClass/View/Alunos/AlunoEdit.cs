@@ -1,5 +1,6 @@
 ﻿using KetClass.Model;
 using KetClass.View.Base;
+using KetClass.View.Turmas;
 using KetClass.View.Unidades;
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,8 @@ namespace KetClass.View.Alunos
             ucAluno.Nome = "Aluno";
             ucMae.Nome = "Mãe";
             ucPai.Nome = "Pai";
-            pesUnidade.Crud = new UnidadeView();
+            
+            pesTurma.Crud = new TurmaView();
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
@@ -58,9 +60,10 @@ namespace KetClass.View.Alunos
 
         public void Mapear()
         {
+            model.DataMatricula = dtpMatricula.Value;
             model.Aluno = ucAluno.model;
             model.Pai = ucPai.model;
-            model.Mae = ucMae.model;
+            model.Mae = ucMae.model;            
             if (rbtMasculino.Checked)
             {
                 model.Sexo = "M";
@@ -70,6 +73,7 @@ namespace KetClass.View.Alunos
                 model.Sexo = "F";
             }
             model.Codigo = tbxCodigo.Text;
+            model.Numero = Convert.ToInt32(tbxNumero.Text);
             model.Turma = (TurmaModel)pesTurma.Objeto;
         }
 
@@ -91,15 +95,20 @@ namespace KetClass.View.Alunos
                 ucMae.Clear();
                 tbxCodigo.Clear();
                 rbtMasculino.Checked = true;
+                tbxNumero.Clear();
+                pesTurma.Clear();
             }
             else
             {
                 ucAluno.baseEdit.model = model.Aluno;
                 ucAluno.baseEdit.estado = Data.Estado.Editando;
+                ucAluno.MapearTela();
                 ucPai.baseEdit.model = model.Pai;
                 ucPai.baseEdit.estado = Data.Estado.Editando;
+                ucPai.MapearTela();
                 ucMae.baseEdit.model = model.Mae;
                 ucMae.baseEdit.estado = Data.Estado.Editando;
+                ucMae.MapearTela();
                 if (model.Sexo.Equals("M"))
                 {
                     rbtMasculino.Checked = true;
@@ -109,10 +118,7 @@ namespace KetClass.View.Alunos
                     rbtFeminino.Checked = true;
                 }
                 tbxCodigo.Text = model.Codigo;
-                pesAno.SetObjeto(model.Ano);
-                pesPeriodo.SetObjeto(model.Periodo);
-                pesCurso.SetObjeto(model.Curso);
-                pesUnidade.SetObjeto(model.Unidade);
+                tbxNumero.Text = model.Numero.ToString();
                 pesTurma.SetObjeto(model.Turma);
             }
         }
