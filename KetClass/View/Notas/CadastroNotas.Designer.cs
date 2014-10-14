@@ -29,21 +29,23 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tbxNumero = new System.Windows.Forms.TextBox();
-            this.tbxNota = new System.Windows.Forms.TextBox();
-            this.tbxFaltas = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbxFaltas = new System.Windows.Forms.TextBox();
+            this.tbxNota = new System.Windows.Forms.TextBox();
+            this.tbxNumero = new System.Windows.Forms.TextBox();
+            this.dgvNotas = new System.Windows.Forms.DataGridView();
             this.lblTurma = new System.Windows.Forms.Label();
             this.lblDisciplina = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tbxAulas = new System.Windows.Forms.TextBox();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNotas)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -56,41 +58,49 @@
             this.groupBox1.Controls.Add(this.tbxFaltas);
             this.groupBox1.Controls.Add(this.tbxNota);
             this.groupBox1.Controls.Add(this.tbxNumero);
-            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.dgvNotas);
             this.groupBox1.Location = new System.Drawing.Point(12, 63);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(270, 333);
+            this.groupBox1.Size = new System.Drawing.Size(317, 333);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // dataGridView1
+            // btnDelete
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 62);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(270, 271);
-            this.dataGridView1.TabIndex = 0;
+            this.btnDelete.Location = new System.Drawing.Point(289, 37);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(22, 19);
+            this.btnDelete.TabIndex = 7;
+            this.btnDelete.Text = "-";
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
-            // tbxNumero
+            // btnAdd
             // 
-            this.tbxNumero.Location = new System.Drawing.Point(6, 36);
-            this.tbxNumero.Name = "tbxNumero";
-            this.tbxNumero.Size = new System.Drawing.Size(64, 20);
-            this.tbxNumero.TabIndex = 1;
+            this.btnAdd.Location = new System.Drawing.Point(262, 37);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(22, 19);
+            this.btnAdd.TabIndex = 6;
+            this.btnAdd.Text = "+";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // tbxNota
+            // label3
             // 
-            this.tbxNota.Location = new System.Drawing.Point(76, 36);
-            this.tbxNota.Name = "tbxNota";
-            this.tbxNota.Size = new System.Drawing.Size(64, 20);
-            this.tbxNota.TabIndex = 2;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(190, 21);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Faltas";
             // 
-            // tbxFaltas
+            // label2
             // 
-            this.tbxFaltas.Location = new System.Drawing.Point(146, 36);
-            this.tbxFaltas.Name = "tbxFaltas";
-            this.tbxFaltas.Size = new System.Drawing.Size(64, 20);
-            this.tbxFaltas.TabIndex = 3;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(89, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(30, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Nota";
             // 
             // label1
             // 
@@ -101,23 +111,35 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Nro.";
             // 
-            // label2
+            // tbxFaltas
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(73, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Nota";
+            this.tbxFaltas.Location = new System.Drawing.Point(193, 37);
+            this.tbxFaltas.Name = "tbxFaltas";
+            this.tbxFaltas.Size = new System.Drawing.Size(64, 20);
+            this.tbxFaltas.TabIndex = 3;
             // 
-            // label3
+            // tbxNota
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(143, 20);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Faltas";
+            this.tbxNota.Location = new System.Drawing.Point(92, 36);
+            this.tbxNota.Name = "tbxNota";
+            this.tbxNota.Size = new System.Drawing.Size(95, 20);
+            this.tbxNota.TabIndex = 2;
+            // 
+            // tbxNumero
+            // 
+            this.tbxNumero.Location = new System.Drawing.Point(6, 36);
+            this.tbxNumero.Name = "tbxNumero";
+            this.tbxNumero.ReadOnly = true;
+            this.tbxNumero.Size = new System.Drawing.Size(80, 20);
+            this.tbxNumero.TabIndex = 1;
+            // 
+            // dgvNotas
+            // 
+            this.dgvNotas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNotas.Location = new System.Drawing.Point(0, 62);
+            this.dgvNotas.Name = "dgvNotas";
+            this.dgvNotas.Size = new System.Drawing.Size(317, 271);
+            this.dgvNotas.TabIndex = 0;
             // 
             // lblTurma
             // 
@@ -153,30 +175,33 @@
             this.tbxAulas.Size = new System.Drawing.Size(64, 20);
             this.tbxAulas.TabIndex = 6;
             // 
-            // btnAdd
+            // button1
             // 
-            this.btnAdd.Location = new System.Drawing.Point(215, 36);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(22, 19);
-            this.btnAdd.TabIndex = 6;
-            this.btnAdd.Text = "+";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.button1.Location = new System.Drawing.Point(173, 414);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Confirmar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btnDelete
+            // button2
             // 
-            this.btnDelete.Location = new System.Drawing.Point(242, 36);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(22, 19);
-            this.btnDelete.TabIndex = 7;
-            this.btnDelete.Text = "-";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.button2.Location = new System.Drawing.Point(254, 414);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Cancelar";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // CadastroNotas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 408);
+            this.ClientSize = new System.Drawing.Size(341, 449);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.tbxAulas);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblDisciplina);
@@ -188,7 +213,7 @@
             this.Shown += new System.EventHandler(this.CadastroNotas_Shown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNotas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,7 +222,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvNotas;
         private System.Windows.Forms.TextBox tbxFaltas;
         private System.Windows.Forms.TextBox tbxNota;
         private System.Windows.Forms.TextBox tbxNumero;
@@ -210,5 +235,7 @@
         private System.Windows.Forms.TextBox tbxAulas;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

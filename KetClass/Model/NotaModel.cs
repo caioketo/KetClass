@@ -1,6 +1,6 @@
 ﻿using KetClass.Data;
 using System.ComponentModel.DataAnnotations.Schema;
-7using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,9 +14,35 @@ namespace KetClass.Model
         [ForeignKey("TurmaId")]
         public virtual TurmaModel Turma { get; set; }
 
+        [NotMapped]
+        public string TurmaDescricao
+        {
+            get
+            {
+                if (Turma == null)
+                {
+                    return "";
+                }
+                return Turma.Display;
+            }
+        }
+
         public int DisciplinaId { get; set; }
         [ForeignKey("DisciplinaId")]
         public virtual DisciplinaModel Disciplina { get; set; }
+
+        [NotMapped]
+        public string DisciplinaDesc
+        {
+            get
+            {
+                if (Disciplina == null)
+                {
+                    return "";
+                }
+                return Disciplina.Descricao;
+            }
+        }
 
         public int Numero { get; set; }
         public double Nota { get; set; }

@@ -66,6 +66,10 @@ namespace KetClass.View.Disciplinas
         {
             crud.btnSelecionar.Visible = true;
             crud.tbxPesquisa.Text = texto;
+            if (crud.dgvCRUD.Rows.Count == 1)
+            {
+                return (BaseEntity)crud.dgvCRUD.Rows[0].DataBoundItem;
+            }
             ShowDialog();
             return (BaseEntity)crud.dgvCRUD.SelectedRows[0].DataBoundItem;
         }

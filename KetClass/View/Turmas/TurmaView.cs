@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.SqlServer;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -59,13 +60,18 @@ namespace KetClass.View.Turmas
 
         private void tbxPesquisa_TextChanged(object sender, EventArgs e)
         {
-            baseView.Filter(controller.Filter(p => p.Descricao.Contains(crud.tbxPesquisa.Text)).ToList()); ;
+            baseView.Filter(controller.Filter(p => p.Descricao.Contains(crud.tbxPesquisa.Text) || 
+                SqlFunctions.StringConvert((double)p.Serie).Contains(crud.tbxPesquisa.Text)).ToList());
         }
 
         public BaseEntity Pesquisar(string texto = "")
         {
             crud.btnSelecionar.Visible = true;
             crud.tbxPesquisa.Text = texto;
+            if (crud.dgvCRUD.Rows.Count == 1)
+            {
+                return (BaseEntity)crud.dgvCRUD.Rows[0].DataBoundItem;
+            }
             ShowDialog();
             return (BaseEntity)crud.dgvCRUD.SelectedRows[0].DataBoundItem;
         }

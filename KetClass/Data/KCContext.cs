@@ -41,7 +41,7 @@ namespace KetClass.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            Database.SetInitializer<KCContext>(new CreateDatabaseIfNotExists<KCContext>());
+            Database.SetInitializer<KCContext>(new DropCreateDatabaseIfModelChanges<KCContext>());
             base.OnModelCreating(modelBuilder);
         }
 
@@ -67,7 +67,8 @@ namespace KetClass.Data
         public DbSet<ProvaModel> Provas { get; set; }
         public DbSet<CursoModel> Cursos { get; set; }
         public DbSet<PeriodoModel> Periodos { get; set; }
-        //public DbSet<LoginModel> Logins { get; set; }
+        public DbSet<NotaModel> Notas { get; set; }
+        public DbSet<LoginModel> Logins { get; set; }
 
 
         public void splash()
@@ -81,7 +82,8 @@ namespace KetClass.Data
             Provas.Load();
             Cursos.Load();
             Periodos.Load();
-            //Logins.Load();
+            Notas.Load();
+            Logins.Load();
         }
 
         internal static IEnumerable<System.Windows.Forms.DataGridViewColumn> Columns(string Tabela)
@@ -293,6 +295,41 @@ namespace KetClass.Data
                     DefaultCellStyle = new DataGridViewCellStyle()
                 });
             }
+            else if (Tabela.Equals("Notas"))
+            {
+                columns.Add(new System.Windows.Forms.DataGridViewColumn(new DataGridViewTextBoxCell())
+                {
+                    HeaderText = "Turma",
+                    DataPropertyName = "TurmaDescricao",
+                    Name = "TurmaC",
+                    DefaultCellStyle = new DataGridViewCellStyle()
+                });
+
+                columns.Add(new System.Windows.Forms.DataGridViewColumn(new DataGridViewTextBoxCell())
+                {
+                    HeaderText = "Disciplina",
+                    DataPropertyName = "DisciplinaDesc",
+                    Name = "DisciplinaC",
+                    DefaultCellStyle = new DataGridViewCellStyle()
+                });
+
+                columns.Add(new System.Windows.Forms.DataGridViewColumn(new DataGridViewTextBoxCell())
+                {
+                    HeaderText = "Número",
+                    DataPropertyName = "Numero",
+                    Name = "NumeroC",
+                    DefaultCellStyle = new DataGridViewCellStyle()
+                });
+
+                columns.Add(new System.Windows.Forms.DataGridViewColumn(new DataGridViewTextBoxCell())
+                {
+                    HeaderText = "Nota",
+                    DataPropertyName = "Nota",
+                    Name = "NotaC",
+                    DefaultCellStyle = new DataGridViewCellStyle()
+                });
+            }
+
 
 
             return columns;

@@ -65,6 +65,10 @@ namespace KetClass.View.Unidades
         {
             crud.btnSelecionar.Visible = true;
             crud.tbxPesquisa.Text = texto;
+            if (crud.dgvCRUD.Rows.Count == 1)
+            {
+                return (BaseEntity)crud.dgvCRUD.Rows[0].DataBoundItem;
+            }
             ShowDialog();
             if (crud.dgvCRUD.SelectedRows.Count > 0)
             {

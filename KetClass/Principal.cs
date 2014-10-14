@@ -4,8 +4,10 @@ using KetClass.View.Alunos;
 using KetClass.View.Cursos;
 using KetClass.View.Disciplinas;
 using KetClass.View.Licao;
+using KetClass.View.Notas;
 using KetClass.View.Periodo;
 using KetClass.View.Provas;
+using KetClass.View.Shared;
 using KetClass.View.Turmas;
 using Newtonsoft.Json;
 using System;
@@ -245,6 +247,32 @@ namespace KetClass
             using (TurmaView t = new TurmaView())
             {
                 t.ShowDialog();
+            }
+        }
+
+        private void cadastrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (CadastroNotas cadastro = new CadastroNotas())
+            {
+                SelecionaTurmaDisciplina sel = new SelecionaTurmaDisciplina();
+                sel.ShowDialog();
+
+                if (sel.TurmaSel == null || sel.DisciplinaSel == null)
+                {
+                    return;
+                }
+
+                cadastro.turma = sel.TurmaSel;
+                cadastro.disciplina = sel.DisciplinaSel;
+                cadastro.ShowDialog();
+            }
+        }
+
+        private void viewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (NotasView view = new NotasView())
+            {
+                view.ShowDialog();
             }
         }
     }
