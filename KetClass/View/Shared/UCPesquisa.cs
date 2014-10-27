@@ -15,6 +15,22 @@ namespace KetClass.View.Shared
     {
         public BaseEntity Objeto = null;
         public ICRUD Crud;
+        private bool _readonly;
+
+        public bool ReadOnly
+        {
+            get
+            {
+                return _readonly;
+            }
+            set
+            {
+                tbxPesquisa.ReadOnly = value;
+                btnClear.Enabled = (!value);
+
+                _readonly = value;
+            }
+        }
 
         public UCPesquisa()
         {

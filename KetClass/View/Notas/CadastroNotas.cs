@@ -84,7 +84,8 @@ namespace KetClass.View.Notas
                 TurmaId = turma.Id,
                 Turma = turma,
                 Disciplina = disciplina,
-                DisciplinaId = disciplina.Id
+                DisciplinaId = disciplina.Id,
+                Trimestre = Convert.ToInt32(tbxTrimestre.Text)
             });
 
             tbxNota.Clear();

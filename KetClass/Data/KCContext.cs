@@ -7,6 +7,7 @@ using System.Data.Entity;
 using KetClass.Model;
 using System.Data.Entity.Infrastructure;
 using System.Windows.Forms;
+//using KetClass.Migrations;
 
 namespace KetClass.Data
 {
@@ -26,7 +27,7 @@ namespace KetClass.Data
 
         public static string CreateConnectionString()
         {
-            return "Server=ALTMANSERVER\\SQLEXPRESS;Database=escolare_geral;User Id=sa;Password=altman2014;";
+            return "DefaultConnection";
         }
         private string connectionString;
         public KCContext() : base(CreateConnectionString()) 
@@ -41,7 +42,28 @@ namespace KetClass.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            Database.SetInitializer<KCContext>(new DropCreateDatabaseIfModelChanges<KCContext>());
+            //Database.SetInitializer<KCContext>(new MigrateDatabaseToLatestVersion<KCContext, Configuration>());
+            Database.SetInitializer<KCContext>(new CreateDatabaseIfNotExists<KCContext>());
+            modelBuilder.Entity<RoleModel>().
+            HasMany(c => c.Users).
+            WithMany(p => p.Roles).
+            Map(
+                m =>
+                {
+                    m.MapLeftKey("RoleId");
+                    m.MapRightKey("UserId");
+                    m.ToTable("RolesUsers");
+                });
+            modelBuilder.Entity<RoleModel>().
+            HasMany(c => c.Permissoes).
+            WithMany(p => p.Roles).
+            Map(
+                m =>
+                {
+                    m.MapLeftKey("RoleId");
+                    m.MapRightKey("PermissaoId");
+                    m.ToTable("RolesPermissoes");
+                });
             base.OnModelCreating(modelBuilder);
         }
 
@@ -68,7 +90,7 @@ namespace KetClass.Data
         public DbSet<CursoModel> Cursos { get; set; }
         public DbSet<PeriodoModel> Periodos { get; set; }
         public DbSet<NotaModel> Notas { get; set; }
-        public DbSet<LoginModel> Logins { get; set; }
+        public DbSet<UserModel> Users { get; set; }
 
 
         public void splash()
@@ -83,7 +105,7 @@ namespace KetClass.Data
             Cursos.Load();
             Periodos.Load();
             Notas.Load();
-            Logins.Load();
+            Users.Load();
         }
 
         internal static IEnumerable<System.Windows.Forms.DataGridViewColumn> Columns(string Tabela)

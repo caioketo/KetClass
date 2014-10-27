@@ -44,6 +44,8 @@
             this.tbxAulas = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.tbxTrimestre = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNotas)).BeginInit();
             this.SuspendLayout();
@@ -162,7 +164,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 47);
+            this.label4.Location = new System.Drawing.Point(186, 40);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 13);
             this.label4.TabIndex = 3;
@@ -170,7 +172,7 @@
             // 
             // tbxAulas
             // 
-            this.tbxAulas.Location = new System.Drawing.Point(86, 44);
+            this.tbxAulas.Location = new System.Drawing.Point(259, 37);
             this.tbxAulas.Name = "tbxAulas";
             this.tbxAulas.Size = new System.Drawing.Size(64, 20);
             this.tbxAulas.TabIndex = 6;
@@ -195,11 +197,29 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // tbxTrimestre
+            // 
+            this.tbxTrimestre.Location = new System.Drawing.Point(67, 37);
+            this.tbxTrimestre.Name = "tbxTrimestre";
+            this.tbxTrimestre.Size = new System.Drawing.Size(48, 20);
+            this.tbxTrimestre.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(13, 40);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(50, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Trimestre";
+            // 
             // CadastroNotas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(341, 449);
+            this.Controls.Add(this.tbxTrimestre);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tbxAulas);
@@ -237,5 +257,7 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox tbxTrimestre;
+        private System.Windows.Forms.Label label5;
     }
 }

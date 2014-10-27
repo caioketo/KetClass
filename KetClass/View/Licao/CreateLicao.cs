@@ -50,6 +50,23 @@ namespace KetClass.View.Licao
         private void CreateLicao_Shown(object sender, EventArgs e)
         {
             dtpData.Value = DateTime.Now;
+            int materiaUsuario = AutenticacaoController.getInstance().MateriaUsuario();
+            if (materiaUsuario > 0)
+            {
+                DisciplinaModel disc = KCContext.getInstance().Disciplinas.Find(materiaUsuario);
+                if (disc != null)
+                {
+                    for (int i = 0; i < cbxDisciplina.Items.Count; i++)
+                    {
+                        if (((DisciplinaModel)cbxDisciplina.Items[i]).Id == disc.Id)
+                        {
+                            cbxDisciplina.SelectedIndex = i;
+                            cbxDisciplina.Enabled = false;
+                            break;
+                        }
+                    }
+                }
+            }
         }
     }
 }

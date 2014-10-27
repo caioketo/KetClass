@@ -1,4 +1,6 @@
-﻿using KetClass.Model;
+﻿using KetClass.Controller;
+using KetClass.Data;
+using KetClass.Model;
 using KetClass.View.Disciplinas;
 using KetClass.View.Turmas;
 using System;
@@ -50,6 +52,16 @@ namespace KetClass.View.Shared
             pesTurma.Clear();
             pesDisciplina.Clear();
             pesTurma.Focus();
+            int materiaUsuario = AutenticacaoController.getInstance().MateriaUsuario();
+            if (materiaUsuario > 0)
+            {
+                DisciplinaModel disc = KCContext.getInstance().Disciplinas.Find(materiaUsuario);
+                if (disc != null)
+                {
+                    pesDisciplina.SetObjeto(disc);
+                    pesDisciplina.ReadOnly = true;
+                }
+            }
         }
     }
 }

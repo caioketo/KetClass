@@ -45,6 +45,7 @@
             this.notasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +57,8 @@
             this.liçõesToolStripMenuItem,
             this.feedToolStripMenuItem,
             this.cadastrosToolStripMenuItem,
-            this.notasToolStripMenuItem});
+            this.notasToolStripMenuItem,
+            this.testeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(595, 24);
@@ -175,16 +177,23 @@
             // cadastrarToolStripMenuItem
             // 
             this.cadastrarToolStripMenuItem.Name = "cadastrarToolStripMenuItem";
-            this.cadastrarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cadastrarToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.cadastrarToolStripMenuItem.Text = "Cadastrar";
             this.cadastrarToolStripMenuItem.Click += new System.EventHandler(this.cadastrarToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.viewToolStripMenuItem.Text = "View";
             this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
+            // 
+            // testeToolStripMenuItem
+            // 
+            this.testeToolStripMenuItem.Name = "testeToolStripMenuItem";
+            this.testeToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.testeToolStripMenuItem.Text = "Teste";
+            this.testeToolStripMenuItem.Click += new System.EventHandler(this.testeToolStripMenuItem_Click);
             // 
             // Principal
             // 
@@ -194,7 +203,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Principal";
-            this.Text = "ERA RP";
+            this.Text = "ERA ERP";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -222,6 +231,7 @@
         private System.Windows.Forms.ToolStripMenuItem notasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cadastrarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem testeToolStripMenuItem;
 
     }
 }

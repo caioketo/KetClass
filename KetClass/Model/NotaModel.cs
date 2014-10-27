@@ -49,5 +49,6 @@ namespace KetClass.Model
         public int Faltas { get; set; }
         public int AulasDadas { get; set; }
         public bool Recupercao { get; set; }
+        public int Trimestre { get; set; }
     }
 }

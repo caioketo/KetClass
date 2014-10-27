@@ -1,9 +1,11 @@
-﻿using KetClass.Data;
+﻿using KetClass.Controller;
+using KetClass.Data;
 using KetClass.Model;
 using KetClass.View.Alunos;
 using KetClass.View.Cursos;
 using KetClass.View.Disciplinas;
 using KetClass.View.Licao;
+using KetClass.View.Login;
 using KetClass.View.Notas;
 using KetClass.View.Periodo;
 using KetClass.View.Provas;
@@ -29,7 +31,38 @@ namespace KetClass
     {
         public Principal()
         {
+            using (Login login = new Login())
+            {
+                login.ShowDialog();
+                if (!AutenticacaoController.getInstance().IsUsuarioLogado())
+                {
+                    if (System.Windows.Forms.Application.MessageLoop)
+                    {
+                        // Use this since we are a WinForms app
+                        System.Windows.Forms.Application.Exit();
+                    }
+                    else
+                    {
+                        // Use this since we are a console app
+                        System.Environment.Exit(1);
+                    }
+                    return;
+                }
+            }
             InitializeComponent();
+
+            foreach (ToolStripMenuItem menuItem in menuStrip1.Items)
+            {
+                if (AutenticacaoController.getInstance().Autoriza(menuItem.Name))
+                {
+                    menuItem.Visible = true;
+                }
+                else
+                {
+                    menuItem.Visible = false;
+                }
+            }
+
         }
 
         private void alunosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -56,7 +89,7 @@ namespace KetClass
             string strPost = JsonConvert.SerializeObject(licao).ToString();
             strPost = "licaoJSON=" + Convert.ToBase64String(Encoding.UTF8.GetBytes(strPost));
             StreamWriter myWriter = null;
-            HttpWebRequest objRequest = (HttpWebRequest)WebRequest.Create("http://www.escolareginaaltman.com.br/Licao/CreateJSON");
+            HttpWebRequest objRequest = (HttpWebRequest)WebRequest.Create("http://localhost:49893/Licao/CreateJSON");//http://www.escolareginaaltman.com.br/Licao/CreateJSON");
             objRequest.Method = "POST";
             objRequest.ContentLength = strPost.Length;
             objRequest.ContentType = "application/x-www-form-urlencoded";
@@ -273,6 +306,14 @@ namespace KetClass
             using (NotasView view = new NotasView())
             {
                 view.ShowDialog();
+            }
+        }
+
+        private void testeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (Login log = new Login())
+            {
+                log.ShowDialog();
             }
         }
     }
