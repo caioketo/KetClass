@@ -13,6 +13,8 @@ namespace KetClass.Model
         public string Sexo { get; set; }
         public string Cor { get; set; }
         public string CN { get; set; }
+        public string CodigoFam { get; set; }
+        public string Certidao { get; set; }
         public PessoaModel Aluno { get; set; }
         public PessoaModel Pai { get; set; }
         public PessoaModel Mae { get; set; }
@@ -33,21 +35,6 @@ namespace KetClass.Model
                 {
                     return null;
                 }
-            }
-        }
-
-        public int Ano
-        {
-            get
-            {
-                if (Turma != null)
-                {
-                    if (Turma.Curso != null)
-                    {
-                        return Turma.Curso.Ano;
-                    }
-                }
-                return 0;
             }
         }
 
@@ -121,6 +108,19 @@ namespace KetClass.Model
             this.Aluno = new PessoaModel();
             this.Pai = new PessoaModel();
             this.Mae = new PessoaModel();
+        }
+
+        public string Display
+        {
+            get
+            {
+                return ToString();
+            }
+        }
+
+        public override string ToString()
+        {
+            return Aluno.Nome;
         }
     }
 }

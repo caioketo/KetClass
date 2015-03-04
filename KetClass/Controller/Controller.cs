@@ -3,9 +3,11 @@ using KetClass.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace KetClass.Controller
 {
@@ -31,7 +33,21 @@ namespace KetClass.Controller
             t.DataAlteracao = DateTime.Now;
             t.DataCriacao = DateTime.Now;
             t = dbset.Add(t);
-            context.SaveChanges();
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        MessageBox.Show("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                    }
+                }
+            }
+            
             return t;
         }
 
@@ -39,7 +55,20 @@ namespace KetClass.Controller
         {
             t.DataAlteracao = DateTime.Now;
             context.Entry(t).State = EntityState.Modified;
-            context.SaveChanges();
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        MessageBox.Show("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                    }
+                }
+            }
         }
 
         public bool Delete(int id)
@@ -55,7 +84,7 @@ namespace KetClass.Controller
                 context.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }

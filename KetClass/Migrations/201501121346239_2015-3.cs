@@ -3,16 +3,16 @@ namespace KetClass.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class t : DbMigration
+    public partial class _20153 : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.PermissaoModels", "Codigo", c => c.String());
+            AddColumn("dbo.AlunoModels", "CodigoFam", c => c.String());
         }
         
         public override void Down()
         {
-            DropColumn("dbo.PermissaoModels", "Codigo");
+            DropColumn("dbo.AlunoModels", "CodigoFam");
         }
     }
 }

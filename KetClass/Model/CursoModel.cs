@@ -11,7 +11,6 @@ namespace KetClass.Model
     public class CursoModel : BaseEntity
     {
         public string Descricao { get; set; }
-        public int Ano { get; set; }
 
         public int PeriodoId { get; set; }
         [ForeignKey("PeriodoId")]

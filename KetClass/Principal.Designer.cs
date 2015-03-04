@@ -45,6 +45,8 @@
             this.notasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.matrículasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importarDBFsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -58,6 +60,8 @@
             this.feedToolStripMenuItem,
             this.cadastrosToolStripMenuItem,
             this.notasToolStripMenuItem,
+            this.matrículasToolStripMenuItem,
+            this.importarDBFsToolStripMenuItem,
             this.testeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -124,6 +128,7 @@
             this.feedToolStripMenuItem.Name = "feedToolStripMenuItem";
             this.feedToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.feedToolStripMenuItem.Text = "Feed";
+            this.feedToolStripMenuItem.Visible = false;
             this.feedToolStripMenuItem.Click += new System.EventHandler(this.feedToolStripMenuItem_Click);
             // 
             // cadastrosToolStripMenuItem
@@ -188,6 +193,20 @@
             this.viewToolStripMenuItem.Text = "View";
             this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
             // 
+            // matrículasToolStripMenuItem
+            // 
+            this.matrículasToolStripMenuItem.Name = "matrículasToolStripMenuItem";
+            this.matrículasToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
+            this.matrículasToolStripMenuItem.Text = "Matrículas";
+            this.matrículasToolStripMenuItem.Click += new System.EventHandler(this.matrículasToolStripMenuItem_Click);
+            // 
+            // importarDBFsToolStripMenuItem
+            // 
+            this.importarDBFsToolStripMenuItem.Name = "importarDBFsToolStripMenuItem";
+            this.importarDBFsToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
+            this.importarDBFsToolStripMenuItem.Text = "Importar DBFs";
+            this.importarDBFsToolStripMenuItem.Click += new System.EventHandler(this.importarDBFsToolStripMenuItem_Click);
+            // 
             // testeToolStripMenuItem
             // 
             this.testeToolStripMenuItem.Name = "testeToolStripMenuItem";
@@ -232,6 +251,8 @@
         private System.Windows.Forms.ToolStripMenuItem cadastrarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importarDBFsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem matrículasToolStripMenuItem;
 
     }
 }

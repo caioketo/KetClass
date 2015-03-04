@@ -19,6 +19,29 @@ namespace KetClass.View.Shared
         public BaseEdit<PessoaModel> baseEdit = new BaseEdit<PessoaModel>();
         public PessoaController controller = new PessoaController();
         public Controller<PessoaModel> cont = new Controller<PessoaModel>();
+        private bool isPai = false;
+        public void SetPai()
+        {
+            isPai = true;
+            lblTel.Left = lblRG.Left;
+            lblTel.Top = lblRG.Top;
+            tbxTelefone.Top = tbxRG.Top;
+            tbxTelefone.Left = tbxRG.Left;
+            gbxGeral.Width = this.Width - 10;
+            gbxGeral.Height = this.Height - 5;
+
+            lblRG.Visible = false;
+            tbxRG.Visible = false;
+            lblCPF.Visible = false;
+            tbxCPF.Visible = false;
+            lblLocal.Visible = false;
+            tbxLocalNasc.Visible = false;
+            lblNascimento.Visible = false;
+            dtpNascimento.Visible = false;
+            lblNascionalidade.Visible = false;
+            cmbNacionalidade.Visible = false;
+        }
+
         KCContext context = KCContext.getInstance();
         public string Nome 
         {
@@ -57,19 +80,29 @@ namespace KetClass.View.Shared
 
         public void Mapear()
         {
-            model.CPF = tbxCPF.Text;
-            model.DataNascimento = dtpNascimento.Value;
             model.Nome = tbxNome.Text;
-            model.RG = tbxRG.Text;
             model.Telefone = tbxTelefone.Text;
-            model.LocalNascimento = tbxLocalNasc.Text;
-            model.Nacionalidade = cmbNacionalidade.Text.Substring(0, 1);
+            if (!isPai)
+            {
+                model.CPF = tbxCPF.Text;
+                model.DataNascimento = dtpNascimento.Value;                
+                model.RG = tbxRG.Text;                
+                model.LocalNascimento = tbxLocalNasc.Text;
+                model.Nacionalidade = cmbNacionalidade.Text.Substring(0, 1);
+            }
+            else
+            {
+
+            }
         }
 
         public void MapearTela()
         {
             tbxCPF.Text = model.CPF;
-            dtpNascimento.Value = model.DataNascimento;
+            if (model.DataNascimento.HasValue)
+            {
+                dtpNascimento.Value = model.DataNascimento.Value;
+            }
             tbxNome.Text = model.Nome;
             tbxRG.Text = model.RG;
             tbxTelefone.Text = model.Telefone;
@@ -78,7 +111,7 @@ namespace KetClass.View.Shared
             {
                 cmbNacionalidade.SelectedIndex = Convert.ToInt32(model.Nacionalidade.Substring(0, 1));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 cmbNacionalidade.SelectedIndex = 0;
             }

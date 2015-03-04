@@ -30,17 +30,17 @@
         {
             this.gbxGeral = new System.Windows.Forms.GroupBox();
             this.cmbNacionalidade = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblNascionalidade = new System.Windows.Forms.Label();
             this.tbxLocalNasc = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblLocal = new System.Windows.Forms.Label();
             this.tbxCPF = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblCPF = new System.Windows.Forms.Label();
             this.tbxRG = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblRG = new System.Windows.Forms.Label();
             this.dtpNascimento = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblNascimento = new System.Windows.Forms.Label();
             this.tbxTelefone = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblTel = new System.Windows.Forms.Label();
             this.tbxNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gbxGeral.SuspendLayout();
@@ -49,17 +49,17 @@
             // gbxGeral
             // 
             this.gbxGeral.Controls.Add(this.cmbNacionalidade);
-            this.gbxGeral.Controls.Add(this.label5);
+            this.gbxGeral.Controls.Add(this.lblNascionalidade);
             this.gbxGeral.Controls.Add(this.tbxLocalNasc);
-            this.gbxGeral.Controls.Add(this.label4);
+            this.gbxGeral.Controls.Add(this.lblLocal);
             this.gbxGeral.Controls.Add(this.tbxCPF);
-            this.gbxGeral.Controls.Add(this.label3);
+            this.gbxGeral.Controls.Add(this.lblCPF);
             this.gbxGeral.Controls.Add(this.tbxRG);
-            this.gbxGeral.Controls.Add(this.label8);
+            this.gbxGeral.Controls.Add(this.lblRG);
             this.gbxGeral.Controls.Add(this.dtpNascimento);
-            this.gbxGeral.Controls.Add(this.label7);
+            this.gbxGeral.Controls.Add(this.lblNascimento);
             this.gbxGeral.Controls.Add(this.tbxTelefone);
-            this.gbxGeral.Controls.Add(this.label2);
+            this.gbxGeral.Controls.Add(this.lblTel);
             this.gbxGeral.Controls.Add(this.tbxNome);
             this.gbxGeral.Controls.Add(this.label1);
             this.gbxGeral.Location = new System.Drawing.Point(3, 3);
@@ -79,14 +79,14 @@
             this.cmbNacionalidade.Size = new System.Drawing.Size(150, 21);
             this.cmbNacionalidade.TabIndex = 5;
             // 
-            // label5
+            // lblNascionalidade
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(377, 61);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 13);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Nacionalidade";
+            this.lblNascionalidade.AutoSize = true;
+            this.lblNascionalidade.Location = new System.Drawing.Point(377, 61);
+            this.lblNascionalidade.Name = "lblNascionalidade";
+            this.lblNascionalidade.Size = new System.Drawing.Size(75, 13);
+            this.lblNascionalidade.TabIndex = 12;
+            this.lblNascionalidade.Text = "Nacionalidade";
             // 
             // tbxLocalNasc
             // 
@@ -95,14 +95,14 @@
             this.tbxLocalNasc.Size = new System.Drawing.Size(129, 20);
             this.tbxLocalNasc.TabIndex = 4;
             // 
-            // label4
+            // lblLocal
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(241, 61);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Local Nascimento";
+            this.lblLocal.AutoSize = true;
+            this.lblLocal.Location = new System.Drawing.Point(241, 61);
+            this.lblLocal.Name = "lblLocal";
+            this.lblLocal.Size = new System.Drawing.Size(92, 13);
+            this.lblLocal.TabIndex = 10;
+            this.lblLocal.Text = "Local Nascimento";
             // 
             // tbxCPF
             // 
@@ -111,14 +111,14 @@
             this.tbxCPF.Size = new System.Drawing.Size(202, 20);
             this.tbxCPF.TabIndex = 2;
             // 
-            // label3
+            // lblCPF
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(454, 20);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(27, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "CPF";
+            this.lblCPF.AutoSize = true;
+            this.lblCPF.Location = new System.Drawing.Point(454, 20);
+            this.lblCPF.Name = "lblCPF";
+            this.lblCPF.Size = new System.Drawing.Size(27, 13);
+            this.lblCPF.TabIndex = 8;
+            this.lblCPF.Text = "CPF";
             // 
             // tbxRG
             // 
@@ -127,14 +127,14 @@
             this.tbxRG.Size = new System.Drawing.Size(129, 20);
             this.tbxRG.TabIndex = 1;
             // 
-            // label8
+            // lblRG
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(319, 20);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(23, 13);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "RG";
+            this.lblRG.AutoSize = true;
+            this.lblRG.Location = new System.Drawing.Point(319, 20);
+            this.lblRG.Name = "lblRG";
+            this.lblRG.Size = new System.Drawing.Size(23, 13);
+            this.lblRG.TabIndex = 6;
+            this.lblRG.Text = "RG";
             // 
             // dtpNascimento
             // 
@@ -144,14 +144,14 @@
             this.dtpNascimento.Size = new System.Drawing.Size(228, 20);
             this.dtpNascimento.TabIndex = 3;
             // 
-            // label7
+            // lblNascimento
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(7, 60);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(89, 13);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "Data Nascimento";
+            this.lblNascimento.AutoSize = true;
+            this.lblNascimento.Location = new System.Drawing.Point(7, 60);
+            this.lblNascimento.Name = "lblNascimento";
+            this.lblNascimento.Size = new System.Drawing.Size(89, 13);
+            this.lblNascimento.TabIndex = 4;
+            this.lblNascimento.Text = "Data Nascimento";
             // 
             // tbxTelefone
             // 
@@ -160,14 +160,14 @@
             this.tbxTelefone.Size = new System.Drawing.Size(123, 20);
             this.tbxTelefone.TabIndex = 6;
             // 
-            // label2
+            // lblTel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(536, 60);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Telefone";
+            this.lblTel.AutoSize = true;
+            this.lblTel.Location = new System.Drawing.Point(536, 60);
+            this.lblTel.Name = "lblTel";
+            this.lblTel.Size = new System.Drawing.Size(49, 13);
+            this.lblTel.TabIndex = 2;
+            this.lblTel.Text = "Telefone";
             // 
             // tbxNome
             // 
@@ -203,18 +203,18 @@
 
         private System.Windows.Forms.GroupBox gbxGeral;
         private System.Windows.Forms.TextBox tbxCPF;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblCPF;
         private System.Windows.Forms.TextBox tbxRG;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblRG;
         private System.Windows.Forms.DateTimePicker dtpNascimento;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblNascimento;
         private System.Windows.Forms.TextBox tbxTelefone;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblTel;
         private System.Windows.Forms.TextBox tbxNome;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbxLocalNasc;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblLocal;
         private System.Windows.Forms.ComboBox cmbNacionalidade;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblNascionalidade;
     }
 }

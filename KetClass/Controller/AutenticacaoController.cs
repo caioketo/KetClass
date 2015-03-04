@@ -67,12 +67,10 @@ namespace KetClass.Controller
             {
                 return -1;
             }
-
             if (UsuarioLogado.Roles.Count <= 0)
             {
                 return -1;
             }
-
             foreach (RoleModel role in UsuarioLogado.Roles)
             {
                 foreach (PermissaoModel permissaoModel in role.Permissoes)
@@ -105,13 +103,10 @@ namespace KetClass.Controller
             {
                 return false;
             }
-
             if (UsuarioLogado.Roles.Count <= 0)
             {
                 return false;
             }
-
-
             foreach (RoleModel role in UsuarioLogado.Roles)
             {
                 foreach (PermissaoModel permissaoModel in role.Permissoes)
@@ -122,9 +117,32 @@ namespace KetClass.Controller
                     }
                 }
             }
-
             return false;
         }
-        
+
+        public void AddUsuario(string usuario, string senha)
+        {
+            UserModel user = new UserModel();
+            user.Login = usuario;
+            user.Password = senha;
+            user.Nome = usuario;
+            context.Users.Add(user);
+            context.SaveChanges();
+        }
+
+        public void AddRole(List<string> permissoes)
+        {
+            List<PermissaoModel> permissoesM = new List<PermissaoModel>();
+            foreach (string permissao in permissoes)
+            {
+                foreach (PermissaoModel permissaoM in context.Permissoes)
+                {
+                    if (permissaoM.Codigo.ToUpper().Equals(permissao.ToUpper()))
+                    {
+                        permissoesM.Add(permissaoM);
+                    }
+                }
+            }
+        }        
     }
 }

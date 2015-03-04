@@ -58,7 +58,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -85,6 +85,32 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\BoletimController.cs" />
+    <Compile Include="Migrations\201501121249532_InitialCreate.cs" />
+    <Compile Include="Migrations\201501121249532_InitialCreate.Designer.cs">
+      <DependentUpon>201501121249532_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501121258205_2015-1.cs" />
+    <Compile Include="Migrations\201501121258205_2015-1.Designer.cs">
+      <DependentUpon>201501121258205_2015-1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501121338017_2015-2.cs" />
+    <Compile Include="Migrations\201501121338017_2015-2.Designer.cs">
+      <DependentUpon>201501121338017_2015-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501121346239_2015-3.cs" />
+    <Compile Include="Migrations\201501121346239_2015-3.Designer.cs">
+      <DependentUpon>201501121346239_2015-3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501121436335_2015-4.cs" />
+    <Compile Include="Migrations\201501121436335_2015-4.Designer.cs">
+      <DependentUpon>201501121436335_2015-4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501131416253_2015-5.cs" />
+    <Compile Include="Migrations\201501131416253_2015-5.Designer.cs">
+      <DependentUpon>201501131416253_2015-5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\MatriculaModel.cs" />
     <Compile Include="Properties\AlunoController.cs" />
     <Compile Include="Controller\AutenticacaoController.cs" />
     <Compile Include="Controller\Controller.cs" />
@@ -99,33 +125,6 @@
     <Compile Include="Data\IController.cs" />
     <Compile Include="Data\ICRUD.cs" />
     <Compile Include="Data\KCContext.cs" />
-    <Compile Include="escolare_geralDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>escolare_geralDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201410141549286_InitialMigrations.cs" />
-    <Compile Include="Migrations\201410141549286_InitialMigrations.Designer.cs">
-      <DependentUpon>201410141549286_InitialMigrations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201410141549566_2.cs" />
-    <Compile Include="Migrations\201410141549566_2.Designer.cs">
-      <DependentUpon>201410141549566_2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201410161058360_Roles.cs" />
-    <Compile Include="Migrations\201410161058360_Roles.Designer.cs">
-      <DependentUpon>201410161058360_Roles.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201410161345161_Permissoes.cs" />
-    <Compile Include="Migrations\201410161345161_Permissoes.Designer.cs">
-      <DependentUpon>201410161345161_Permissoes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201410211459493_t.cs" />
-    <Compile Include="Migrations\201410211459493_t.Designer.cs">
-      <DependentUpon>201410211459493_t.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Model\AnoModel.cs" />
     <Compile Include="Model\CidadeModel.cs" />
     <Compile Include="Model\CursoModel.cs" />
     <Compile Include="Model\DisciplinaModel.cs" />
@@ -209,6 +208,18 @@
     </Compile>
     <Compile Include="View\Login\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Matriculas\MatriculaEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Matriculas\MatriculaEdit.Designer.cs">
+      <DependentUpon>MatriculaEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Matriculas\MatriculaView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Matriculas\MatriculaView.Designer.cs">
+      <DependentUpon>MatriculaView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Notas\CadastroNotas.cs">
       <SubType>Form</SubType>
@@ -294,20 +305,23 @@
     <Compile Include="View\Unidades\UnidadeView.Designer.cs">
       <DependentUpon>UnidadeView.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Migrations\201410141549286_InitialMigrations.resx">
-      <DependentUpon>201410141549286_InitialMigrations.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201501121249532_InitialCreate.resx">
+      <DependentUpon>201501121249532_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201410141549566_2.resx">
-      <DependentUpon>201410141549566_2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201501121258205_2015-1.resx">
+      <DependentUpon>201501121258205_2015-1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201410161058360_Roles.resx">
-      <DependentUpon>201410161058360_Roles.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201501121338017_2015-2.resx">
+      <DependentUpon>201501121338017_2015-2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201410161345161_Permissoes.resx">
-      <DependentUpon>201410161345161_Permissoes.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201501121346239_2015-3.resx">
+      <DependentUpon>201501121346239_2015-3.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201410211459493_t.resx">
-      <DependentUpon>201410211459493_t.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201501121436335_2015-4.resx">
+      <DependentUpon>201501121436335_2015-4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501131416253_2015-5.resx">
+      <DependentUpon>201501131416253_2015-5.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
@@ -348,6 +362,12 @@
     <EmbeddedResource Include="View\Login\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Matriculas\MatriculaEdit.resx">
+      <DependentUpon>MatriculaEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Matriculas\MatriculaView.resx">
+      <DependentUpon>MatriculaView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Notas\CadastroNotas.resx">
       <DependentUpon>CadastroNotas.cs</DependentUpon>
     </EmbeddedResource>
@@ -366,7 +386,6 @@
     <EmbeddedResource Include="View\Provas\ProvaView.resx">
       <DependentUpon>ProvaView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Reports\Boletim.rdlc" />
     <EmbeddedResource Include="View\Reports\teste.rdlc" />
     <EmbeddedResource Include="View\Shared\SelecionaTurmaDisciplina.resx">
       <DependentUpon>SelecionaTurmaDisciplina.cs</DependentUpon>
@@ -392,17 +411,6 @@
     <EmbeddedResource Include="View\Unidades\UnidadeView.resx">
       <DependentUpon>UnidadeView.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="escolare_geralDataSet.xsc">
-      <DependentUpon>escolare_geralDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="escolare_geralDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>escolare_geralDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="escolare_geralDataSet.xss">
-      <DependentUpon>escolare_geralDataSet.xsd</DependentUpon>
-    </None>
     <None Include="KetClass_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\KetClass.Model.NotaModel.datasource" />

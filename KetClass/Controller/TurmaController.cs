@@ -52,7 +52,7 @@ namespace KetClass.Controller
                 context.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }

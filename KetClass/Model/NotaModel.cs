@@ -10,6 +10,10 @@ namespace KetClass.Model
 {
     public class NotaModel : BaseEntity
     {
+        public int AlunoId { get; set; }
+        [ForeignKey("AlunoId")]
+        public virtual AlunoModel Aluno { get; set; }
+
         public int TurmaId { get; set; }
         [ForeignKey("TurmaId")]
         public virtual TurmaModel Turma { get; set; }

@@ -6,6 +6,7 @@ using KetClass.View.Cursos;
 using KetClass.View.Disciplinas;
 using KetClass.View.Licao;
 using KetClass.View.Login;
+using KetClass.View.Matriculas;
 using KetClass.View.Notas;
 using KetClass.View.Periodo;
 using KetClass.View.Provas;
@@ -15,8 +16,10 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Data.Entity;
+using System.Data.OleDb;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -312,8 +315,160 @@ namespace KetClass
         private void testeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (Login log = new Login())
-            {
+            {                
                 log.ShowDialog();
+            }
+        }
+
+        private void importarDBFsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ImportaDBFParte1();
+            ImportaDBFParte2();
+            ImportaDBFParte3();
+        }
+
+        public void ImportaDBFParte3()
+        {
+            OleDbConnection oConn = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0; Data Source=C:\class;Extended Properties=dBase III");
+            OleDbCommand command = new OleDbCommand("select * from MATRIC.dbf where SITALU_MAT = 1", oConn);
+            oConn.Open();
+            DataTable dt = new DataTable();
+            dt.Load(command.ExecuteReader());
+            oConn.Close();
+            DataTableReader reader = dt.CreateDataReader();
+            DataTable dtalunos = new DataTable();
+            dtalunos.Load(reader);
+            Controller<AlunoModel> alunoController = new Controller<AlunoModel>();
+            alunoController.dbset = alunoController.context.Alunos;
+            Controller<TurmaModel> turmaController = new Controller<TurmaModel>();
+            turmaController.dbset = turmaController.context.Turmas;
+            Controller<MatriculaModel> matriculaController = new Controller<MatriculaModel>();
+            matriculaController.dbset = matriculaController.context.Matriculas;
+            foreach (DataRow row in dtalunos.Rows)
+            {
+                string alunoNome = (string)row["NOMEXX_MAT"];
+                string turmaDesc = (string)row["TURMAX_MAT"];
+                int serie = Convert.ToInt32((string)row["SERIEX_MAT"]);
+                AlunoModel aluno = alunoController.Index().Where(a => a.Aluno.Nome.Equals(alunoNome)).FirstOrDefault();
+                TurmaModel turma = turmaController.Index().Where(t => t.Descricao.Equals(turmaDesc) && t.Serie == serie).FirstOrDefault();
+
+                MatriculaModel matriculaOld = matriculaController.Index().Where(m => m.TurmaId == turma.Id && m.AlunoId == aluno.Id).FirstOrDefault();
+
+
+                if (matriculaOld == null && aluno != null && turma != null)
+                {
+                    MatriculaModel matricula = new MatriculaModel();
+                    matricula.Numero = 0;
+                    matricula.Turma = turma;
+                    matricula.Aluno = aluno;
+                    if (!DBNull.Value.Equals(row["DTMATR_MAT"]))
+                        matricula.DataMatricula = (DateTime)row["DTMATR_MAT"];
+                    else
+                        matricula.DataMatricula = DateTime.Now;
+
+                    matriculaController.Create(matricula);
+                }
+            }
+        }
+
+        public void ImportaDBFParte2()
+        {
+            OleDbConnection oConn = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0; Data Source=C:\class;Extended Properties=dBase III");
+            OleDbCommand command = new OleDbCommand("select * from CADFAM.dbf ", oConn);
+            oConn.Open();
+            DataTable dt = new DataTable();
+            dt.Load(command.ExecuteReader());
+            oConn.Close();
+            DataTableReader reader = dt.CreateDataReader();
+            DataTable dtalunos = new DataTable();
+            dtalunos.Load(reader);
+            Controller<AlunoModel> alunoController = new Controller<AlunoModel>();
+            alunoController.dbset = alunoController.context.Alunos;
+            Controller<PessoaModel> pessoaController = new Controller<PessoaModel>();
+            pessoaController.dbset = pessoaController.context.Pessoas;
+            foreach (DataRow row in dtalunos.Rows)
+            {
+                string codigoFam = (string)row["CODFAM_FAM"];
+                List<AlunoModel> alunos = alunoController.Index().Where(a => a.CodigoFam.Equals(codigoFam)).ToList();
+                PessoaModel pai = new PessoaModel();
+                PessoaModel mae = new PessoaModel();
+                bool insert = false;
+                foreach (AlunoModel aluno in alunos)
+                {                    
+                    if ((aluno != null) && (aluno.Pai == null && aluno.Mae == null))
+                    {
+                        insert = true;
+                    }
+                }
+                if (insert)
+                {
+                    pai.Nome = (string)row["NOMPAI_FAM"];
+                    pai.Telefone = ((double)row["TELPAI_FAM"]).ToString();
+                    mae.Nome = (string)row["NOMMAE_FAM"];
+                    mae.Telefone = ((double)row["TELMAE_FAM"]).ToString();
+                    pai = pessoaController.Create(pai);
+                    mae = pessoaController.Create(mae);
+                    
+                }
+                foreach (AlunoModel aluno in alunos)
+                {                    
+                    if ((aluno != null) && (aluno.Pai == null && aluno.Mae == null))
+                    {
+                        aluno.Pai = pai;
+                        aluno.Mae = mae;
+
+                        alunoController.Edit(aluno);
+                    }
+                }
+            }
+        }
+        public void ImportaDBFParte1()
+        {
+            OleDbConnection oConn = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0; Data Source=C:\class;Extended Properties=dBase III");
+            OleDbCommand command = new OleDbCommand("select * from ALUNOS.dbf", oConn);
+            oConn.Open();
+            DataTable dt = new DataTable();
+            dt.Load(command.ExecuteReader());
+            oConn.Close();
+            DataTableReader reader = dt.CreateDataReader();
+            DataTable dtalunos = new DataTable();
+            dtalunos.Load(reader);
+            Controller<AlunoModel> alunoController = new Controller<AlunoModel>();
+            alunoController.dbset = alunoController.context.Alunos;
+            foreach (DataRow row in dtalunos.Rows)
+            {
+                AlunoModel alunoOld = alunoController.Index().Where(a => a.Codigo.Equals(((double)row["CODIGO_ALU"]).ToString())).FirstOrDefault();
+                if (alunoOld == null)
+                {
+                    AlunoModel aluno = new AlunoModel();
+                    aluno.Codigo = ((double)row["CODIGO_ALU"]).ToString();
+                    aluno.Aluno = new PessoaModel();
+                    aluno.Aluno.Telefone = "1";
+                    aluno.Aluno.Nome = (string)row["NOMEXX_ALU"];
+                    aluno.Sexo = (string)row["SEXOXX_ALU"];
+                    aluno.Aluno.DataNascimento = (DateTime)row["DATNAS_ALU"];
+                    aluno.DataMatricula = (DateTime)row["DATCRI_ALU"];
+                    aluno.Aluno.LocalNascimento = (string)row["LOCNAS_ALU"];
+                    aluno.Aluno.Nacionalidade = (string)row["NACION_ALU"];
+                    aluno.CodigoFam = (string)row["CODFAM_ALU"];
+                    //aluno.Aluno.RG = (string)row["RGXXXX_ALU"];
+                    if (!DBNull.Value.Equals(row["CERTNA_ALU"]))
+                        aluno.Certidao = (string)row["CERTNA_ALU"];
+                    else
+                        aluno.Certidao = "";
+                    aluno.Numero = 1;
+                    aluno.Pai = null;
+                    aluno.Mae = null;
+                    alunoController.Create(aluno);
+                }
+            }
+        }
+
+        private void matrículasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (MatriculaView t = new MatriculaView())
+            {
+                t.ShowDialog();
             }
         }
     }

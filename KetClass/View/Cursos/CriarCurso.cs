@@ -53,7 +53,6 @@ namespace KetClass.View.Cursos
             model.Unidade = (UnidadeModel)pesUnidade.Objeto;
             model.Periodo = (PeriodoModel)pesPeriodo.Objeto;
             model.Descricao = tbxDescricao.Text;
-            model.Ano = Convert.ToInt32(tbxAno.Text);
             model.PrimeiraSerie = Convert.ToInt32(tbxPSerie.Text);
             model.UltimaSerie = Convert.ToInt32(tbxUSerie.Text);
         }
@@ -62,7 +61,6 @@ namespace KetClass.View.Cursos
         {
             if (baseEdit.estado == Data.Estado.Criando)
             {
-                tbxAno.Clear();
                 tbxDescricao.Clear();
                 pesUnidade.Clear();
                 pesPeriodo.Clear();
@@ -71,7 +69,6 @@ namespace KetClass.View.Cursos
             }
             else
             {
-                tbxAno.Text = model.Ano.ToString();
                 tbxPSerie.Text = model.PrimeiraSerie.ToString();
                 tbxUSerie.Text = model.UltimaSerie.ToString();
                 tbxDescricao.Text = model.Descricao;
@@ -87,7 +84,7 @@ namespace KetClass.View.Cursos
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-                
+            Salvar();    
         }
 
         private void btnFechar_Click(object sender, EventArgs e)

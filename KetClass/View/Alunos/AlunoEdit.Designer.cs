@@ -49,7 +49,7 @@
             // 
             // btnGravar
             // 
-            this.btnGravar.Location = new System.Drawing.Point(506, 391);
+            this.btnGravar.Location = new System.Drawing.Point(502, 325);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(75, 23);
             this.btnGravar.TabIndex = 8;
@@ -59,7 +59,7 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(587, 391);
+            this.btnFechar.Location = new System.Drawing.Point(583, 325);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(75, 23);
             this.btnFechar.TabIndex = 9;
@@ -118,7 +118,7 @@
             // 
             // tbxNumero
             // 
-            this.tbxNumero.Location = new System.Drawing.Point(154, 394);
+            this.tbxNumero.Location = new System.Drawing.Point(150, 328);
             this.tbxNumero.Name = "tbxNumero";
             this.tbxNumero.Size = new System.Drawing.Size(84, 20);
             this.tbxNumero.TabIndex = 6;
@@ -126,7 +126,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(151, 377);
+            this.label7.Location = new System.Drawing.Point(147, 311);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 13);
             this.label7.TabIndex = 18;
@@ -135,7 +135,7 @@
             // dtpMatricula
             // 
             this.dtpMatricula.CustomFormat = "";
-            this.dtpMatricula.Location = new System.Drawing.Point(244, 394);
+            this.dtpMatricula.Location = new System.Drawing.Point(240, 328);
             this.dtpMatricula.Name = "dtpMatricula";
             this.dtpMatricula.Size = new System.Drawing.Size(217, 20);
             this.dtpMatricula.TabIndex = 7;
@@ -143,7 +143,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(241, 377);
+            this.label8.Location = new System.Drawing.Point(237, 311);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(78, 13);
             this.label8.TabIndex = 20;
@@ -151,18 +151,18 @@
             // 
             // ucMae
             // 
-            this.ucMae.Location = new System.Drawing.Point(12, 254);
+            this.ucMae.Location = new System.Drawing.Point(12, 242);
             this.ucMae.Name = "ucMae";
             this.ucMae.Nome = "";
-            this.ucMae.Size = new System.Drawing.Size(674, 119);
+            this.ucMae.Size = new System.Drawing.Size(674, 66);
             this.ucMae.TabIndex = 4;
             // 
             // ucPai
             // 
-            this.ucPai.Location = new System.Drawing.Point(12, 150);
+            this.ucPai.Location = new System.Drawing.Point(12, 168);
             this.ucPai.Name = "ucPai";
             this.ucPai.Nome = "";
-            this.ucPai.Size = new System.Drawing.Size(674, 119);
+            this.ucPai.Size = new System.Drawing.Size(674, 68);
             this.ucPai.TabIndex = 3;
             // 
             // ucAluno
@@ -175,15 +175,16 @@
             // 
             // pesTurma
             // 
-            this.pesTurma.Location = new System.Drawing.Point(16, 394);
+            this.pesTurma.Location = new System.Drawing.Point(12, 328);
             this.pesTurma.Name = "pesTurma";
+            this.pesTurma.ReadOnly = false;
             this.pesTurma.Size = new System.Drawing.Size(132, 20);
             this.pesTurma.TabIndex = 5;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(13, 377);
+            this.label9.Location = new System.Drawing.Point(9, 311);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(37, 13);
             this.label9.TabIndex = 26;
@@ -193,7 +194,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(689, 440);
+            this.ClientSize = new System.Drawing.Size(689, 356);
             this.Controls.Add(this.pesTurma);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.dtpMatricula);

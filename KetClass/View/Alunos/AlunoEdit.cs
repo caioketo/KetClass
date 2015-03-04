@@ -32,6 +32,9 @@ namespace KetClass.View.Alunos
             ucAluno.Nome = "Aluno";
             ucMae.Nome = "Mãe";
             ucPai.Nome = "Pai";
+            ucMae.SetPai();
+            ucPai.SetPai();
+
             
             pesTurma.Crud = new TurmaView();
         }

@@ -11,13 +11,13 @@ namespace KetClass.Model
 {
     public class PessoaModel : BaseEntity
     {
-        [Required(AllowEmptyStrings = false, ErrorMessage = "O campo Nome é obrigatório")]
+        //[Required(AllowEmptyStrings = false, ErrorMessage = "O campo Nome é obrigatório")]
         public string Nome { get; set; }
 
-        [Required(AllowEmptyStrings = false, ErrorMessage = "O campo Telefone é obrigatório")]
+        //[Required(AllowEmptyStrings = false, ErrorMessage = "O campo Telefone é obrigatório")]
         public string Telefone { get; set; }
 
-        public DateTime DataNascimento { get; set; }
+        public Nullable<DateTime> DataNascimento { get; set; }
 
         public string LocalNascimento { get; set; }
 

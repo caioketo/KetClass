@@ -83,6 +83,7 @@
             // 
             this.pesCurso.Location = new System.Drawing.Point(13, 67);
             this.pesCurso.Name = "pesCurso";
+            this.pesCurso.ReadOnly = false;
             this.pesCurso.Size = new System.Drawing.Size(203, 20);
             this.pesCurso.TabIndex = 5;
             // 
@@ -106,6 +107,7 @@
             this.btnConfirmar.TabIndex = 7;
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // TurmaEdit
             // 

@@ -1,6 +1,7 @@
 ﻿using KetClass.Model;
+using KetClass.View.Alunos;
 using KetClass.View.Base;
-using KetClass.View.Cursos;
+using KetClass.View.Turmas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,13 +12,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace KetClass.View.Turmas
+namespace KetClass.View.Matriculas
 {
-    public partial class TurmaEdit : Form, IEdit
+    public partial class MatriculaEdit : Form, IEdit
     {
-        public BaseEdit<TurmaModel> baseEdit = new BaseEdit<TurmaModel>();
+        public BaseEdit<MatriculaModel> baseEdit = new BaseEdit<MatriculaModel>();
 
-        private TurmaModel model
+        private MatriculaModel model
         {
             get
             {
@@ -25,11 +26,16 @@ namespace KetClass.View.Turmas
             }
         }
 
-
-        public TurmaEdit()
+        public MatriculaEdit()
         {
             InitializeComponent();
-            pesCurso.Crud = new CursoView();
+            pesAluno.Crud = new AlunoView();
+            pesTurma.Crud = new TurmaView();
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            Salvar();
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -48,24 +54,24 @@ namespace KetClass.View.Turmas
 
         public void Mapear()
         {
-            model.Curso = (CursoModel)pesCurso.Objeto;
-            model.Descricao = tbxDescricao.Text;
-            model.Serie = Convert.ToInt32(tbxSerie.Text);
+            model.Turma = (TurmaModel)pesTurma.Objeto;
+            model.Aluno = (AlunoModel)pesAluno.Objeto;
+            model.DataMatricula = dtpMatricula.Value;
         }
 
         public void MapearTela()
         {
             if (baseEdit.estado == Data.Estado.Criando)
             {
-                tbxSerie.Clear();
-                tbxDescricao.Clear();
-                pesCurso.Clear();
+                dtpMatricula.Value = DateTime.Now;
+                pesTurma.Clear();
+                pesAluno.Clear();
             }
             else
             {
-                tbxDescricao.Text = model.Descricao;
-                tbxSerie.Text = model.Serie.ToString();
-                pesCurso.SetObjeto(model.Curso);
+                dtpMatricula.Value = model.DataMatricula;
+                pesTurma.SetObjeto(model.Turma);
+                pesAluno.SetObjeto(model.Aluno);
             }
         }
 
@@ -74,14 +80,9 @@ namespace KetClass.View.Turmas
             this.Close();
         }
 
-        private void TurmaEdit_Shown(object sender, EventArgs e)
+        private void MatriculaEdit_Shown(object sender, EventArgs e)
         {
             MapearTela();
-        }
-
-        private void btnConfirmar_Click(object sender, EventArgs e)
-        {
-            Salvar();
         }
     }
 }

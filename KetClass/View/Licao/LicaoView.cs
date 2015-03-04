@@ -30,7 +30,6 @@ namespace KetClass.View.Licao
             baseView = new BaseView<LicaoModel>(controller, crud.dgvCRUD, null, "Licao");
             baseView.Index();
         }
-
         private void btnInserir_Click(object sender, EventArgs e)
         {
             using (CreateLicao c = new CreateLicao())

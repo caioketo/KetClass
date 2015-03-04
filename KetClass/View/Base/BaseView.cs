@@ -11,13 +11,15 @@ using System.Windows.Forms;
 
 namespace KetClass.View.Base
 {
+    public delegate void OrderIndex();
+    
     public class BaseView<T> where T : BaseEntity, new() 
     {
+        public OrderIndex orderIndex = null;
         public string Tabela;
         public BaseEdit<T> edit { get; set; }
         public DataGridView grid { get; set; }
         public IController<T> controller { get; set; }
-
         public void Config()
         {
             grid.AutoGenerateColumns = false;
@@ -44,7 +46,14 @@ namespace KetClass.View.Base
 
         public void Index()
         {
-            grid.DataSource = controller.Index();
+            if (orderIndex != null)
+            {
+                orderIndex();
+            }
+            else
+            {
+                grid.DataSource = controller.Index();
+            }
         }
 
         public void Filter(List<T> lista)

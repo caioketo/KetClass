@@ -9,7 +9,8 @@ namespace KetClass.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
+            ContextKey = "KetClass.Data.KCContext";
         }
 
         protected override void Seed(KetClass.Data.KCContext context)

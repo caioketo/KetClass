@@ -1,4 +1,5 @@
-﻿using KetClass.Data;
+﻿using KetClass.Controller;
+using KetClass.Data;
 using KetClass.Model;
 using System;
 using System.Collections.Generic;
@@ -104,8 +105,10 @@ namespace KetClass.View.Notas
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Controller<AlunoModel> alunoControler = new Controller<AlunoModel>(); 
             foreach (NotaModel nota in Notas)
             {
+                nota.AlunoId = alunoControler.Index().Where(a => a.Numero == nota.Numero && a.Turma.Id == nota.TurmaId).FirstOrDefault().Id;
                 NotaController.Create(nota);
             }
             this.Close();

@@ -7,6 +7,7 @@ using System.Data.Entity;
 using KetClass.Model;
 using System.Data.Entity.Infrastructure;
 using System.Windows.Forms;
+using KetClass.Migrations;
 //using KetClass.Migrations;
 
 namespace KetClass.Data
@@ -42,8 +43,8 @@ namespace KetClass.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //Database.SetInitializer<KCContext>(new MigrateDatabaseToLatestVersion<KCContext, Configuration>());
-            Database.SetInitializer<KCContext>(new CreateDatabaseIfNotExists<KCContext>());
+            Database.SetInitializer<KCContext>(new MigrateDatabaseToLatestVersion<KCContext, Configuration>());
+            //Database.SetInitializer<KCContext>(new <KCContext>());
             modelBuilder.Entity<RoleModel>().
             HasMany(c => c.Users).
             WithMany(p => p.Roles).
@@ -91,7 +92,8 @@ namespace KetClass.Data
         public DbSet<PeriodoModel> Periodos { get; set; }
         public DbSet<NotaModel> Notas { get; set; }
         public DbSet<UserModel> Users { get; set; }
-
+        public DbSet<PermissaoModel> Permissoes { get; set; }
+        public DbSet<MatriculaModel> Matriculas { get; set; }
 
         public void splash()
         {
@@ -106,6 +108,8 @@ namespace KetClass.Data
             Periodos.Load();
             Notas.Load();
             Users.Load();
+            Matriculas.Load();
+            Permissoes.Load();
         }
 
         internal static IEnumerable<System.Windows.Forms.DataGridViewColumn> Columns(string Tabela)
@@ -314,6 +318,33 @@ namespace KetClass.Data
                     HeaderText = "Curso",
                     DataPropertyName = "CursoDescricao",
                     Name = "CursoDescricaoC",
+                    DefaultCellStyle = new DataGridViewCellStyle()
+                });
+            }
+            else if (Tabela.Equals("Matrícula"))
+            {
+                columns.Add(new System.Windows.Forms.DataGridViewColumn(new DataGridViewTextBoxCell())
+                {
+                    HeaderText = "Aluno",
+                    DataPropertyName = "AlunoNome",
+                    Name = "AlunoNomeC",
+                    DefaultCellStyle = new DataGridViewCellStyle(),
+                    Width = 400
+                });
+
+                columns.Add(new System.Windows.Forms.DataGridViewColumn(new DataGridViewTextBoxCell())
+                {
+                    HeaderText = "Turma",
+                    DataPropertyName = "TurmaDisplay",
+                    Name = "DisplayC",
+                    DefaultCellStyle = new DataGridViewCellStyle()
+                });
+
+                columns.Add(new System.Windows.Forms.DataGridViewColumn(new DataGridViewTextBoxCell())
+                {
+                    HeaderText = "Data da Matrícula",
+                    DataPropertyName = "DataMatricula",
+                    Name = "DataMatriculaC",
                     DefaultCellStyle = new DataGridViewCellStyle()
                 });
             }
