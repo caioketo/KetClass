@@ -8,8 +8,6 @@ using KetClass.Model;
 using System.Data.Entity.Infrastructure;
 using System.Windows.Forms;
 using KetClass.Migrations;
-//using KetClass.Migrations;
-
 namespace KetClass.Data
 {
     public class KCContext : DbContext
@@ -93,7 +91,10 @@ namespace KetClass.Data
         public DbSet<NotaModel> Notas { get; set; }
         public DbSet<UserModel> Users { get; set; }
         public DbSet<PermissaoModel> Permissoes { get; set; }
+        public DbSet<RoleModel> Roles { get; set; }
         public DbSet<MatriculaModel> Matriculas { get; set; }
+        public DbSet<NotasBoletimModel> NotasBoletim { get; set; }
+        public DbSet<BoletimWebModel> BoletinsWeb { get; set; }
 
         public void splash()
         {
@@ -110,6 +111,9 @@ namespace KetClass.Data
             Users.Load();
             Matriculas.Load();
             Permissoes.Load();
+            Roles.Load();
+            NotasBoletim.Load();
+            BoletinsWeb.Load();
         }
 
         internal static IEnumerable<System.Windows.Forms.DataGridViewColumn> Columns(string Tabela)

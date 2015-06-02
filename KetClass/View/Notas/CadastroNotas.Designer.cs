@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbxDispensado = new System.Windows.Forms.CheckBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,12 +47,14 @@
             this.button2 = new System.Windows.Forms.Button();
             this.tbxTrimestre = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNotas)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbxDispensado);
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Controls.Add(this.label3);
@@ -63,16 +66,26 @@
             this.groupBox1.Controls.Add(this.dgvNotas);
             this.groupBox1.Location = new System.Drawing.Point(12, 63);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(317, 333);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.Size = new System.Drawing.Size(417, 333);
+            this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
+            // 
+            // cbxDispensado
+            // 
+            this.cbxDispensado.AutoSize = true;
+            this.cbxDispensado.Location = new System.Drawing.Point(327, 40);
+            this.cbxDispensado.Name = "cbxDispensado";
+            this.cbxDispensado.Size = new System.Drawing.Size(82, 17);
+            this.cbxDispensado.TabIndex = 7;
+            this.cbxDispensado.Text = "Dispensado";
+            this.cbxDispensado.UseVisualStyleBackColor = true;
             // 
             // btnDelete
             // 
             this.btnDelete.Location = new System.Drawing.Point(289, 37);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(22, 19);
-            this.btnDelete.TabIndex = 7;
+            this.btnDelete.TabIndex = 6;
             this.btnDelete.Text = "-";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
@@ -81,7 +94,7 @@
             this.btnAdd.Location = new System.Drawing.Point(262, 37);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(22, 19);
-            this.btnAdd.TabIndex = 6;
+            this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "+";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -118,14 +131,14 @@
             this.tbxFaltas.Location = new System.Drawing.Point(193, 37);
             this.tbxFaltas.Name = "tbxFaltas";
             this.tbxFaltas.Size = new System.Drawing.Size(64, 20);
-            this.tbxFaltas.TabIndex = 3;
+            this.tbxFaltas.TabIndex = 4;
             // 
             // tbxNota
             // 
             this.tbxNota.Location = new System.Drawing.Point(92, 36);
             this.tbxNota.Name = "tbxNota";
             this.tbxNota.Size = new System.Drawing.Size(95, 20);
-            this.tbxNota.TabIndex = 2;
+            this.tbxNota.TabIndex = 3;
             // 
             // tbxNumero
             // 
@@ -134,13 +147,14 @@
             this.tbxNumero.ReadOnly = true;
             this.tbxNumero.Size = new System.Drawing.Size(80, 20);
             this.tbxNumero.TabIndex = 1;
+            this.tbxNumero.TabStop = false;
             // 
             // dgvNotas
             // 
             this.dgvNotas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNotas.Location = new System.Drawing.Point(0, 62);
             this.dgvNotas.Name = "dgvNotas";
-            this.dgvNotas.Size = new System.Drawing.Size(317, 271);
+            this.dgvNotas.Size = new System.Drawing.Size(417, 271);
             this.dgvNotas.TabIndex = 0;
             // 
             // lblTurma
@@ -164,7 +178,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(186, 40);
+            this.label4.Location = new System.Drawing.Point(284, 40);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 13);
             this.label4.TabIndex = 3;
@@ -172,27 +186,27 @@
             // 
             // tbxAulas
             // 
-            this.tbxAulas.Location = new System.Drawing.Point(259, 37);
+            this.tbxAulas.Location = new System.Drawing.Point(357, 37);
             this.tbxAulas.Name = "tbxAulas";
             this.tbxAulas.Size = new System.Drawing.Size(64, 20);
-            this.tbxAulas.TabIndex = 6;
+            this.tbxAulas.TabIndex = 2;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(173, 414);
+            this.button1.Location = new System.Drawing.Point(265, 414);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
+            this.button1.TabIndex = 8;
             this.button1.Text = "Confirmar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(254, 414);
+            this.button2.Location = new System.Drawing.Point(346, 414);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 8;
+            this.button2.TabIndex = 9;
             this.button2.Text = "Cancelar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -202,7 +216,7 @@
             this.tbxTrimestre.Location = new System.Drawing.Point(67, 37);
             this.tbxTrimestre.Name = "tbxTrimestre";
             this.tbxTrimestre.Size = new System.Drawing.Size(48, 20);
-            this.tbxTrimestre.TabIndex = 10;
+            this.tbxTrimestre.TabIndex = 1;
             // 
             // label5
             // 
@@ -213,11 +227,18 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Trimestre";
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.WorkerReportsProgress = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
             // CadastroNotas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 449);
+            this.ClientSize = new System.Drawing.Size(433, 449);
             this.Controls.Add(this.tbxTrimestre);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button2);
@@ -227,10 +248,12 @@
             this.Controls.Add(this.lblDisciplina);
             this.Controls.Add(this.lblTurma);
             this.Controls.Add(this.groupBox1);
+            this.KeyPreview = true;
             this.Name = "CadastroNotas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CadastroNotas";
             this.Shown += new System.EventHandler(this.CadastroNotas_Shown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CadastroNotas_KeyPress);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNotas)).EndInit();
@@ -259,5 +282,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox tbxTrimestre;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox cbxDispensado;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

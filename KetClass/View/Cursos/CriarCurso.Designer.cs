@@ -163,10 +163,12 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.btnFechar);
+            this.KeyPreview = true;
             this.Name = "CriarCurso";
             this.Text = "Cursos";
             this.Load += new System.EventHandler(this.CriarCurso_Load);
             this.Shown += new System.EventHandler(this.CriarCurso_Shown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CriarCurso_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

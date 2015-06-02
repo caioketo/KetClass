@@ -78,6 +78,7 @@
             // 
             this.pesDisciplina.Location = new System.Drawing.Point(16, 69);
             this.pesDisciplina.Name = "pesDisciplina";
+            this.pesDisciplina.ReadOnly = false;
             this.pesDisciplina.Size = new System.Drawing.Size(172, 20);
             this.pesDisciplina.TabIndex = 3;
             // 
@@ -85,6 +86,7 @@
             // 
             this.pesTurma.Location = new System.Drawing.Point(16, 30);
             this.pesTurma.Name = "pesTurma";
+            this.pesTurma.ReadOnly = false;
             this.pesTurma.Size = new System.Drawing.Size(172, 20);
             this.pesTurma.TabIndex = 2;
             // 
@@ -99,10 +101,13 @@
             this.Controls.Add(this.pesTurma);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.KeyPreview = true;
             this.Name = "SelecionaTurmaDisciplina";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Selecione";
             this.Shown += new System.EventHandler(this.SelecionaTurmaDisciplina_Shown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SelecionaTurmaDisciplina_KeyPress);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SelecionaTurmaDisciplina_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 

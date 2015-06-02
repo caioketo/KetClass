@@ -65,6 +65,7 @@
             // 
             this.tbxSenha.Location = new System.Drawing.Point(16, 68);
             this.tbxSenha.Name = "tbxSenha";
+            this.tbxSenha.PasswordChar = '*';
             this.tbxSenha.Size = new System.Drawing.Size(163, 20);
             this.tbxSenha.TabIndex = 1;
             // 
@@ -98,9 +99,11 @@
             this.Controls.Add(this.tbxSenha);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbxLogin);
+            this.KeyPreview = true;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Login_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

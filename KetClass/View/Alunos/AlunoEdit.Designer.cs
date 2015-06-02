@@ -39,11 +39,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.dtpMatricula = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
-            this.ucMae = new KetClass.View.Shared.UCPessoaedit();
             this.ucPai = new KetClass.View.Shared.UCPessoaedit();
             this.ucAluno = new KetClass.View.Shared.UCPessoaedit();
             this.pesTurma = new KetClass.View.Shared.UCPesquisa();
             this.label9 = new System.Windows.Forms.Label();
+            this.ucMae = new KetClass.View.Shared.UCPessoaedit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +52,7 @@
             this.btnGravar.Location = new System.Drawing.Point(502, 325);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(75, 23);
-            this.btnGravar.TabIndex = 8;
+            this.btnGravar.TabIndex = 7;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.UseVisualStyleBackColor = true;
             this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
@@ -90,7 +90,7 @@
             this.groupBox1.Location = new System.Drawing.Point(195, 13);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(157, 37);
-            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sexo";
             // 
@@ -139,6 +139,7 @@
             this.dtpMatricula.Name = "dtpMatricula";
             this.dtpMatricula.Size = new System.Drawing.Size(217, 20);
             this.dtpMatricula.TabIndex = 7;
+            this.dtpMatricula.Visible = false;
             // 
             // label8
             // 
@@ -148,18 +149,11 @@
             this.label8.Size = new System.Drawing.Size(78, 13);
             this.label8.TabIndex = 20;
             this.label8.Text = "Data Matrícula";
-            // 
-            // ucMae
-            // 
-            this.ucMae.Location = new System.Drawing.Point(12, 242);
-            this.ucMae.Name = "ucMae";
-            this.ucMae.Nome = "";
-            this.ucMae.Size = new System.Drawing.Size(674, 66);
-            this.ucMae.TabIndex = 4;
+            this.label8.Visible = false;
             // 
             // ucPai
             // 
-            this.ucPai.Location = new System.Drawing.Point(12, 168);
+            this.ucPai.Location = new System.Drawing.Point(3, 168);
             this.ucPai.Name = "ucPai";
             this.ucPai.Nome = "";
             this.ucPai.Size = new System.Drawing.Size(674, 68);
@@ -190,11 +184,20 @@
             this.label9.TabIndex = 26;
             this.label9.Text = "Turma";
             // 
+            // ucMae
+            // 
+            this.ucMae.Location = new System.Drawing.Point(3, 242);
+            this.ucMae.Name = "ucMae";
+            this.ucMae.Nome = "";
+            this.ucMae.Size = new System.Drawing.Size(674, 66);
+            this.ucMae.TabIndex = 27;
+            // 
             // AlunoEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(689, 356);
+            this.Controls.Add(this.ucMae);
             this.Controls.Add(this.pesTurma);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.dtpMatricula);
@@ -204,14 +207,15 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tbxCodigo);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.ucMae);
             this.Controls.Add(this.ucPai);
             this.Controls.Add(this.ucAluno);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnGravar);
+            this.KeyPreview = true;
             this.Name = "AlunoEdit";
             this.Text = "AlunoEdit";
             this.Shown += new System.EventHandler(this.AlunoEdit_Shown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AlunoEdit_KeyPress);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -225,7 +229,6 @@
         private System.Windows.Forms.Button btnFechar;
         private Shared.UCPessoaedit ucAluno;
         private Shared.UCPessoaedit ucPai;
-        private Shared.UCPessoaedit ucMae;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbxCodigo;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -237,6 +240,7 @@
         private System.Windows.Forms.Label label8;
         private Shared.UCPesquisa pesTurma;
         private System.Windows.Forms.Label label9;
+        private Shared.UCPessoaedit ucMae;
 
     }
 }

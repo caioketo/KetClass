@@ -72,5 +72,13 @@ namespace KetClass.View.Unidades
         {
             Fechar();
         }
+
+        private void UnidadeEdit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                SelectNextControl(Utils.Util.FindFocusedControl(this), true, true, true, true);
+            }
+        }
     }
 }

@@ -84,5 +84,13 @@ namespace KetClass.View.Matriculas
         {
             MapearTela();
         }
+
+        private void MatriculaEdit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                SelectNextControl(Utils.Util.FindFocusedControl(this), true, true, true, true);
+            }
+        }
     }
 }

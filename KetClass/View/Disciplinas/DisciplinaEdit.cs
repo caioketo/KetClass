@@ -80,5 +80,13 @@ namespace KetClass.View.Disciplinas
         {
             this.Close();
         }
+
+        private void DisciplinaEdit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                SelectNextControl(Utils.Util.FindFocusedControl(this), true, true, true, true);
+            }
+        }
     }
 }

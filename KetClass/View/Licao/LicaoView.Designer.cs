@@ -37,6 +37,7 @@
             this.crud.Name = "crud";
             this.crud.Size = new System.Drawing.Size(689, 445);
             this.crud.TabIndex = 1;
+            this.crud.Load += new System.EventHandler(this.crud_Load);
             // 
             // LicaoView
             // 

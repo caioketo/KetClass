@@ -52,6 +52,13 @@ namespace KetClass.View.Shared
             pesTurma.Clear();
             pesDisciplina.Clear();
             pesTurma.Focus();
+
+            if (TurmaSel != null)
+            {
+                pesTurma.SetObjeto(TurmaSel);
+                pesDisciplina.Focus();
+            }
+
             int materiaUsuario = AutenticacaoController.getInstance().MateriaUsuario();
             if (materiaUsuario > 0)
             {
@@ -61,6 +68,19 @@ namespace KetClass.View.Shared
                     pesDisciplina.SetObjeto(disc);
                     pesDisciplina.ReadOnly = true;
                 }
+            }
+        }
+
+        private void SelecionaTurmaDisciplina_KeyUp(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void SelecionaTurmaDisciplina_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                SelectNextControl(Utils.Util.FindFocusedControl(this), true, true, true, true);
             }
         }
     }

@@ -122,9 +122,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbxDescricao);
             this.Controls.Add(this.label1);
+            this.KeyPreview = true;
             this.Name = "TurmaEdit";
             this.Text = "TurmaEdit";
             this.Shown += new System.EventHandler(this.TurmaEdit_Shown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TurmaEdit_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

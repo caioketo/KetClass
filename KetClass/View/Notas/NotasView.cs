@@ -23,6 +23,7 @@ namespace KetClass.View.Notas
             InitializeComponent();
             baseEdit = new BaseEdit<NotaModel>();
             crud.tbxPesquisaChange += tbxPesquisa_TextChanged;
+            crud.btnExcluirClick += btnExcluir_Click;
             controller.dbset = controller.context.Notas;
             baseView = new BaseView<NotaModel>(controller, crud.dgvCRUD, baseEdit, "Notas");
             baseView.Index();
@@ -32,6 +33,12 @@ namespace KetClass.View.Notas
         {
             //baseView.Filter(controller.Filter(p => p.Descricao.Contains(crud.tbxPesquisa.Text) ||
                 //SqlFunctions.StringConvert((double)p.Serie).Contains(crud.tbxPesquisa.Text)).ToList());
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            baseView.Delete();
+            baseView.Index();
         }
     }
 }

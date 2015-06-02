@@ -124,9 +124,11 @@
             this.Controls.Add(this.pesAluno);
             this.Controls.Add(this.btnConfirmar);
             this.Controls.Add(this.btnFechar);
+            this.KeyPreview = true;
             this.Name = "MatriculaEdit";
             this.Text = "MatriculaEdit";
             this.Shown += new System.EventHandler(this.MatriculaEdit_Shown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MatriculaEdit_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

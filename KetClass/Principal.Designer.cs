@@ -48,6 +48,7 @@
             this.matrículasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importarDBFsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testeBoletimToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,10 +63,11 @@
             this.notasToolStripMenuItem,
             this.matrículasToolStripMenuItem,
             this.importarDBFsToolStripMenuItem,
-            this.testeToolStripMenuItem});
+            this.testeToolStripMenuItem,
+            this.testeBoletimToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(595, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(807, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -210,15 +212,22 @@
             // testeToolStripMenuItem
             // 
             this.testeToolStripMenuItem.Name = "testeToolStripMenuItem";
-            this.testeToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
-            this.testeToolStripMenuItem.Text = "Teste";
+            this.testeToolStripMenuItem.Size = new System.Drawing.Size(124, 20);
+            this.testeToolStripMenuItem.Text = "Configurar Usuarios";
             this.testeToolStripMenuItem.Click += new System.EventHandler(this.testeToolStripMenuItem_Click);
+            // 
+            // testeBoletimToolStripMenuItem
+            // 
+            this.testeBoletimToolStripMenuItem.Name = "testeBoletimToolStripMenuItem";
+            this.testeBoletimToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.testeBoletimToolStripMenuItem.Text = "Teste Boletim";
+            this.testeBoletimToolStripMenuItem.Click += new System.EventHandler(this.testeBoletimToolStripMenuItem_Click);
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(595, 414);
+            this.ClientSize = new System.Drawing.Size(807, 414);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Principal";
@@ -253,6 +262,7 @@
         private System.Windows.Forms.ToolStripMenuItem testeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importarDBFsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem matrículasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem testeBoletimToolStripMenuItem;
 
     }
 }

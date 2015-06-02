@@ -121,9 +121,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbxDescricao);
             this.Controls.Add(this.label1);
+            this.KeyPreview = true;
             this.Name = "DisciplinaEdit";
             this.Text = "Disciplina";
             this.Shown += new System.EventHandler(this.DisciplinaEdit_Shown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DisciplinaEdit_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

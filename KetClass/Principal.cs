@@ -288,19 +288,22 @@ namespace KetClass
 
         private void cadastrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (CadastroNotas cadastro = new CadastroNotas())
+            SelecionaTurmaDisciplina sel = new SelecionaTurmaDisciplina();
+            sel.ShowDialog();
+
+            if (sel.TurmaSel == null || sel.DisciplinaSel == null)
             {
-                SelecionaTurmaDisciplina sel = new SelecionaTurmaDisciplina();
-                sel.ShowDialog();
-
-                if (sel.TurmaSel == null || sel.DisciplinaSel == null)
+                return;
+            }
+            while (sel.TurmaSel != null && sel.DisciplinaSel != null)
+            {
+                using (CadastroNotas cadastro = new CadastroNotas())
                 {
-                    return;
+                    cadastro.turma = sel.TurmaSel;
+                    cadastro.disciplina = sel.DisciplinaSel;
+                    cadastro.ShowDialog();
+                    sel.ShowDialog();
                 }
-
-                cadastro.turma = sel.TurmaSel;
-                cadastro.disciplina = sel.DisciplinaSel;
-                cadastro.ShowDialog();
             }
         }
 
@@ -314,7 +317,7 @@ namespace KetClass
 
         private void testeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (Login log = new Login())
+            using (CreateRole log = new CreateRole())
             {                
                 log.ShowDialog();
             }
@@ -470,6 +473,18 @@ namespace KetClass
             {
                 t.ShowDialog();
             }
+        }
+
+        private void testeBoletimToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<int> alunosIds = new List<int>();
+            
+            foreach (NotaModel nota in KCContext.getInstance().Notas.ToList())
+            {
+                alunosIds.Add(nota.AlunoId);
+            }
+
+            Utils.Util.EnviarNotas(1, KCContext.getInstance().Alunos.Where(a => alunosIds.Contains(a.Id)).ToList());
         }
     }
 }

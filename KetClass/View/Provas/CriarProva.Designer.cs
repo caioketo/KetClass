@@ -188,8 +188,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBox1);
+            this.KeyPreview = true;
             this.Name = "CriarProva";
             this.Text = "Criar Prova";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CriarProva_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

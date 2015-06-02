@@ -121,10 +121,12 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbxDescricao);
             this.Controls.Add(this.label1);
+            this.KeyPreview = true;
             this.Name = "PeriodoEdit";
             this.Text = "Período";
             this.Load += new System.EventHandler(this.PeriodoEdit_Load);
             this.Shown += new System.EventHandler(this.PeriodoEdit_Shown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PeriodoEdit_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,10 +1,12 @@
 ﻿using KetClass.Controller;
 using KetClass.Data;
 using KetClass.Model;
+using KetClass.View.Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,6 +21,8 @@ namespace KetClass.View.Notas
         public TurmaModel turma;
         public DisciplinaModel disciplina;
         private Controller.Controller<NotaModel> NotaController = new Controller.Controller<NotaModel>();
+        Progresso progresso = new Progresso();
+        
 
         public CadastroNotas()
         {
@@ -50,6 +54,13 @@ namespace KetClass.View.Notas
                 DefaultCellStyle = new DataGridViewCellStyle()
             });
             dgvNotas.DataSource = Notas;
+            groupBox1.TabStop = false;
+            groupBox1.GotFocus += groupBox1_GotFocus;
+        }
+
+        void groupBox1_GotFocus(object sender, EventArgs e)
+        {
+            SelectNextControl(Utils.Util.FindFocusedControl(this), true, true, true, true);
         }
 
         private void CadastroNotas_Shown(object sender, EventArgs e)
@@ -69,7 +80,7 @@ namespace KetClass.View.Notas
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(tbxNota.Text) || String.IsNullOrEmpty(tbxNumero.Text) ||
+            if ((!cbxDispensado.Checked && String.IsNullOrEmpty(tbxNota.Text)) || String.IsNullOrEmpty(tbxNumero.Text) ||
                 String.IsNullOrEmpty(tbxAulas.Text))
             {
                 MessageBox.Show("Favor preencher todos os campos");
@@ -79,7 +90,7 @@ namespace KetClass.View.Notas
             Notas.Add(new NotaModel() 
             {
                 Numero = Convert.ToInt32(tbxNumero.Text),
-                Nota = Convert.ToDouble(tbxNota.Text),
+                Nota = Convert.ToDouble(cbxDispensado.Checked ? "-1" : tbxNota.Text),
                 Faltas = Convert.ToInt32(tbxFaltas.Text.Equals("") ? "0" : tbxFaltas.Text),
                 AulasDadas = Convert.ToInt32(tbxAulas.Text),
                 TurmaId = turma.Id,
@@ -105,13 +116,56 @@ namespace KetClass.View.Notas
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Controller<AlunoModel> alunoControler = new Controller<AlunoModel>(); 
+            progresso.Iniciar(backgroundWorker1, Notas.Count, "Gravando...");
+            //Controller<AlunoModel> alunoControler = new Controller<AlunoModel>();
+            //alunoControler.dbset = alunoControler.context.Alunos;
+            //foreach (NotaModel nota in Notas)
+            //{
+                //nota.AlunoId = alunoControler.Index().Where(a => a.Numero == nota.Numero && a.Turma.Id == nota.TurmaId).FirstOrDefault().Id;
+                //NotaController.Create(nota);
+            //}
+            //this.Close();
+        }
+
+        private void CadastroNotas_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                SelectNextControl(Utils.Util.FindFocusedControl(this), true, true, true, true);
+            }
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Controller<BoletimWebModel> boletimController = new Controller<BoletimWebModel>();
+            Controller<AlunoModel> alunoControler = new Controller<AlunoModel>();
+            alunoControler.dbset = alunoControler.context.Alunos;
+            boletimController.dbset = boletimController.context.BoletinsWeb;
+            int count = 0;
             foreach (NotaModel nota in Notas)
             {
                 nota.AlunoId = alunoControler.Index().Where(a => a.Numero == nota.Numero && a.Turma.Id == nota.TurmaId).FirstOrDefault().Id;
                 NotaController.Create(nota);
+                if (boletimController.Filter(b => b.AlunoId == nota.AlunoId && b.DisciplinaId == nota.DisciplinaId).ToList().Count > 0)
+                {
+                    BoletimWebModel boletimWeb = boletimController.Filter(b => b.AlunoId == nota.AlunoId && b.DisciplinaId == nota.DisciplinaId).First();
+                    boletimWeb.PrecisaSinc = true;
+                    boletimController.Edit(boletimWeb);
+                }
+                count++;
+                backgroundWorker1.ReportProgress(count);
             }
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            progresso.Close();
             this.Close();
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            progresso.SetPosition(e.ProgressPercentage);
         }
     }
 }

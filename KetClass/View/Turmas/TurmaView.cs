@@ -73,7 +73,14 @@ namespace KetClass.View.Turmas
                 return (BaseEntity)crud.dgvCRUD.Rows[0].DataBoundItem;
             }
             ShowDialog();
-            return (BaseEntity)crud.dgvCRUD.SelectedRows[0].DataBoundItem;
+            if (crud.dgvCRUD.SelectedRows[0].DataBoundItem != null)
+            {
+                return (BaseEntity)crud.dgvCRUD.SelectedRows[0].DataBoundItem;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         private void btnSelecionar_Click(object sender, EventArgs e)

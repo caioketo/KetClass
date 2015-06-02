@@ -1,5 +1,6 @@
 ﻿using KetClass.Data;
 using KetClass.Model;
+using KetClass.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -111,7 +112,7 @@ namespace KetClass.Controller
             {
                 foreach (PermissaoModel permissaoModel in role.Permissoes)
                 {
-                    if (permissaoModel.Codigo.ToUpper().Equals(permissao.ToUpper()))
+                    if (permissaoModel.Codigo.ToUpper().Equals(permissao.ToUpper()) || permissaoModel.Codigo.Equals("*"))
                     {
                         return true;
                     }
@@ -130,19 +131,36 @@ namespace KetClass.Controller
             context.SaveChanges();
         }
 
-        public void AddRole(List<string> permissoes)
+        public void AddRole(List<Permissao> permissoes)
         {
             List<PermissaoModel> permissoesM = new List<PermissaoModel>();
-            foreach (string permissao in permissoes)
+            bool add = true;
+            foreach (Permissao permissao in permissoes)
             {
+                add = true;
                 foreach (PermissaoModel permissaoM in context.Permissoes)
                 {
-                    if (permissaoM.Codigo.ToUpper().Equals(permissao.ToUpper()))
+                    if (permissaoM.Codigo.ToUpper().Equals(permissao.PermissaoNome.ToUpper()))
                     {
                         permissoesM.Add(permissaoM);
+                        add = false;
                     }
                 }
+                if (add)
+                {
+                    PermissaoModel permissaoAdd = new PermissaoModel();
+                    permissaoAdd.Codigo = permissao.PermissaoNome;
+                    permissaoAdd.DataCriacao = DateTime.Now;
+                    permissaoAdd.DataAlteracao = DateTime.Now;
+                    permissaoAdd = context.Permissoes.Add(permissaoAdd);
+                    context.SaveChanges();
+                    permissoesM.Add(permissaoAdd);
+                }
             }
+            RoleModel role = new RoleModel();
+            role.Permissoes = permissoesM;
+            context.Roles.Add(role);
+            context.SaveChanges();
         }        
     }
 }

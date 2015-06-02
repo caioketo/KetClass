@@ -7,13 +7,13 @@ namespace KetClass.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.0.2-21211")]
-    public sealed partial class _20151 : IMigrationMetadata
+    public sealed partial class NotasBoletim : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(_20151));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(NotasBoletim));
         
         string IMigrationMetadata.Id
         {
-            get { return "201501121258205_2015-1"; }
+            get { return "201505051539529_NotasBoletim"; }
         }
         
         string IMigrationMetadata.Source

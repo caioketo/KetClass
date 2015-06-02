@@ -59,5 +59,10 @@ namespace KetClass.View.Licao
         {
             this.Close();
         }
+
+        private void crud_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

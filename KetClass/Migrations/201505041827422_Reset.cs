@@ -3,11 +3,11 @@ namespace KetClass.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class Reset : DbMigration
     {
         public override void Up()
         {
-            CreateTable(
+            /*CreateTable(
                 "dbo.AlunoModels",
                 c => new
                     {
@@ -16,6 +16,8 @@ namespace KetClass.Migrations
                         Sexo = c.String(),
                         Cor = c.String(),
                         CN = c.String(),
+                        CodigoFam = c.String(),
+                        Certidao = c.String(),
                         Numero = c.Int(nullable: false),
                         DataMatricula = c.DateTime(nullable: false),
                         DataExclusao = c.DateTime(),
@@ -47,8 +49,8 @@ namespace KetClass.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Nome = c.String(nullable: false),
-                        Telefone = c.String(nullable: false),
+                        Nome = c.String(),
+                        Telefone = c.String(),
                         DataNascimento = c.DateTime(),
                         LocalNascimento = c.String(),
                         RG = c.String(),
@@ -131,7 +133,6 @@ namespace KetClass.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Descricao = c.String(),
-                        Ano = c.Int(nullable: false),
                         PeriodoId = c.Int(nullable: false),
                         UnidadeId = c.Int(nullable: false),
                         PrimeiraSerie = c.Int(nullable: false),
@@ -208,6 +209,25 @@ namespace KetClass.Migrations
                 .Index(t => t.TurmaId);
             
             CreateTable(
+                "dbo.MatriculaModels",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        AlunoId = c.Int(nullable: false),
+                        TurmaId = c.Int(nullable: false),
+                        Numero = c.Int(nullable: false),
+                        DataMatricula = c.DateTime(nullable: false),
+                        DataExclusao = c.DateTime(),
+                        DataCriacao = c.DateTime(nullable: false),
+                        DataAlteracao = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.AlunoModels", t => t.AlunoId, cascadeDelete: true)
+                .ForeignKey("dbo.TurmaModels", t => t.TurmaId, cascadeDelete: true)
+                .Index(t => t.AlunoId)
+                .Index(t => t.TurmaId);
+            
+            CreateTable(
                 "dbo.NotaModels",
                 c => new
                     {
@@ -234,6 +254,44 @@ namespace KetClass.Migrations
                 .Index(t => t.TurmaId);
             
             CreateTable(
+                "dbo.PermissaoModels",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Codigo = c.String(),
+                        DataExclusao = c.DateTime(),
+                        DataCriacao = c.DateTime(nullable: false),
+                        DataAlteracao = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.RoleModels",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        DataExclusao = c.DateTime(),
+                        DataCriacao = c.DateTime(nullable: false),
+                        DataAlteracao = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.UserModels",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Login = c.String(),
+                        Password = c.String(),
+                        Nome = c.String(),
+                        Cargo = c.String(),
+                        DataExclusao = c.DateTime(),
+                        DataCriacao = c.DateTime(nullable: false),
+                        DataAlteracao = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.ProvaModels",
                 c => new
                     {
@@ -254,44 +312,6 @@ namespace KetClass.Migrations
                 .ForeignKey("dbo.TurmaModels", t => t.TurmaId, cascadeDelete: true)
                 .Index(t => t.DisciplinaId)
                 .Index(t => t.TurmaId);
-            
-            CreateTable(
-                "dbo.UserModels",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Login = c.String(),
-                        Password = c.String(),
-                        Nome = c.String(),
-                        Cargo = c.String(),
-                        DataExclusao = c.DateTime(),
-                        DataCriacao = c.DateTime(nullable: false),
-                        DataAlteracao = c.DateTime(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.RoleModels",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        DataExclusao = c.DateTime(),
-                        DataCriacao = c.DateTime(nullable: false),
-                        DataAlteracao = c.DateTime(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.PermissaoModels",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Codigo = c.String(),
-                        DataExclusao = c.DateTime(),
-                        DataCriacao = c.DateTime(nullable: false),
-                        DataAlteracao = c.DateTime(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.RolesPermissoes",
@@ -317,21 +337,23 @@ namespace KetClass.Migrations
                 .ForeignKey("dbo.RoleModels", t => t.RoleId, cascadeDelete: true)
                 .ForeignKey("dbo.UserModels", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.RoleId)
-                .Index(t => t.UserId);
+                .Index(t => t.UserId);*/
             
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.ProvaModels", "TurmaId", "dbo.TurmaModels");
+            DropForeignKey("dbo.ProvaModels", "DisciplinaId", "dbo.DisciplinaModels");
             DropForeignKey("dbo.RolesUsers", "UserId", "dbo.UserModels");
             DropForeignKey("dbo.RolesUsers", "RoleId", "dbo.RoleModels");
             DropForeignKey("dbo.RolesPermissoes", "PermissaoId", "dbo.PermissaoModels");
             DropForeignKey("dbo.RolesPermissoes", "RoleId", "dbo.RoleModels");
-            DropForeignKey("dbo.ProvaModels", "TurmaId", "dbo.TurmaModels");
-            DropForeignKey("dbo.ProvaModels", "DisciplinaId", "dbo.DisciplinaModels");
             DropForeignKey("dbo.NotaModels", "TurmaId", "dbo.TurmaModels");
             DropForeignKey("dbo.NotaModels", "DisciplinaId", "dbo.DisciplinaModels");
             DropForeignKey("dbo.NotaModels", "AlunoId", "dbo.AlunoModels");
+            DropForeignKey("dbo.MatriculaModels", "TurmaId", "dbo.TurmaModels");
+            DropForeignKey("dbo.MatriculaModels", "AlunoId", "dbo.AlunoModels");
             DropForeignKey("dbo.LicaoModels", "TurmaId", "dbo.TurmaModels");
             DropForeignKey("dbo.LicaoModels", "DisciplinaId", "dbo.DisciplinaModels");
             DropForeignKey("dbo.AlunoModels", "Turma_Id", "dbo.TurmaModels");
@@ -345,15 +367,17 @@ namespace KetClass.Migrations
             DropForeignKey("dbo.EnderecoModels", "Cidade_Id", "dbo.CidadeModels");
             DropForeignKey("dbo.CidadeModels", "UF_Id", "dbo.UFModels");
             DropForeignKey("dbo.AlunoModels", "Aluno_Id", "dbo.PessoaModels");
+            DropIndex("dbo.ProvaModels", new[] { "TurmaId" });
+            DropIndex("dbo.ProvaModels", new[] { "DisciplinaId" });
             DropIndex("dbo.RolesUsers", new[] { "UserId" });
             DropIndex("dbo.RolesUsers", new[] { "RoleId" });
             DropIndex("dbo.RolesPermissoes", new[] { "PermissaoId" });
             DropIndex("dbo.RolesPermissoes", new[] { "RoleId" });
-            DropIndex("dbo.ProvaModels", new[] { "TurmaId" });
-            DropIndex("dbo.ProvaModels", new[] { "DisciplinaId" });
             DropIndex("dbo.NotaModels", new[] { "TurmaId" });
             DropIndex("dbo.NotaModels", new[] { "DisciplinaId" });
             DropIndex("dbo.NotaModels", new[] { "AlunoId" });
+            DropIndex("dbo.MatriculaModels", new[] { "TurmaId" });
+            DropIndex("dbo.MatriculaModels", new[] { "AlunoId" });
             DropIndex("dbo.LicaoModels", new[] { "TurmaId" });
             DropIndex("dbo.LicaoModels", new[] { "DisciplinaId" });
             DropIndex("dbo.AlunoModels", new[] { "Turma_Id" });
@@ -369,11 +393,12 @@ namespace KetClass.Migrations
             DropIndex("dbo.AlunoModels", new[] { "Aluno_Id" });
             DropTable("dbo.RolesUsers");
             DropTable("dbo.RolesPermissoes");
-            DropTable("dbo.PermissaoModels");
-            DropTable("dbo.RoleModels");
-            DropTable("dbo.UserModels");
             DropTable("dbo.ProvaModels");
+            DropTable("dbo.UserModels");
+            DropTable("dbo.RoleModels");
+            DropTable("dbo.PermissaoModels");
             DropTable("dbo.NotaModels");
+            DropTable("dbo.MatriculaModels");
             DropTable("dbo.LicaoModels");
             DropTable("dbo.DisciplinaModels");
             DropTable("dbo.UnidadeModels");

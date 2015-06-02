@@ -38,6 +38,8 @@ namespace KetClass.View.Alunos
             baseView.Create();
             edit.ShowDialog();
             baseView.Index();
+            crud.tbxPesquisa.Focus();
+            crud.tbxPesquisa.SelectAll();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -49,6 +51,8 @@ namespace KetClass.View.Alunos
             edit.ShowDialog();
             baseView.Index();
             crud.dgvCRUD.CurrentCell = crud.dgvCRUD.Rows[rowIndex].Cells[columnIndex];
+            crud.tbxPesquisa.Focus();
+            crud.tbxPesquisa.SelectAll();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -85,6 +89,8 @@ namespace KetClass.View.Alunos
             {
                 tbxPesquisa_TextChanged(crud.tbxPesquisa, null);
             }
+            crud.tbxPesquisa.Focus();   
+            crud.tbxPesquisa.SelectAll();
         }
     }
 }

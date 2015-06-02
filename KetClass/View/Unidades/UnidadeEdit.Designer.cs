@@ -99,8 +99,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnGravar);
+            this.KeyPreview = true;
             this.Name = "UnidadeEdit";
             this.Text = "UnidadeEdit";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UnidadeEdit_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

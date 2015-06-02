@@ -71,6 +71,10 @@ namespace KetClass.View.Disciplinas
                 return (BaseEntity)crud.dgvCRUD.Rows[0].DataBoundItem;
             }
             ShowDialog();
+            if (crud.dgvCRUD.SelectedRows.Count <= 0)
+            {
+                return null;
+            }
             return (BaseEntity)crud.dgvCRUD.SelectedRows[0].DataBoundItem;
         }
 

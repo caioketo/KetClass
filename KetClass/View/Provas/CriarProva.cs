@@ -88,5 +88,13 @@ namespace KetClass.View.Provas
             var mes = dtpData.Value.Month;
             MessageBox.Show(mes.ToString());
         }
+
+        private void CriarProva_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                SelectNextControl(Utils.Util.FindFocusedControl(this), true, true, true, true);
+            }
+        }
     }
 }
