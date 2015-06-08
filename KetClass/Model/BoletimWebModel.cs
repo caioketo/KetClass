@@ -16,7 +16,7 @@ namespace KetClass.Model
         public BoletimWebModel(Newtonsoft.Json.Linq.JObject jsonObject)
         {
             WebId = (int)jsonObject.GetValue("Id");
-            AlunoId = (int)jsonObject.GetValue("AlunoId");
+            AlunoId = (int)jsonObject.GetValue("AlunoCId");
             DisciplinaId = (int)jsonObject.GetValue("DisciplinaId");
             PrecisaSinc = false;
         }

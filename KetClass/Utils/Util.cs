@@ -21,6 +21,7 @@ namespace KetClass.Utils
         static BackgroundWorker worker;
         static Progresso progresso;
         static List<BoletimJSON> notasJSON;
+        static List<AlunoJSON> alunosJSON;
         static int count;
 
         public static Control FindFocusedControl(Control control)
@@ -55,13 +56,13 @@ namespace KetClass.Utils
                             notasJSON.Add(boletim);
 
                             boletim = new BoletimJSON();
-                            boletim.AlunoId = aluno.Id;
+                            boletim.AlunoCId = aluno.Id;
                             boletim.DisciplinaId = nota.DisciplinaId;
                         }
                         if (boletim == null)
                         {
                             boletim = new BoletimJSON();
-                            boletim.AlunoId = aluno.Id;
+                            boletim.AlunoCId = aluno.Id;
                             boletim.DisciplinaId = nota.DisciplinaId;
                         }
                         disciplinaId = nota.DisciplinaId;
@@ -84,25 +85,25 @@ namespace KetClass.Utils
 
             worker = new BackgroundWorker();
             progresso = new Progresso();
-            worker.DoWork += backgroundWorker1_DoWork;
-            worker.ProgressChanged += backgroundWorker1_ProgressChanged;
-            worker.RunWorkerCompleted += backgroundWorker1_RunWorkerCompleted;
+            worker.DoWork += workerBoletim_DoWork;
+            worker.ProgressChanged += worker_ProgressChanged;
+            worker.RunWorkerCompleted += worker_RunWorkerCompleted;
             worker.WorkerReportsProgress = true;
             count = 0;
             progresso.Iniciar(worker, notasJSON.Count, "Enviando notas...");            
         }
 
-        private static void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private static void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             progresso.Close();
         }
 
-        private static void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private static void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progresso.SetPosition(count);
         }
 
-        private static void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        private static void workerBoletim_DoWork(object sender, DoWorkEventArgs e)
         {
             foreach (BoletimJSON boletim in notasJSON)
             {
@@ -112,14 +113,80 @@ namespace KetClass.Utils
             }
         }
 
+        private static void workerAluno_DoWork(object sender, DoWorkEventArgs e)
+        {
+            foreach (AlunoJSON aluno in alunosJSON)
+            {
+                EnviaAluno(aluno);
+                count++;
+                worker.ReportProgress(count);
+            }
+        }
+
+        public static void EnviaAluno(AlunoJSON aluno)
+        {
+            String result = "";
+            string strPost = JsonConvert.SerializeObject(aluno).ToString();
+            strPost = "alunoJSON=" + Convert.ToBase64String(Encoding.UTF8.GetBytes(strPost));
+            StreamWriter myWriter = null;
+            HttpWebRequest objRequest = (HttpWebRequest)WebRequest.Create("http://localhost:49893/Boletim/CreateAlunoJSON");//http://www.escolareginaaltman.com.br/Licao/CreateJSON");
+            objRequest.Method = "POST";
+            objRequest.ContentLength = strPost.Length;
+            objRequest.ContentType = "application/x-www-form-urlencoded";
+            try
+            {
+                myWriter = new StreamWriter(objRequest.GetRequestStream());
+                myWriter.Write(strPost);
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+            }
+            finally
+            {
+                myWriter.Close();
+            }
+
+            HttpWebResponse objResponse = (HttpWebResponse)objRequest.GetResponse();
+            using (StreamReader sr = new StreamReader(objResponse.GetResponseStream()))
+            {
+                result = sr.ReadToEnd();
+                sr.Close();
+            }
+        }
+
+        public static void EnviarAlunos()
+        {
+            alunosJSON = new List<AlunoJSON>();
+
+            Controller<AlunoModel> alunoController = new Controller<AlunoModel>();
+            alunoController.dbset = alunoController.context.Alunos;
+
+            foreach (AlunoModel aluno in alunoController.Filter(a => a.Numero > 0 && a.Turma != null).ToList())
+            {
+                alunosJSON.Add(new AlunoJSON(aluno));
+            }   
+
+
+            worker = new BackgroundWorker();
+            progresso = new Progresso();
+            worker.DoWork += workerAluno_DoWork;
+            worker.ProgressChanged += worker_ProgressChanged;
+            worker.RunWorkerCompleted += worker_RunWorkerCompleted;
+            worker.WorkerReportsProgress = true;
+            count = 0;
+            progresso.Iniciar(worker, alunosJSON.Count, "Enviando alunos...");    
+        }
+
+
         public static void EnviaBoletim(BoletimJSON boletim)
         {
             Controller<BoletimWebModel> webController = new Controller<BoletimWebModel>();
             webController.dbset = webController.context.BoletinsWeb;
 
-            if (webController.Filter(b => b.AlunoId == boletim.AlunoId && b.DisciplinaId == boletim.DisciplinaId).ToList().Count > 0)
+            if (webController.Filter(b => b.AlunoId == boletim.AlunoCId && b.DisciplinaId == boletim.DisciplinaId).ToList().Count > 0)
             {
-                BoletimWebModel boletimWeb = webController.Filter(b => b.AlunoId == boletim.AlunoId && b.DisciplinaId == boletim.DisciplinaId).First();
+                BoletimWebModel boletimWeb = webController.Filter(b => b.AlunoId == boletim.AlunoCId && b.DisciplinaId == boletim.DisciplinaId).First();
                 if (boletimWeb.PrecisaSinc)
                 {
                     //Editar

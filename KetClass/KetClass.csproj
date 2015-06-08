@@ -102,6 +102,7 @@
       <DependentUpon>201506021602403_WebBoletimSinc.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\AlunoJSON.cs" />
     <Compile Include="Model\BoletimJSON.cs" />
     <Compile Include="Model\BoletimWebModel.cs" />
     <Compile Include="Model\MatriculaModel.cs" />

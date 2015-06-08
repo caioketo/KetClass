@@ -8,7 +8,7 @@ namespace KetClass.Model
 {
     public class BoletimJSON
     {
-        public int AlunoId { get; set; }
+        public int AlunoCId { get; set; }
         public int DisciplinaId { get; set; }
         public NotaBoletimJSON NotaTrim1 { get; set; }
         public NotaBoletimJSON NotaTrim2 { get; set; }

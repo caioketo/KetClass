@@ -49,6 +49,8 @@
             this.importarDBFsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testeBoletimToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testeBoletimToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.testeAlunosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -218,10 +220,27 @@
             // 
             // testeBoletimToolStripMenuItem
             // 
+            this.testeBoletimToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.testeBoletimToolStripMenuItem1,
+            this.testeAlunosToolStripMenuItem});
             this.testeBoletimToolStripMenuItem.Name = "testeBoletimToolStripMenuItem";
-            this.testeBoletimToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
-            this.testeBoletimToolStripMenuItem.Text = "Teste Boletim";
+            this.testeBoletimToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.testeBoletimToolStripMenuItem.Text = "Testes";
             this.testeBoletimToolStripMenuItem.Click += new System.EventHandler(this.testeBoletimToolStripMenuItem_Click);
+            // 
+            // testeBoletimToolStripMenuItem1
+            // 
+            this.testeBoletimToolStripMenuItem1.Name = "testeBoletimToolStripMenuItem1";
+            this.testeBoletimToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.testeBoletimToolStripMenuItem1.Text = "Teste Boletim";
+            this.testeBoletimToolStripMenuItem1.Click += new System.EventHandler(this.testeBoletimToolStripMenuItem1_Click);
+            // 
+            // testeAlunosToolStripMenuItem
+            // 
+            this.testeAlunosToolStripMenuItem.Name = "testeAlunosToolStripMenuItem";
+            this.testeAlunosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.testeAlunosToolStripMenuItem.Text = "Teste Alunos";
+            this.testeAlunosToolStripMenuItem.Click += new System.EventHandler(this.testeAlunosToolStripMenuItem_Click);
             // 
             // Principal
             // 
@@ -263,6 +282,8 @@
         private System.Windows.Forms.ToolStripMenuItem importarDBFsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem matrículasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testeBoletimToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem testeBoletimToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem testeAlunosToolStripMenuItem;
 
     }
 }

@@ -477,14 +477,24 @@ namespace KetClass
 
         private void testeBoletimToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            List<int> alunosIds = new List<int>();
             
+        }
+
+        private void testeBoletimToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            List<int> alunosIds = new List<int>();
+
             foreach (NotaModel nota in KCContext.getInstance().Notas.ToList())
             {
                 alunosIds.Add(nota.AlunoId);
             }
 
             Utils.Util.EnviarNotas(1, KCContext.getInstance().Alunos.Where(a => alunosIds.Contains(a.Id)).ToList());
+        }
+
+        private void testeAlunosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Utils.Util.EnviarAlunos();
         }
     }
 }
