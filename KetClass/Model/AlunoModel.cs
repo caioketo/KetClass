@@ -23,6 +23,8 @@ namespace KetClass.Model
         public TurmaModel Turma { get; set; }
         public int Numero { get; set; }
         public DateTime DataMatricula { get; set; }
+        public string Email { get; set; }
+        public string Senha { get; set; }
         public CursoModel Curso
         {
             get

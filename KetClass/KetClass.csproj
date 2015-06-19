@@ -101,6 +101,10 @@
     <Compile Include="Migrations\201506021602403_WebBoletimSinc.Designer.cs">
       <DependentUpon>201506021602403_WebBoletimSinc.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506151328456_emailSenha.cs" />
+    <Compile Include="Migrations\201506151328456_emailSenha.Designer.cs">
+      <DependentUpon>201506151328456_emailSenha.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\AlunoJSON.cs" />
     <Compile Include="Model\BoletimJSON.cs" />
@@ -326,6 +330,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506021602403_WebBoletimSinc.resx">
       <DependentUpon>201506021602403_WebBoletimSinc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506151328456_emailSenha.resx">
+      <DependentUpon>201506151328456_emailSenha.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>

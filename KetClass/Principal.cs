@@ -24,6 +24,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -495,6 +496,62 @@ namespace KetClass
         private void testeAlunosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Utils.Util.EnviarAlunos();
+        }
+
+        private void testeEmailSenhaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Controller<AlunoModel> alunoController = new Controller<AlunoModel>();
+            alunoController.dbset = alunoController.context.Alunos;
+            foreach (AlunoModel aluno in alunoController.Filter(a => a.Email != null).ToList())
+            {
+                aluno.Senha = RandomString(10);
+                alunoController.Edit(aluno);
+            }
+        }
+
+        public void SendEmailSenha(string email, string senha)
+        {
+            try
+            {
+                SmtpClient client = new SmtpClient("mail.escolareginaaltman.com.br", 25);
+                NetworkCredential cred = new NetworkCredential("secretaria@escolareginaaltman.com.br", "escola2014");
+                MailMessage Msg = new MailMessage();
+                Msg.From = new MailAddress("secretaria@escolareginaaltman.com.br");
+                Msg.To.Add(email);
+                Msg.Subject = "Senha para acesso site ERA";
+                Msg.Body = "Boa tarde," + System.Environment.NewLine +
+                    "Segue a senha para acesso do site da Escola Regina Altman" + System.Environment.NewLine +
+                    "Essa senha será utilizada para consulta de boletins e outras funções. " + System.Environment.NewLine +
+                    "Por enquanto sua senha é: '" + senha + "' " + System.Environment.NewLine +
+                    "Caso deseje alterar a senha, favor entrar no seguinte link:  www.escolareginaaltman.com.br/Boletim/AlterarSenha e digite o usuário (email) e a senha." + System.Environment.NewLine +
+                    "Obrigado, " + System.Environment.NewLine +
+                    "Att, " + System.Environment.NewLine + 
+                    "Suporte Escola Regina Altman";
+                client.Credentials = cred;
+                client.EnableSsl = false;
+                client.Send(Msg);
+            }
+            catch
+            {
+            }
+        }
+
+        private string RandomString(int size)
+        {
+            StringBuilder builder = new StringBuilder();
+            Random random = new Random();
+            char ch;
+            for (int i = 0; i < size; i++)
+            {
+                ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
+                builder.Append(ch);
+            }
+            return builder.ToString();
+        }
+
+        private void testeEnvioEmailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SendEmailSenha("caionmoreno1@gmail.com", "1234");
         }
     }
 }

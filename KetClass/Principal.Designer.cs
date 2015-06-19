@@ -51,6 +51,8 @@
             this.testeBoletimToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testeBoletimToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.testeAlunosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testeEmailSenhaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testeEnvioEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -222,7 +224,9 @@
             // 
             this.testeBoletimToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.testeBoletimToolStripMenuItem1,
-            this.testeAlunosToolStripMenuItem});
+            this.testeAlunosToolStripMenuItem,
+            this.testeEmailSenhaToolStripMenuItem,
+            this.testeEnvioEmailToolStripMenuItem});
             this.testeBoletimToolStripMenuItem.Name = "testeBoletimToolStripMenuItem";
             this.testeBoletimToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.testeBoletimToolStripMenuItem.Text = "Testes";
@@ -231,16 +235,30 @@
             // testeBoletimToolStripMenuItem1
             // 
             this.testeBoletimToolStripMenuItem1.Name = "testeBoletimToolStripMenuItem1";
-            this.testeBoletimToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.testeBoletimToolStripMenuItem1.Size = new System.Drawing.Size(171, 22);
             this.testeBoletimToolStripMenuItem1.Text = "Teste Boletim";
             this.testeBoletimToolStripMenuItem1.Click += new System.EventHandler(this.testeBoletimToolStripMenuItem1_Click);
             // 
             // testeAlunosToolStripMenuItem
             // 
             this.testeAlunosToolStripMenuItem.Name = "testeAlunosToolStripMenuItem";
-            this.testeAlunosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.testeAlunosToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.testeAlunosToolStripMenuItem.Text = "Teste Alunos";
             this.testeAlunosToolStripMenuItem.Click += new System.EventHandler(this.testeAlunosToolStripMenuItem_Click);
+            // 
+            // testeEmailSenhaToolStripMenuItem
+            // 
+            this.testeEmailSenhaToolStripMenuItem.Name = "testeEmailSenhaToolStripMenuItem";
+            this.testeEmailSenhaToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.testeEmailSenhaToolStripMenuItem.Text = "Teste Email/Senha";
+            this.testeEmailSenhaToolStripMenuItem.Click += new System.EventHandler(this.testeEmailSenhaToolStripMenuItem_Click);
+            // 
+            // testeEnvioEmailToolStripMenuItem
+            // 
+            this.testeEnvioEmailToolStripMenuItem.Name = "testeEnvioEmailToolStripMenuItem";
+            this.testeEnvioEmailToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.testeEnvioEmailToolStripMenuItem.Text = "Teste Envio Email";
+            this.testeEnvioEmailToolStripMenuItem.Click += new System.EventHandler(this.testeEnvioEmailToolStripMenuItem_Click);
             // 
             // Principal
             // 
@@ -284,6 +302,8 @@
         private System.Windows.Forms.ToolStripMenuItem testeBoletimToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testeBoletimToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem testeAlunosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem testeEmailSenhaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem testeEnvioEmailToolStripMenuItem;
 
     }
 }

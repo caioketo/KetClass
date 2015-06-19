@@ -17,6 +17,8 @@ namespace KetClass.Model
         public int Ano { get; set; }
         public string Turma { get; set; }
         public int Numero { get; set; }
+        public string Email { get; set; }
+        public string Senha { get; set; }
         public AlunoJSON()
         {
 
@@ -33,6 +35,8 @@ namespace KetClass.Model
             this.UPCATN = "Unid.: " + aluno.Turma.Curso.UnidadeDescricao + " Período: " +
                 aluno.Turma.Curso.PeriodoDescricao + " Curso: " + aluno.Turma.CursoDescricao + " Ano: " + aluno.Turma.Serie +
                 " Turma: " + aluno.Turma.Descricao;
+            this.Email = aluno.Email;
+            this.Senha = aluno.Senha;
         }
     }
 }
