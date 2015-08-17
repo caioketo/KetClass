@@ -40,6 +40,7 @@ namespace KetClass.Utils
             Controller<NotaModel> notasController = new Controller<NotaModel>();
             notasController.dbset = notasController.context.Notas;
             notasJSON = new List<BoletimJSON>();
+            alunos = alunos.Where(a => a.Id == 619).ToList();
             foreach (AlunoModel aluno in alunos)
             {
                 List<NotaModel> notas = notasController.Filter(n => n.AlunoId == aluno.Id && n.Trimestre == trimestre).OrderBy(n => n.DisciplinaId).ToList();
@@ -265,8 +266,10 @@ namespace KetClass.Utils
         {
             List<Permissao> permissoes = new List<Permissao>();
             permissoes.Add(new Permissao("Alunos", "alunosToolStripMenuItem"));
-            permissoes.Add(new Permissao("Cadastrar Provas", "enviarProvasToolStripMenuItem"));
-            permissoes.Add(new Permissao("Enviar Provas", "enviarProvasToolStripMenuItem1"));
+            permissoes.Add(new Permissao("Provas", "provas"));
+            permissoes.Add(new Permissao("Enviar Provas", "enviarProvas"));
+            permissoes.Add(new Permissao("Cadastrar Provas", "cadastrarProvas"));
+            permissoes.Add(new Permissao("Enviar Provas", "enviarProvas"));
             permissoes.Add(new Permissao("Cadastrar Lições", "cadastrarLiçãoToolStripMenuItem"));
             permissoes.Add(new Permissao("Enviar Lições", "enviarLiçõesToolStripMenuItem"));
             permissoes.Add(new Permissao("Cadastro de Cursos", "cursosToolStripMenuItem1"));
@@ -276,10 +279,6 @@ namespace KetClass.Utils
             permissoes.Add(new Permissao("Cadastro de Notas", "cadastrarToolStripMenuItem"));
             permissoes.Add(new Permissao("Visualizar Notas", "viewToolStripMenuItem"));
             permissoes.Add(new Permissao("Matrículas", "matrículasToolStripMenuItem"));
-
-
-            
-            
 
             return permissoes;
         }

@@ -134,6 +134,8 @@ namespace KetClass.View.Alunos
         private void AlunoEdit_Shown(object sender, EventArgs e)
         {
             MapearTela();
+            pesTurma.ReadOnly = true;
+            tbxNumero.ReadOnly = true;
         }
 
         private void AlunoEdit_KeyPress(object sender, KeyPressEventArgs e)

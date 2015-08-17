@@ -35,6 +35,21 @@ namespace KetClass.Model
             }
         }
 
+        public virtual int AlunoNumero
+        {
+            get
+            {
+                if (Aluno != null)
+                {
+                    return Aluno.Numero;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
         public virtual string TurmaDisplay
         {
             get

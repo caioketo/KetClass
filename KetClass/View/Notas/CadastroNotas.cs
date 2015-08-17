@@ -17,11 +17,14 @@ namespace KetClass.View.Notas
 {
     public partial class CadastroNotas : Form
     {
+        public bool Recuperacao = false;
+        public bool RecCriada = false;
         public List<NotaModel> Notas;
         public TurmaModel turma;
         public DisciplinaModel disciplina;
         private Controller.Controller<NotaModel> NotaController = new Controller.Controller<NotaModel>();
         Progresso progresso = new Progresso();
+        private List<double> NotasRec = new List<double>();
         
 
         public CadastroNotas()
@@ -76,6 +79,14 @@ namespace KetClass.View.Notas
             }
 
             tbxNumero.Text = "1";
+            tbxFaltas.Enabled = true;
+            tbxNota.Enabled = true;
+            btnAdd.Enabled = true;
+            btnDelete.Enabled = true;
+            cbxDispensado.Enabled = true;
+            tbxAulas.Enabled = true;
+
+            dgvNotas.EditMode = DataGridViewEditMode.EditProgrammatically;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -116,6 +127,10 @@ namespace KetClass.View.Notas
 
         private void button1_Click(object sender, EventArgs e)
         {
+            foreach (DataGridViewRow row in dgvNotas.Rows)
+            {
+                NotasRec.Add(Convert.ToDouble(row.Cells[3].Value));
+            }
             progresso.Iniciar(backgroundWorker1, Notas.Count, "Gravando...");
             //Controller<AlunoModel> alunoControler = new Controller<AlunoModel>();
             //alunoControler.dbset = alunoControler.context.Alunos;
@@ -143,9 +158,19 @@ namespace KetClass.View.Notas
             boletimController.dbset = boletimController.context.BoletinsWeb;
             int count = 0;
             foreach (NotaModel nota in Notas)
-            {
-                nota.AlunoId = alunoControler.Index().Where(a => a.Numero == nota.Numero && a.Turma.Id == nota.TurmaId).FirstOrDefault().Id;
-                NotaController.Create(nota);
+            {                
+                if (Recuperacao)
+                {
+                    NotaModel notaRec = new NotaModel(nota);
+                    notaRec.Recupercao = true;
+                    notaRec.Nota = NotasRec[count];
+                    NotaController.Create(notaRec);
+                }
+                else
+                {
+                    nota.AlunoId = alunoControler.Index().Where(a => a.Numero == nota.Numero && a.Turma.Id == nota.TurmaId).FirstOrDefault().Id;
+                    NotaController.Create(nota);
+                }
                 if (boletimController.Filter(b => b.AlunoId == nota.AlunoId && b.DisciplinaId == nota.DisciplinaId).ToList().Count > 0)
                 {
                     BoletimWebModel boletimWeb = boletimController.Filter(b => b.AlunoId == nota.AlunoId && b.DisciplinaId == nota.DisciplinaId).First();
@@ -166,6 +191,42 @@ namespace KetClass.View.Notas
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progresso.SetPosition(e.ProgressPercentage);
+        }
+
+        private void tbxTrimestre_Leave(object sender, EventArgs e)
+        {
+            if (Recuperacao && !RecCriada)
+            {
+                RecCriada = true;
+                int trim = Convert.ToInt32(tbxTrimestre.Text);
+                Notas = NotaController.Filter(n => n.TurmaId == turma.Id && n.DisciplinaId == disciplina.Id &&
+                    n.Nota < 5 && n.Trimestre == trim).ToList();
+
+                dgvNotas.DataSource = null;
+
+                foreach (DataGridViewColumn col in dgvNotas.Columns)
+                {
+                    col.ReadOnly = true;
+                }
+                dgvNotas.Columns.Add(new System.Windows.Forms.DataGridViewColumn(new DataGridViewTextBoxCell())
+                {
+                    HeaderText = "Rec",
+                    DataPropertyName = "Rec",
+                    Name = "RecC",
+                    DefaultCellStyle = new DataGridViewCellStyle()
+                });
+
+                dgvNotas.EditMode = DataGridViewEditMode.EditOnEnter;
+
+                tbxFaltas.Enabled = false;
+                tbxNota.Enabled = false;
+                btnAdd.Enabled = false;
+                btnDelete.Enabled = false;
+                cbxDispensado.Enabled = false;
+                tbxAulas.Enabled = false;
+                dgvNotas.DataSource = Notas;
+                dgvNotas.Focus();
+            }
         }
     }
 }

@@ -131,7 +131,7 @@ namespace KetClass.Controller
             context.SaveChanges();
         }
 
-        public void AddRole(List<Permissao> permissoes)
+        public void AddRole(List<Permissao> permissoes, string Descricao)
         {
             List<PermissaoModel> permissoesM = new List<PermissaoModel>();
             bool add = true;
@@ -158,6 +158,7 @@ namespace KetClass.Controller
                 }
             }
             RoleModel role = new RoleModel();
+            role.Descricao = Descricao;
             role.Permissoes = permissoesM;
             context.Roles.Add(role);
             context.SaveChanges();

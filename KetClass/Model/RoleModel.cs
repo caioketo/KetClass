@@ -9,6 +9,7 @@ namespace KetClass.Model
 {
     public class RoleModel : BaseEntity
     {
+        public string Descricao { get; set; }
         public virtual ICollection<UserModel> Users { get; set; }
         public virtual ICollection<PermissaoModel> Permissoes { get; set; }
     }

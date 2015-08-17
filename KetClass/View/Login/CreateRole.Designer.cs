@@ -33,6 +33,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.dgvPermissoes = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
+            this.tbxDescricao = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPermissoes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -40,7 +42,7 @@
             // 
             this.cbxPermissoes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxPermissoes.FormattingEnabled = true;
-            this.cbxPermissoes.Location = new System.Drawing.Point(12, 29);
+            this.cbxPermissoes.Location = new System.Drawing.Point(11, 75);
             this.cbxPermissoes.Name = "cbxPermissoes";
             this.cbxPermissoes.Size = new System.Drawing.Size(200, 21);
             this.cbxPermissoes.TabIndex = 0;
@@ -48,7 +50,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(8, 59);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 1;
@@ -56,7 +58,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(219, 29);
+            this.button1.Location = new System.Drawing.Point(218, 75);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(22, 21);
             this.button1.TabIndex = 2;
@@ -67,14 +69,14 @@
             // dgvPermissoes
             // 
             this.dgvPermissoes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPermissoes.Location = new System.Drawing.Point(13, 57);
+            this.dgvPermissoes.Location = new System.Drawing.Point(12, 103);
             this.dgvPermissoes.Name = "dgvPermissoes";
             this.dgvPermissoes.Size = new System.Drawing.Size(228, 232);
             this.dgvPermissoes.TabIndex = 3;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(16, 296);
+            this.button2.Location = new System.Drawing.Point(15, 342);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 4;
@@ -82,11 +84,29 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // tbxDescricao
+            // 
+            this.tbxDescricao.Location = new System.Drawing.Point(11, 25);
+            this.tbxDescricao.Name = "tbxDescricao";
+            this.tbxDescricao.Size = new System.Drawing.Size(200, 20);
+            this.tbxDescricao.TabIndex = 7;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Descrição";
+            // 
             // CreateRole
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(288, 328);
+            this.ClientSize = new System.Drawing.Size(256, 377);
+            this.Controls.Add(this.tbxDescricao);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dgvPermissoes);
             this.Controls.Add(this.button1);
@@ -107,5 +127,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dgvPermissoes;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox tbxDescricao;
+        private System.Windows.Forms.Label label3;
     }
 }

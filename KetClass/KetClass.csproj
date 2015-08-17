@@ -67,6 +67,8 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -74,6 +76,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -104,6 +107,10 @@
     <Compile Include="Migrations\201506151328456_emailSenha.cs" />
     <Compile Include="Migrations\201506151328456_emailSenha.Designer.cs">
       <DependentUpon>201506151328456_emailSenha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508071058301_DescricaoRole.cs" />
+    <Compile Include="Migrations\201508071058301_DescricaoRole.Designer.cs">
+      <DependentUpon>201508071058301_DescricaoRole.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\AlunoJSON.cs" />
@@ -211,11 +218,35 @@
     <Compile Include="View\Login\CreateRole.Designer.cs">
       <DependentUpon>CreateRole.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Login\CreateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Login\CreateUser.Designer.cs">
+      <DependentUpon>CreateUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Login\Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Login\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login\ViewRoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Login\ViewRoles.Designer.cs">
+      <DependentUpon>ViewRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Matriculas\ClasseDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Matriculas\ClasseDetail.Designer.cs">
+      <DependentUpon>ClasseDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Matriculas\ClassesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Matriculas\ClassesView.Designer.cs">
+      <DependentUpon>ClassesView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Matriculas\MatriculaEdit.cs">
       <SubType>Form</SubType>
@@ -264,6 +295,12 @@
     </Compile>
     <Compile Include="View\Provas\ProvaView.Designer.cs">
       <DependentUpon>ProvaView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Reports\ReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Reports\ReportViewer.Designer.cs">
+      <DependentUpon>ReportViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Shared\Progresso.cs">
       <SubType>Form</SubType>
@@ -334,6 +371,9 @@
     <EmbeddedResource Include="Migrations\201506151328456_emailSenha.resx">
       <DependentUpon>201506151328456_emailSenha.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508071058301_DescricaoRole.resx">
+      <DependentUpon>201508071058301_DescricaoRole.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
@@ -373,8 +413,20 @@
     <EmbeddedResource Include="View\Login\CreateRole.resx">
       <DependentUpon>CreateRole.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Login\CreateUser.resx">
+      <DependentUpon>CreateUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Login\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Login\ViewRoles.resx">
+      <DependentUpon>ViewRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Matriculas\ClasseDetail.resx">
+      <DependentUpon>ClasseDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Matriculas\ClassesView.resx">
+      <DependentUpon>ClassesView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Matriculas\MatriculaEdit.resx">
       <DependentUpon>MatriculaEdit.cs</DependentUpon>
@@ -399,6 +451,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Provas\ProvaView.resx">
       <DependentUpon>ProvaView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Reports\Classes.rdlc" />
+    <EmbeddedResource Include="View\Reports\ReportViewer.resx">
+      <DependentUpon>ReportViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Reports\teste.rdlc" />
     <EmbeddedResource Include="View\Shared\Progresso.resx">
@@ -430,8 +486,11 @@
     </EmbeddedResource>
     <None Include="KetClass_TemporaryKey.pfx" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\KetClass.Model.AlunoJSON.datasource" />
+    <None Include="Properties\DataSources\KetClass.Model.MatriculaModel.datasource" />
     <None Include="Properties\DataSources\KetClass.Model.NotaModel.datasource" />
     <None Include="Properties\DataSources\KetClass.Model.NotasBoletimModel.datasource" />
+    <None Include="Properties\DataSources\KetClass.Model.TurmaModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

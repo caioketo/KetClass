@@ -46,7 +46,8 @@ namespace KetClass.View.Login
 
         private void button2_Click(object sender, EventArgs e)
         {
-            controller.AddRole(PermissoesRole);
+            controller.AddRole(PermissoesRole, tbxDescricao.Text);
+            Close();
         }
     }
 }

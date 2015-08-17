@@ -54,5 +54,19 @@ namespace KetClass.Model
         public int AulasDadas { get; set; }
         public bool Recupercao { get; set; }
         public int Trimestre { get; set; }
+
+        public NotaModel() { }
+        public NotaModel(NotaModel notaC)
+        {
+            this.AlunoId = notaC.AlunoId;
+            this.AulasDadas = notaC.AulasDadas;
+            this.DisciplinaId = notaC.DisciplinaId;
+            this.Faltas = notaC.Faltas;
+            this.Numero = notaC.Numero;
+            this.Trimestre = notaC.Trimestre;
+            this.TurmaId = notaC.TurmaId;
+            this.Recupercao = notaC.Recupercao;
+            this.Nota = notaC.Nota;
+        }
     }
 }

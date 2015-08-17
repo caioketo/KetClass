@@ -10,6 +10,7 @@ using KetClass.View.Matriculas;
 using KetClass.View.Notas;
 using KetClass.View.Periodo;
 using KetClass.View.Provas;
+using KetClass.View.Reports;
 using KetClass.View.Shared;
 using KetClass.View.Turmas;
 using Newtonsoft.Json;
@@ -57,16 +58,47 @@ namespace KetClass
 
             foreach (ToolStripMenuItem menuItem in menuStrip1.Items)
             {
-                if (AutenticacaoController.getInstance().Autoriza(menuItem.Name))
+                Autentica(menuItem);
+            }
+
+        }
+
+        public bool Autentica(ToolStripMenuItem item)
+        {
+            bool childrenVisible = false;
+            if (item.HasDropDownItems)
+            {
+                foreach (ToolStripMenuItem children in item.DropDownItems)
                 {
-                    menuItem.Visible = true;
+                    if (Autentica(children))
+                    {
+                        childrenVisible = true;
+                    }
+                }
+                if (childrenVisible)
+                {
+                    item.Visible = true;
+                    return true;
                 }
                 else
                 {
-                    menuItem.Visible = false;
+                    item.Visible = false;
+                    return false;
                 }
             }
-
+            else
+            {
+                if (item.Name.Equals("trocarUsuario") || AutenticacaoController.getInstance().Autoriza(item.Name))
+                {
+                    item.Visible = true;
+                    return true;
+                }
+                else
+                {
+                    item.Visible = false;
+                    return false;
+                }
+            }            
         }
 
         private void alunosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -238,11 +270,6 @@ namespace KetClass
             {
                 c.ShowDialog();
             }
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            button3_Click(sender, e);
         }
 
         private void feedToolStripMenuItem_Click(object sender, EventArgs e)
@@ -455,7 +482,6 @@ namespace KetClass
                     aluno.Aluno.LocalNascimento = (string)row["LOCNAS_ALU"];
                     aluno.Aluno.Nacionalidade = (string)row["NACION_ALU"];
                     aluno.CodigoFam = (string)row["CODFAM_ALU"];
-                    //aluno.Aluno.RG = (string)row["RGXXXX_ALU"];
                     if (!DBNull.Value.Equals(row["CERTNA_ALU"]))
                         aluno.Certidao = (string)row["CERTNA_ALU"];
                     else
@@ -552,6 +578,96 @@ namespace KetClass
         private void testeEnvioEmailToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SendEmailSenha("caionmoreno1@gmail.com", "1234");
+        }
+
+        private void cadastrarRecuperaçaoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SelecionaTurmaDisciplina sel = new SelecionaTurmaDisciplina();
+            sel.ShowDialog();
+
+            if (sel.TurmaSel == null || sel.DisciplinaSel == null)
+            {
+                return;
+            }
+            while (sel.TurmaSel != null && sel.DisciplinaSel != null)
+            {
+                using (CadastroNotas cadastro = new CadastroNotas())
+                {
+                    cadastro.turma = sel.TurmaSel;
+                    cadastro.disciplina = sel.DisciplinaSel;
+                    cadastro.Recuperacao = true;
+                    cadastro.ShowDialog();
+                    sel.ShowDialog();
+                }
+            }
+        }
+
+        private void classesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (ClassesView form = new ClassesView())
+            {
+                form.ShowDialog();
+            }
+        }
+
+        private void classesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            using (ReportViewer rv = new ReportViewer())
+            {
+                rv.ShowDialog();
+            }
+        }
+
+        private void cadastrarUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (CreateUser form = new CreateUser())
+            {
+                form.ShowDialog();
+            }
+        }
+
+        private void usuáriosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (CreateUser form = new CreateUser())
+            {
+                form.ShowDialog();
+            }
+        }
+
+        private void rolesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //using (CreateRole form = new CreateRole())
+            using (ViewRoles form = new ViewRoles())
+            {
+                form.ShowDialog();
+            }
+        }
+
+        private void trocarUsuárioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (Login login = new Login())
+            {
+                login.ShowDialog();
+                if (!AutenticacaoController.getInstance().IsUsuarioLogado())
+                {
+                    if (System.Windows.Forms.Application.MessageLoop)
+                    {
+                        // Use this since we are a WinForms app
+                        System.Windows.Forms.Application.Exit();
+                    }
+                    else
+                    {
+                        // Use this since we are a console app
+                        System.Environment.Exit(1);
+                    }
+                    return;
+                }
+            }
+
+            foreach (ToolStripMenuItem menuItem in menuStrip1.Items)
+            {
+                Autentica(menuItem);
+            }
         }
     }
 }

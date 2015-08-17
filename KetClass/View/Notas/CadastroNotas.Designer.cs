@@ -217,6 +217,7 @@
             this.tbxTrimestre.Name = "tbxTrimestre";
             this.tbxTrimestre.Size = new System.Drawing.Size(48, 20);
             this.tbxTrimestre.TabIndex = 1;
+            this.tbxTrimestre.Leave += new System.EventHandler(this.tbxTrimestre_Leave);
             // 
             // label5
             // 
